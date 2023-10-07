@@ -1,0 +1,51 @@
+
+/*
+--AZUL: #201b2c;
+--VERDE: #77ffc0;
+--AZUL-ESBRANQUECIDO: #2f2841;
+*/
+.root{
+    -fx-background-color: #201b2c;
+}
+.card-login{
+    -fx-background-color: #2f2841;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #2f2841;
+    -fx-border-width: 1px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(gaussian, #00000056, 10, 0, 0, 4);
+}
+.label{
+    -fx-text-fill: #f0ffffde;
+    -fx-font-size: 18px;
+}
+#titulo{
+    -fx-text-fill: #77ffc0;
+    -fx-font-size: 36px;
+}
+.tf{
+    -fx-background-color: #514869;
+    -fx-background-radius: 10px;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+.btn{
+    -fx-background-color: #77ffc0;
+    -fx-text-fill: #2b134b;
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+    -fx-background-radius: 8px;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #77ffc0;
+}
+.btn:hover{
+    -fx-background-color: black;
+}
+.hbox{
+    -fx-alignment: center;
+    -fx-padding: 50px;
+}
