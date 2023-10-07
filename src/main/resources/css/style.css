@@ -23,6 +23,7 @@
 #titulo{
     -fx-text-fill: #77ffc0;
     -fx-font-size: 36px;
+    -fx-font-weight: 800;
 }
 .tf{
     -fx-background-color: #514869;
