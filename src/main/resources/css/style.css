@@ -3,18 +3,18 @@
 --AZUL: #201b2c;
 --VERDE: #77ffc0;
 --AZUL-ESBRANQUECIDO: #2f2841;
+--VERDINHO: #00ff88;
 */
 .root{
     -fx-background-color: #201b2c;
 }
 .card-login{
     -fx-background-color: #2f2841;
-    -fx-background-radius: 20px;
+    /*-fx-background-radius: 20px;
     -fx-border-style: solid;
     -fx-border-color: #2f2841;
     -fx-border-width: 1px;
-    -fx-border-radius: 20px;
-    -fx-effect: dropshadow(gaussian, #00000056, 10, 0, 0, 4);
+    -fx-border-radius: 20px;*/
 }
 .label{
     -fx-text-fill: #f0ffffde;
@@ -31,6 +31,8 @@
     -fx-border-style: solid;
     -fx-border-width: 1px;
     -fx-border-radius: 10px;
+    -fx-pref-width: 500px;
+    -fx-pref-height: 50px;
 }
 .btn{
     -fx-background-color: #77ffc0;
@@ -42,11 +44,11 @@
     -fx-border-width: 1px;
     -fx-border-radius: 8px;
     -fx-border-color: #77ffc0;
+    -fx-pref-width: 500px;
+    -fx-pref-height: 50px;
+    -fx-cursor: hand;
 }
 .btn:hover{
-    -fx-background-color: black;
-}
-.hbox{
-    -fx-alignment: center;
-    -fx-padding: 50px;
+    -fx-background-color: #00ff88;
+    -fx-effect: dropshadow(gaussian, #00ff8856, 20, 0, 0, 6);
 }
