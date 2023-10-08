@@ -33,6 +33,8 @@
     -fx-border-radius: 10px;
     -fx-pref-width: 500px;
     -fx-pref-height: 50px;
+    -fx-text-fill: #f0ffffde;
+    -fx-font-size: 18px;
 }
 .btn{
     -fx-background-color: #77ffc0;
