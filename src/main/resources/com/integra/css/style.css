@@ -6,14 +6,18 @@
 --VERDINHO: #00ff88;
 */
 .root{
-    -fx-background-image: url('../img/13403524_5238994.jpg');
+    -fx-background-image: url("../img/13403524_5238994.jpg");
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
 }
 .hbox{
-  -fx-alignment: center;
-  -fx-padding: 50px;  
+    -fx-alignment: center;
+    -fx-padding: 50px;  
+    -fx-background-image: url("../img/13403524_5238994.jpg");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
 }
 .card-login{
     -fx-background-color: rgba(0, 0, 0, 0.5);

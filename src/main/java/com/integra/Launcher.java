@@ -1,7 +1,7 @@
 package com.integra;
 
-public class Main {
+public class Launcher {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        App.launch(App.class, args);
     }
 }

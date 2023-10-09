@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.integra.model.dao.ConexaoBD;
+
 public class DBUtils {
     public static int getLastId(PreparedStatement pstm) throws SQLException{
         Connection con = pstm.getConnection();
