@@ -11,6 +11,10 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
 }
+.hbox{
+  -fx-alignment: center;
+  -fx-padding: 50px;  
+}
 .card-login{
     -fx-background-color: rgba(0, 0, 0, 0.5);
     -fx-background-radius: 20px;
@@ -23,7 +27,7 @@
     -fx-text-fill: #f0ffffde;
     -fx-font-size: 18px;
 }
-#titulo{
+.titulo{
     -fx-text-fill: #77ffc0;
     -fx-font-size: 36px;
     -fx-font-weight: 800;
@@ -54,6 +58,20 @@
     -fx-cursor: hand;
 }
 .btn:hover{
+    -fx-background-color: #00ff88;
+    -fx-effect: dropshadow(gaussian, #00ff8856, 20, 0, 0, 6);
+}
+.btn-perfil{
+    -fx-background-color: #77ffc0;
+    -fx-cursor: hand;
+    -fx-background-radius: 8px;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #77ffc0;
+
+}
+.btn-perfil:hover{
     -fx-background-color: #00ff88;
     -fx-effect: dropshadow(gaussian, #00ff8856, 20, 0, 0, 6);
 }

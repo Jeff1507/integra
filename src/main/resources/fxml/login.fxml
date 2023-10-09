@@ -44,7 +44,7 @@
    <children>
       <AnchorPane layoutX="320.0" layoutY="100.0" prefHeight="600.0" prefWidth="640.0" styleClass="card-login">
          <children>
-            <Label id="titulo" layoutX="264.0" layoutY="59.0" text="LOGIN" />
+            <Label id="titulo" layoutX="264.0" layoutY="59.0" styleClass="titulo" text="LOGIN" />
             <Label layoutX="70.0" layoutY="147.0" text="Usuário" />
             <TextField layoutX="70.0" layoutY="174.0" prefHeight="26.0" prefWidth="427.0" styleClass="tf" />
             <Label layoutX="70.0" layoutY="251.0" text="Senha" />
