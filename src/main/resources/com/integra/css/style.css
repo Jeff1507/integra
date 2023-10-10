@@ -10,6 +10,8 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
+    -fx-font-family: 'Roboto', sans-serif;
+    
 }
 .hbox{
     -fx-alignment: center;
