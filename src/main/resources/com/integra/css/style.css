@@ -14,10 +14,7 @@
 .hbox{
     -fx-alignment: center;
     -fx-padding: 50px;  
-    -fx-background-image: url("../img/13403524_5238994.jpg");
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
+    
 }
 .card-login{
     -fx-background-color: rgba(0, 0, 0, 0.5);
@@ -27,7 +24,7 @@
     -fx-border-width: 1px;
     -fx-border-radius: 20px;
 }
-.label{
+.lb{
     -fx-text-fill: #f0ffffde;
     -fx-font-size: 18px;
 }
@@ -50,20 +47,23 @@
 .btn{
     -fx-background-color: #77ffc0;
     -fx-text-fill: #2b134b;
+    -fx-font-weight: 800;
+    -fx-border-color: #77ffc0;
+    -fx-cursor: hand;
+}
+.btn:hover{
+    -fx-background-color: #00ff88;
+    -fx-effect: dropshadow(gaussian, #00ff8856, 20, 0, 0, 6);
+}
+.btn-login{
     -fx-font-size: 24px;
     -fx-font-weight: 800;
     -fx-background-radius: 8px;
     -fx-border-style: solid;
     -fx-border-width: 1px;
     -fx-border-radius: 8px;
-    -fx-border-color: #77ffc0;
     -fx-pref-width: 500px;
     -fx-pref-height: 50px;
-    -fx-cursor: hand;
-}
-.btn:hover{
-    -fx-background-color: #00ff88;
-    -fx-effect: dropshadow(gaussian, #00ff8856, 20, 0, 0, 6);
 }
 .btn-perfil{
     -fx-background-color: #77ffc0;
@@ -78,4 +78,10 @@
 .btn-perfil:hover{
     -fx-background-color: #00ff88;
     -fx-effect: dropshadow(gaussian, #00ff8856, 20, 0, 0, 6);
+}
+.btn-voltar{
+    -fx-background-radius: 100%;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-radius: 100%;
 }

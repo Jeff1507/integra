@@ -1,6 +1,8 @@
 package com.integra;
 
 import com.integra.controllers.Cadastrar;
+import com.integra.controllers.CadastrarEmpresa;
+import com.integra.controllers.CadastrarEstudante;
 import com.integra.controllers.Login;
 
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
@@ -19,7 +21,7 @@ public class App extends BaseAppNavigator{
 
     @Override
     public String getHome() {
-        return "LOGIN";
+        return "CADASTRAR";
     }
 
     @Override
@@ -29,5 +31,12 @@ public class App extends BaseAppNavigator{
         
         registraTela("CADASTRAR", 
                      new ScreenRegistryFXML(App.class, "cadastrar.fxml", o->new Cadastrar()));
+
+        registraTela("CADASTRAREMPRESA", 
+                     new ScreenRegistryFXML(App.class, "cadastrar_empresa.fxml", o->new CadastrarEmpresa()));
+
+        registraTela("CADASTRARESTUDANTE", 
+                     new ScreenRegistryFXML(App.class, "cadastrar_estudante.fxml", o->new CadastrarEstudante()));
+        
     }
 }
