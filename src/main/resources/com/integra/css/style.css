@@ -88,24 +88,20 @@
     -fx-border-radius: 100%;
 }
 .btn-perfil-menu{
-    -fx-pref-width: 30px;
-    -fx-pref-height: 30px;
-    -fx-background-radius: 8px;
-    -fx-border-style: solid;
-    -fx-border-width: 1px;
-    -fx-border-radius: 8px;
-    
-}
-.imgView-circular{
+    -fx-pref-width: 40px;
+    -fx-pref-height: 40px;
+    -fx-border-color:rgba(255, 255, 255, 0.500);
     -fx-background-radius: 100%;
     -fx-border-style: solid;
     -fx-border-width: 1px;
     -fx-border-radius: 100%;
+    -fx-cursor: hand;
+    
 }
 .BarraMenu{
-    -fx-background-color: #2b134b;
+    -fx-background-color: #201b2c;
     -fx-alignment: center;
-    -fx-spacing: 100;
+    -fx-spacing: 200;
     -fx-padding: 10px;
     -fx-border-style: solid;
     -fx-border-width: 1px;
@@ -116,7 +112,7 @@
     -fx-font-family: 'Roboto', sans-serif;
 }
 .menu-lateral{
-    -fx-background-color: #2b134b;
+    -fx-background-color: #201b2c;
     -fx-border-style: solid;
     -fx-border-width: 1px;
     -fx-border-color: rgb(255, 255, 255, 0.2);
@@ -143,4 +139,7 @@
     -fx-border-width: 1px;
     -fx-border-radius: 0 8px 8px 0;
     -fx-cursor: hand;
+}
+.hb3{
+    -fx-spacing: 37;
 }
