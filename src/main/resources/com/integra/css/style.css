@@ -103,11 +103,44 @@
     -fx-border-radius: 100%;
 }
 .BarraMenu{
-    -fx-background-color: black;
+    -fx-background-color: #2b134b;
     -fx-alignment: center;
-    -fx-spacing: 30;
+    -fx-spacing: 100;
     -fx-padding: 10px;
     -fx-border-style: solid;
     -fx-border-width: 1px;
     -fx-border-color: rgb(255, 255, 255, 0.2);
+}
+#dashboard-root{
+    -fx-background-color: #201b2c;
+    -fx-font-family: 'Roboto', sans-serif;
+}
+.menu-lateral{
+    -fx-background-color: #2b134b;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-color: rgb(255, 255, 255, 0.2);
+}
+.barra-pesquisa{
+    -fx-background-color: #514869;
+    -fx-text-fill: #f0ffffde;
+    -fx-font-size: 16px;
+    -fx-pref-width: 400px;
+    -fx-pref-height: 40px;
+    -fx-border-color: rgba(255, 255, 255, 0.500);
+    -fx-background-radius: 8px 0 0 8px;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px 0 0 8px;
+}
+.icone-pesquisa{
+    -fx-background-color: #201b2c;
+    -fx-pref-width: 40px;
+    -fx-pref-height: 40px;
+    -fx-border-color:rgba(255, 255, 255, 0.500);
+    -fx-background-radius: 0 8px 8px 0;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-radius: 0 8px 8px 0;
+    -fx-cursor: hand;
 }
