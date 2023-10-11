@@ -4,19 +4,16 @@ public class Projeto {
     private int id;
     private String titulo;
     private String descricao;
-    private String liguagemProgramacao;
 
-    public Projeto(int id, String titulo, String descricao, String liguagemProgramacao) {
+    public Projeto(int id, String titulo, String descricao) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.liguagemProgramacao = liguagemProgramacao;
     }
 
-    public Projeto(String titulo, String descricao, String liguagemProgramacao) {
+    public Projeto(String titulo, String descricao) {
         this.titulo = titulo;
         this.descricao = descricao;
-        this.liguagemProgramacao = liguagemProgramacao;
     }
 
     public int getId() {
@@ -41,15 +38,6 @@ public class Projeto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getLiguagemProgramacao() {
-        return liguagemProgramacao;
-    }
-
-    public void setLiguagemProgramacao(String liguagemProgramacao) {
-        this.liguagemProgramacao = liguagemProgramacao;
-    }
-    
+    }  
     
 }
