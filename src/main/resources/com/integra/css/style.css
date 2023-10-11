@@ -97,6 +97,25 @@
     -fx-border-radius: 100%;
     -fx-cursor: hand;
     
+}.menu-button{
+    -fx-pref-width: 40px;
+    -fx-pref-height: 40px;
+    -fx-border-color:rgba(255, 255, 255, 0.500);
+    -fx-background-radius: 100%;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-radius: 100%;
+    -fx-cursor: hand;
+    -fx-graphic: null;
+}
+.menu-button > .arrow-button
+,.menu-button > .label {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.menu-button > .arrow-button > .arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
 }
 .BarraMenu{
     -fx-background-color: #201b2c;
