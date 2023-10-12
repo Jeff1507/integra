@@ -1,11 +1,13 @@
 package com.integra.model.entities;
 
+import java.util.List;
+
 public class Projeto {
     private int id;
     private String titulo;
     private String descricao;
     private String areaEmpresa;
-
+    private List<Solucao> solucoes;
     
     public Projeto(int id, String titulo, String descricao, String areaEmpresa) {
         this.id = id;
@@ -49,9 +51,17 @@ public class Projeto {
         return areaEmpresa;
     }
 
-
     public void setAreaEmpresa(String areaEmpresa) {
         this.areaEmpresa = areaEmpresa;
+    }
+
+    public List<Solucao> getSolucoes() {
+        return solucoes;
+    }
+
+    public void setSolucoes(List<Solucao> solucoes) {
+        this.solucoes = solucoes;
     }  
+    
     
 }

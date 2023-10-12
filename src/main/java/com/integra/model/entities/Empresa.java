@@ -8,6 +8,7 @@ public class Empresa {
     private String telefone;
     private String email;
     private String senha;
+    private boolean logado;
     private List<Projeto> projetos;
 
     public Empresa(int id, String nome, String telefone, String email, String senha) {
@@ -16,6 +17,7 @@ public class Empresa {
         this.telefone = telefone;
         this.email = email;
         this.senha = senha;
+        this.logado = false;
     }
 
     public int getId() {
@@ -65,6 +67,15 @@ public class Empresa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public boolean isLogado() {
+        return logado;
+    }
+
+    public void setLogado(boolean logado) {
+        this.logado = logado;
+    }
+    
     
     
 }
