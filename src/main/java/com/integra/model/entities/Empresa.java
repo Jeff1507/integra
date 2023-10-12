@@ -7,16 +7,14 @@ public class Empresa {
     private String nome;
     private String telefone;
     private String email;
-    private String cnpj;
     private String senha;
     private List<Projeto> projetos;
 
-    public Empresa(int id, String nome, String telefone, String email, String cnpj, String senha) {
+    public Empresa(int id, String nome, String telefone, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        this.cnpj = cnpj;
         this.senha = senha;
     }
 
@@ -42,14 +40,6 @@ public class Empresa {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
     }
 
     public String getSenha() {

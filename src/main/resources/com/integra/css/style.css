@@ -162,3 +162,28 @@
 .hb3{
     -fx-spacing: 37;
 }
+.btn-menu-lateral{
+    -fx-background-color: #201b2c;
+    -fx-pref-width: 400px;
+    -fx-pref-height: 50px;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #f0ffffde;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-style: solid;
+    -fx-border-color: rgb(255, 255, 255, 0.2);
+}
+.pane-aba1{
+    -fx-background-color: white;
+}
+.pane-aba2{
+    -fx-background-color: #00ff88;
+}
+.pane-aba3{
+    -fx-background-color: gray;
+}
+.pane-aba4{
+    -fx-background-color: #514869;
+}

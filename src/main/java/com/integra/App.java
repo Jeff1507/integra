@@ -3,6 +3,7 @@ package com.integra;
 import com.integra.controllers.Cadastrar;
 import com.integra.controllers.CadastrarEmpresa;
 import com.integra.controllers.CadastrarEstudante;
+import com.integra.controllers.DashboardEmpresa;
 import com.integra.controllers.Login;
 
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
@@ -21,7 +22,7 @@ public class App extends BaseAppNavigator{
 
     @Override
     public String getHome() {
-        return "CADASTRAR";
+        return "DASHBOARDEMPRESA";
     }
 
     @Override
@@ -37,6 +38,10 @@ public class App extends BaseAppNavigator{
 
         registraTela("CADASTRARESTUDANTE", 
                      new ScreenRegistryFXML(App.class, "cadastrar_estudante.fxml", o->new CadastrarEstudante()));
+
+        registraTela("DASHBOARDEMPRESA", 
+                     new ScreenRegistryFXML(App.class, "dashboard_empresa.fxml", o->new DashboardEmpresa()));
+        
         
     }
 }
