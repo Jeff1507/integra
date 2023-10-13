@@ -43,6 +43,9 @@
     -fx-border-radius: 3px;
     -fx-text-fill: #f0ffffde;   
 }
+.tf:focused{
+    -fx-border-color: #f0ffffde;
+}
 /*TEXTAREA*/
 .ta{
     -fx-background-color: #514869;
@@ -81,6 +84,8 @@
     -fx-cursor: hand;
     -fx-background-radius: 8px;
     -fx-border-radius: 8px;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 50px;
 }
 .btn-create{
     -fx-background-color: #5cb85c;
@@ -231,7 +236,4 @@
 }
 .tf-projeto-solucao{
     -fx-font-size: 16px;
-}
-.tf:focused{
-    -fx-border-color: #f0ffffde;
 }
