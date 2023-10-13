@@ -4,20 +4,20 @@ import java.util.List;
 
 public class Projeto {
     private int id;
-    private String titulo;
+    private String nome;
     private String descricao;
     private String areaEmpresa;
     private List<Solucao> solucoes;
     
-    public Projeto(int id, String titulo, String descricao, String areaEmpresa) {
+    public Projeto(int id, String nome, String descricao, String areaEmpresa) {
         this.id = id;
-        this.titulo = titulo;
+        this.nome = nome;
         this.descricao = descricao;
         this.areaEmpresa = areaEmpresa;
     }
 
-    public Projeto(String titulo, String descricao, String areaEmpresa) {
-        this.titulo = titulo;
+    public Projeto(String nome, String descricao, String areaEmpresa) {
+        this.nome = nome;
         this.descricao = descricao;
         this.areaEmpresa = areaEmpresa;
     }
@@ -30,12 +30,12 @@ public class Projeto {
         this.id = id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNome() {
+        return nome;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getDescricao() {

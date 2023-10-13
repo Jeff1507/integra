@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
@@ -30,21 +29,9 @@
       <AnchorPane id="dashboard-root" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Pane fx:id="aba1" layoutX="-1.0" prefHeight="723.0" prefWidth="1041.0" styleClass="pane-aba1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Pane fx:id="aba2" layoutX="10.0" layoutY="32.0" prefHeight="691.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Pane fx:id="aba3" layoutX="10.0" layoutY="69.0" prefHeight="654.0" prefWidth="1062.0" styleClass="pane-aba3" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Pane fx:id="aba4" layoutX="20.0" layoutY="127.0" prefHeight="596.0" prefWidth="1062.0" styleClass="pane-aba4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Pane fx:id="aba2" layoutX="10.0" layoutY="32.0" prefHeight="691.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label layoutX="372.0" layoutY="37.0" styleClass="titulo" text="Criar Novo Projeto" />
-                  <Label layoutX="92.0" layoutY="147.0" styleClass="lb" text="Título" />
-                  <TextField layoutX="92.0" layoutY="174.0" styleClass="tf" />
-                  <Label layoutX="92.0" layoutY="248.0" styleClass="lb" text="Area de atuação do Projeto" />
-                  <TextField layoutX="92.0" layoutY="275.0" styleClass="tf" />
-                  <Label layoutX="92.0" layoutY="348.0" styleClass="lb" text="Descrição do Projeto" />
-                  <TextArea layoutX="92.0" layoutY="375.0" prefHeight="200.0" prefWidth="200.0" styleClass="ta" />
-                  <Button layoutX="689.0" layoutY="638.0" mnemonicParsing="false" text="Criar" />
-                  <Button layoutX="773.0" layoutY="638.0" mnemonicParsing="false" text="Cancelar" />
-               </children>
-            </Pane>
          </children></AnchorPane>
    </center>
    <top>

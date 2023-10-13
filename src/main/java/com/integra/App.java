@@ -23,7 +23,7 @@ public class App extends BaseAppNavigator{
 
     @Override
     public String getHome() {
-        return "DASHBOARDESTUDANTE";
+        return "DASHBOARDEMPRESA";
     }
 
     @Override
