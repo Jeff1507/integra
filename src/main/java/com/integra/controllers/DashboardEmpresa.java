@@ -9,6 +9,7 @@ import com.github.hugoperlin.results.Resultado;
 import com.integra.model.entities.Projeto;
 import com.integra.model.repositories.RepositorioProjeto;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +17,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -30,6 +33,15 @@ public class DashboardEmpresa implements Initializable{
 
     @FXML
     private TextArea taDescricao;
+
+    @FXML
+    private TableView<Projeto> tbProjetosRecentes;
+
+    @FXML
+    private TableColumn<Projeto, String> tbNome, tbAreEmpresa;
+
+    @FXML
+    private TableColumn<Projeto, Void> tbAcoes;
 
     @FXML
     private ListView<Projeto> lstProjetosRecentes;
@@ -86,6 +98,11 @@ public class DashboardEmpresa implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
+        tbAreEmpresa.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getAreaEmpresa()));
+        
+
+
         lstProjetosRecentes.getItems().clear();
         Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosRecentes();
 

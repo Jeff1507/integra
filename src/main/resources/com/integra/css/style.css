@@ -222,6 +222,9 @@
     -fx-border-style: solid;
     -fx-border-color: rgb(255, 255, 255, 0.2);
 }
+.pane-abainicio{
+    -fx-background-color: #201b2c;
+}
 .pane-aba1{
     -fx-background-color: white;
 }
@@ -236,4 +239,13 @@
 }
 .tf-projeto-solucao{
     -fx-font-size: 16px;
+}
+.fundo-titulo{
+    -fx-background-color: #514869;
+    -fx-spacing: 10px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 50px;
+    -fx-alignment: center;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
 }
