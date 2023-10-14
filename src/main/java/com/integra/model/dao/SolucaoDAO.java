@@ -4,7 +4,7 @@ import com.github.hugoperlin.results.Resultado;
 import com.integra.model.entities.Solucao;
 
 public interface SolucaoDAO {
-    Resultado criar(Solucao solucao);
+    Resultado<Solucao> criar(Solucao solucao);
 
     Resultado getById(int id);
     Resultado listarSolucaoProblema(int idProblema);

@@ -11,7 +11,7 @@ public interface ProjetoDAO {
     Resultado<ArrayList<Projeto>> listarPorNome(String Nome);
     Resultado<Projeto> getByid(int id);
     Resultado<ArrayList<Projeto>> listarProjetoEmpresa(int idEmpresa);
-    Resultado<ArrayList<Projeto>> projetosRecentes();
+    Resultado<ArrayList<Projeto>> listarProjetosRecentes();
 
     Resultado<Projeto> editar(int id, Projeto novo);
 

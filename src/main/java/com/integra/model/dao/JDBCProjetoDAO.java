@@ -2,6 +2,7 @@ package com.integra.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -44,6 +45,30 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     }
 
     @Override
+    public Resultado<ArrayList<Projeto>> listarProjetosRecentes() {
+        try (Connection con = conexao.getConnection()) {
+            
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM projeto ORDER BY data_criacao DESC");
+
+            ResultSet resultSet = pstm.executeQuery();
+            ArrayList <Projeto> projetosRecentes = new ArrayList<>();
+
+            while(resultSet.next()){
+                int id = resultSet.getInt("id");
+                String nome = resultSet.getString("nome");
+                String areaEmpresa = resultSet.getString("area_atuacao");
+                String descricao = resultSet.getString("descricao");
+
+                Projeto projeto = new Projeto(id, nome, descricao, areaEmpresa);
+                projetosRecentes.add(projeto);
+            }
+            return Resultado.sucesso("Projetos listados!", projetosRecentes);
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    @Override
     public Resultado listarPorNome(String Nome) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'listarPorNome'");
@@ -73,10 +98,4 @@ public class JDBCProjetoDAO implements ProjetoDAO{
         throw new UnsupportedOperationException("Unimplemented method 'excluir'");
     }
 
-    @Override
-    public Resultado<ArrayList<Projeto>> projetosRecentes() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'projetosRecentes'");
-    }
-    
 }

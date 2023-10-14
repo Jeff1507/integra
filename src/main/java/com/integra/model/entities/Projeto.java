@@ -61,7 +61,14 @@ public class Projeto {
 
     public void setSolucoes(List<Solucao> solucoes) {
         this.solucoes = solucoes;
-    }  
+    }
+
+    @Override
+    public String toString() {
+        return "Projeto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", areaEmpresa=" + areaEmpresa
+                + "]";
+    }
+
     
     
 }
