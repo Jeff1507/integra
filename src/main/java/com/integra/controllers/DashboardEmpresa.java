@@ -33,7 +33,7 @@ public class DashboardEmpresa implements Initializable{
 
     @FXML
     private TextArea taDescricao;
-
+    /* 
     @FXML
     private TableView<Projeto> tbProjetosRecentes;
 
@@ -41,7 +41,7 @@ public class DashboardEmpresa implements Initializable{
     private TableColumn<Projeto, String> tbNome, tbAreEmpresa;
 
     @FXML
-    private TableColumn<Projeto, Void> tbAcoes;
+    private TableColumn<Projeto, Void> tbAcoes;*/
 
     @FXML
     private ListView<Projeto> lstProjetosRecentes;
@@ -98,9 +98,9 @@ public class DashboardEmpresa implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
+        /* tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
         tbAreEmpresa.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getAreaEmpresa()));
-        
+        tbAcoes.setCellFactory(null);*/
 
 
         lstProjetosRecentes.getItems().clear();

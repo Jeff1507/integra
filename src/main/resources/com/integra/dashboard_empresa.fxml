@@ -6,6 +6,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
@@ -62,9 +64,26 @@
                </children>
             </Pane>
             <Pane fx:id="aba1" layoutX="-1.0" prefHeight="723.0" prefWidth="1041.0" styleClass="pane-aba1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Pane fx:id="abaInicio" layoutX="867.0" prefHeight="723.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="abaInicio" layoutX="867.0" prefHeight="723.0" prefWidth="195.0" styleClass="pane-abainicio" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ListView fx:id="lstProjetosRecentes" layoutX="74.0" layoutY="69.0" prefHeight="460.0" prefWidth="541.0" />
+                  <ListView fx:id="lstProjetosRecentes" layoutX="60.0" layoutY="212.0" prefHeight="304.0" prefWidth="636.0" />
+                  <HBox layoutX="55.0" layoutY="36.0" prefHeight="150.0" prefWidth="348.0" styleClass="fundo-titulo">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/8477477.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="lb" text="Recentes" />
+                     </children>
+                  </HBox>
+                  <TableView layoutX="55.0" layoutY="102.0" prefHeight="67.0" prefWidth="787.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Nome" />
+                      <TableColumn prefWidth="134.4000244140625" text="Area de atuação" />
+                        <TableColumn prefWidth="115.99993896484375" text="Ações" />
+                    </columns>
+                  </TableView>
                </children>
             </Pane>
          </children></AnchorPane>
