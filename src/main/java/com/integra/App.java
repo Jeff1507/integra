@@ -6,11 +6,18 @@ import com.integra.controllers.CadastrarEstudante;
 import com.integra.controllers.DashboardEmpresa;
 import com.integra.controllers.DashboardEstudante;
 import com.integra.controllers.Login;
+import com.integra.model.dao.ConexaoBD;
+import com.integra.model.dao.JDBCProjetoDAO;
+import com.integra.model.dao.ProjetoDAO;
+import com.integra.model.repositories.RepositorioProjeto;
 
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
 import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
 
 public class App extends BaseAppNavigator{
+
+    ProjetoDAO projetoDAO = new JDBCProjetoDAO(ConexaoBD.getInstance());
+    RepositorioProjeto repositorioProjeto = new RepositorioProjeto(projetoDAO);
 
     public static void main(String[] args) {
         launch();
@@ -41,7 +48,7 @@ public class App extends BaseAppNavigator{
                      new ScreenRegistryFXML(App.class, "cadastrar_estudante.fxml", o->new CadastrarEstudante()));
 
         registraTela("DASHBOARDEMPRESA", 
-                     new ScreenRegistryFXML(App.class, "dashboard_empresa.fxml", o->new DashboardEmpresa()));
+                     new ScreenRegistryFXML(App.class, "dashboard_empresa.fxml", o->new DashboardEmpresa(repositorioProjeto)));
         
         registraTela("DASHBOARDESTUDANTE", 
                      new ScreenRegistryFXML(App.class, "dashboard_estudante.fxml", o->new DashboardEstudante()));
