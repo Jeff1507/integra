@@ -15,6 +15,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
@@ -97,7 +99,6 @@ public class DashboardEmpresa implements Initializable{
         } 
         alert.showAndWait();
     }
-
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
@@ -107,7 +108,7 @@ public class DashboardEmpresa implements Initializable{
         private final Button editarButton = new Button("Editar");
         private final Button excluirButton = new Button("Excluir");
 
-        
+
 
         {
             // Adicione eventos aos botões (por exemplo, abrir um diálogo de visualização, edição ou exclusão)

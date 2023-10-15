@@ -279,7 +279,7 @@
     -fx-border-color: rgb(255, 255, 255, 0.2);
 }
 .tb-hbox{
-    -fx-alignment: center;
+    -fx-alignment: center-left;
     -fx-spacing: 10px;
 }
 .tbv .table-cell{
