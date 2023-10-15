@@ -17,10 +17,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 public class DashboardEmpresa implements Initializable{
@@ -33,7 +35,7 @@ public class DashboardEmpresa implements Initializable{
 
     @FXML
     private TextArea taDescricao;
-    /* 
+    
     @FXML
     private TableView<Projeto> tbProjetosRecentes;
 
@@ -41,7 +43,7 @@ public class DashboardEmpresa implements Initializable{
     private TableColumn<Projeto, String> tbNome, tbAreEmpresa;
 
     @FXML
-    private TableColumn<Projeto, Void> tbAcoes;*/
+    private TableColumn<Projeto, Projeto> tbAcoes;
 
     @FXML
     private ListView<Projeto> lstProjetosRecentes;
@@ -98,12 +100,48 @@ public class DashboardEmpresa implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        /* tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
+        tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
         tbAreEmpresa.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getAreaEmpresa()));
-        tbAcoes.setCellFactory(null);*/
+        tbAcoes.setCellFactory(celula -> new TableCell<Projeto, Projeto>() {
+        private final Button verButton = new Button("Ver");
+        private final Button editarButton = new Button("Editar");
+        private final Button excluirButton = new Button("Excluir");
 
+        {
+            // Adicione eventos aos botões (por exemplo, abrir um diálogo de visualização, edição ou exclusão)
+            verButton.setOnAction(event -> {
+                Projeto projeto = getTableView().getItems().get(getIndex());
+                // Lógica para visualizar o projeto
+            });
 
-        lstProjetosRecentes.getItems().clear();
+            editarButton.setOnAction(event -> {
+                Projeto projeto = getTableView().getItems().get(getIndex());
+                // Lógica para editar o projeto
+            });
+
+            excluirButton.setOnAction(event -> {
+                Projeto projeto = getTableView().getItems().get(getIndex());
+                // Lógica para excluir o projeto
+            });
+            verButton.getStyleClass().add("btn-perfil-menu");
+            editarButton.getStyleClass().add("btn-perfil-menu");
+            excluirButton.getStyleClass().add("btn-perfil-menu");
+        }
+
+        @Override
+        protected void updateItem(Projeto projeto, boolean empty) {
+            super.updateItem(projeto, empty);
+            if (empty) {
+                setGraphic(null);
+            } else {
+                HBox buttonsBox = new HBox(verButton, editarButton, excluirButton);
+                setGraphic(buttonsBox);
+                buttonsBox.getStyleClass().add("hb3");
+            }
+        }
+    });
+        
+        //lstProjetosRecentes.getItems().clear();
         Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosRecentes();
 
         if(resultado.foiErro()){
@@ -111,7 +149,8 @@ public class DashboardEmpresa implements Initializable{
             alert.showAndWait();
         }
         List<Projeto> lista = (List<Projeto>)resultado.comoSucesso().getObj();
-        lstProjetosRecentes.getItems().addAll(lista);
+        tbProjetosRecentes.getItems().addAll(lista);
+        //lstProjetosRecentes.getItems().addAll(lista);
 
     }
 }

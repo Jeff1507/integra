@@ -66,8 +66,8 @@
             <Pane fx:id="aba1" layoutX="-1.0" prefHeight="723.0" prefWidth="1041.0" styleClass="pane-aba1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Pane fx:id="abaInicio" layoutX="867.0" prefHeight="723.0" prefWidth="195.0" styleClass="pane-abainicio" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ListView fx:id="lstProjetosRecentes" layoutX="60.0" layoutY="212.0" prefHeight="304.0" prefWidth="636.0" />
-                  <HBox layoutX="55.0" layoutY="36.0" prefHeight="150.0" prefWidth="348.0" styleClass="fundo-titulo">
+                  <ListView fx:id="lstProjetosRecentes" layoutX="24.0" layoutY="564.0" prefHeight="39.0" prefWidth="26.0" />
+                  <HBox layoutX="50.0" layoutY="35.0" prefHeight="150.0" prefWidth="348.0" styleClass="fundo-titulo">
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -77,11 +77,11 @@
                         <Label styleClass="lb" text="Recentes" />
                      </children>
                   </HBox>
-                  <TableView layoutX="55.0" layoutY="102.0" prefHeight="67.0" prefWidth="787.0">
+                  <TableView fx:id="tbProjetosRecentes" layoutX="56.0" layoutY="102.0" prefHeight="450.0" prefWidth="950.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Nome" />
-                      <TableColumn prefWidth="134.4000244140625" text="Area de atuação" />
-                        <TableColumn prefWidth="115.99993896484375" text="Ações" />
+                      <TableColumn fx:id="tbNome" prefWidth="317.0" text="Nome" />
+                      <TableColumn fx:id="tbAreEmpresa" prefWidth="437.5999450683594" text="Area de atuação" />
+                        <TableColumn fx:id="tbAcoes" prefWidth="196.0" text="Ações" />
                     </columns>
                   </TableView>
                </children>
