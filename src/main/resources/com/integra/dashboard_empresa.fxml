@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
@@ -23,7 +22,7 @@
    <left>
       <VBox prefHeight="723.0" prefWidth="218.0" styleClass="menu-lateral" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btn_inicio" mnemonicParsing="false" onAction="#abrirAba" styleClass="btn-menu-lateral" text="Início" />
+            <Button fx:id="btn_inicio" mnemonicParsing="false" onAction="#abrirAba" styleClass="btn-menu-lateral" text="Explorar" />
             <Button fx:id="btn_menu_lateral1" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="346.0" styleClass="btn-menu-lateral" text="Meus Projetos" />
             <Button fx:id="btn_menu_lateral2" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="361.0" styleClass="btn-menu-lateral" text="Criar Novo Projeto" />
             <Button fx:id="btn_menu_lateral3" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="353.0" styleClass="btn-menu-lateral" text="Editar Projeto" />
@@ -66,8 +65,7 @@
             <Pane fx:id="aba1" layoutX="-1.0" prefHeight="723.0" prefWidth="1041.0" styleClass="pane-aba1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Pane fx:id="abaInicio" layoutX="867.0" prefHeight="723.0" prefWidth="195.0" styleClass="pane-abainicio" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ListView fx:id="lstProjetosRecentes" layoutX="24.0" layoutY="564.0" prefHeight="39.0" prefWidth="26.0" />
-                  <HBox layoutX="50.0" layoutY="35.0" prefHeight="150.0" prefWidth="348.0" styleClass="fundo-titulo">
+                  <HBox layoutX="42.0" layoutY="35.0" prefHeight="150.0" prefWidth="348.0" styleClass="fundo-titulo">
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -77,11 +75,12 @@
                         <Label styleClass="lb" text="Recentes" />
                      </children>
                   </HBox>
-                  <TableView fx:id="tbProjetosRecentes" layoutX="56.0" layoutY="102.0" prefHeight="450.0" prefWidth="950.0">
+                  <TableView fx:id="tbProjetosRecentes" layoutX="42.0" layoutY="102.0" maxWidth="1.7976931348623157E308" prefHeight="586.0" prefWidth="975.0" styleClass="tbv">
                     <columns>
-                      <TableColumn fx:id="tbNome" prefWidth="317.0" text="Nome" />
-                      <TableColumn fx:id="tbAreEmpresa" prefWidth="437.5999450683594" text="Area de atuação" />
-                        <TableColumn fx:id="tbAcoes" prefWidth="196.0" text="Ações" />
+                      <TableColumn fx:id="tbNome" prefWidth="256.80005645751953" text="Nome" />
+                      <TableColumn fx:id="tbAreEmpresa" prefWidth="281.6000061035156" text="Area de atuação" />
+                        <TableColumn prefWidth="188.79998779296875" text="Soluções" />
+                        <TableColumn fx:id="tbAcoes" prefWidth="240.79986572265625" text="Ações" />
                     </columns>
                   </TableView>
                </children>

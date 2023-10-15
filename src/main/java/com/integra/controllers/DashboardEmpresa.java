@@ -45,8 +45,8 @@ public class DashboardEmpresa implements Initializable{
     @FXML
     private TableColumn<Projeto, Projeto> tbAcoes;
 
-    @FXML
-    private ListView<Projeto> lstProjetosRecentes;
+    //@FXML
+    //private ListView<Projeto> lstProjetosRecentes;
 
     @FXML
     private Pane aba1, aba2, aba3, aba4, abaInicio;
@@ -107,6 +107,8 @@ public class DashboardEmpresa implements Initializable{
         private final Button editarButton = new Button("Editar");
         private final Button excluirButton = new Button("Excluir");
 
+        
+
         {
             // Adicione eventos aos botões (por exemplo, abrir um diálogo de visualização, edição ou exclusão)
             verButton.setOnAction(event -> {
@@ -136,7 +138,7 @@ public class DashboardEmpresa implements Initializable{
             } else {
                 HBox buttonsBox = new HBox(verButton, editarButton, excluirButton);
                 setGraphic(buttonsBox);
-                buttonsBox.getStyleClass().add("hb3");
+                buttonsBox.getStyleClass().add("tb-hbox");
             }
         }
     });
