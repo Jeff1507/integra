@@ -9,6 +9,8 @@ import com.github.hugoperlin.results.Resultado;
 import com.integra.model.entities.Projeto;
 import com.integra.model.repositories.RepositorioProjeto;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -99,36 +101,59 @@ public class DashboardEmpresa implements Initializable{
         } 
         alert.showAndWait();
     }
+    
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
         tbAreEmpresa.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getAreaEmpresa()));
         tbAcoes.setCellFactory(celula -> new TableCell<Projeto, Projeto>() {
-        private final Button verButton = new Button("Ver");
-        private final Button editarButton = new Button("Editar");
-        private final Button excluirButton = new Button("Excluir");
+            private final Button verButton = new Button("Ver");
+            private final Button editarButton = new Button("Editar");
+            private final Button excluirButton = new Button("Excluir");
 
+            private final Image imgVer = new Image(getClass().getResource("/com/integra/img/aaa.png").toExternalForm());
+            private final Image imgEditar = new Image(getClass().getResource("/com/integra/img/editIcon.png").toExternalForm());
+            private final Image imgExcluir = new Image(getClass().getResource("/com/integra/img/excluir-icon.png").toExternalForm());
+            private final ImageView iconeVer=new ImageView(imgVer);
+            private final ImageView iconeEditar = new ImageView(imgEditar);
+            private final ImageView iconeExcluir = new ImageView(imgExcluir);
 
+            {
+                //
+                iconeVer.setFitWidth(30);
+                iconeVer.setFitHeight(30);
+                verButton.setGraphic(iconeVer);
+                verButton.setText("");
+                //
+                iconeEditar.setFitWidth(30);
+                iconeEditar.setFitHeight(30);
+                editarButton.setText("");
+                editarButton.setGraphic(iconeEditar);
+                //
+                iconeExcluir.setFitWidth(30);
+                iconeExcluir.setFitHeight(30);
+                excluirButton.setText("");
+                excluirButton.setGraphic(iconeExcluir);
+                //
+                verButton.getStyleClass().add("btn-read");
+                editarButton.getStyleClass().add("btn-update");
+                excluirButton.getStyleClass().add("btn-delete");
+                // Adicione eventos aos botões (por exemplo, abrir um diálogo de visualização, edição ou exclusão)
+                verButton.setOnAction(event -> {
+                    Projeto projeto = getTableView().getItems().get(getIndex());
+                    // Lógica para visualizar o projeto
+                });
 
-        {
-            // Adicione eventos aos botões (por exemplo, abrir um diálogo de visualização, edição ou exclusão)
-            verButton.setOnAction(event -> {
-                Projeto projeto = getTableView().getItems().get(getIndex());
-                // Lógica para visualizar o projeto
-            });
+                editarButton.setOnAction(event -> {
+                    Projeto projeto = getTableView().getItems().get(getIndex());
+                    // Lógica para editar o projeto
+                });
 
-            editarButton.setOnAction(event -> {
-                Projeto projeto = getTableView().getItems().get(getIndex());
-                // Lógica para editar o projeto
-            });
-
-            excluirButton.setOnAction(event -> {
-                Projeto projeto = getTableView().getItems().get(getIndex());
-                // Lógica para excluir o projeto
-            });
-            verButton.getStyleClass().add("btn-perfil-menu");
-            editarButton.getStyleClass().add("btn-perfil-menu");
-            excluirButton.getStyleClass().add("btn-perfil-menu");
+                excluirButton.setOnAction(event -> {
+                    Projeto projeto = getTableView().getItems().get(getIndex());
+                    // Lógica para excluir o projeto
+                });
         }
 
         @Override

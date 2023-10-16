@@ -77,10 +77,9 @@
                   </HBox>
                   <TableView fx:id="tbProjetosRecentes" layoutX="42.0" layoutY="102.0" maxWidth="1.7976931348623157E308" prefHeight="586.0" prefWidth="975.0" styleClass="tbv">
                     <columns>
-                      <TableColumn fx:id="tbNome" prefWidth="256.80005645751953" text="Nome" />
-                      <TableColumn fx:id="tbAreEmpresa" prefWidth="281.6000061035156" text="Area de atuação" />
-                        <TableColumn prefWidth="188.79998779296875" text="Soluções" />
-                        <TableColumn fx:id="tbAcoes" prefWidth="240.79986572265625" text="Ações" />
+                      <TableColumn fx:id="tbNome" prefWidth="327.2000198364258" text="Nome" />
+                      <TableColumn fx:id="tbAreEmpresa" prefWidth="306.3999328613281" text="Area de atuação" />
+                        <TableColumn fx:id="tbAcoes" prefWidth="335.2000732421875" text="Ações" />
                     </columns>
                   </TableView>
                </children>

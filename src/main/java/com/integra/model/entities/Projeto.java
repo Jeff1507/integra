@@ -46,7 +46,6 @@ public class Projeto {
         this.descricao = descricao;
     }
 
-
     public String getAreaEmpresa() {
         return areaEmpresa;
     }
@@ -57,6 +56,10 @@ public class Projeto {
 
     public List<Solucao> getSolucoes() {
         return solucoes;
+    }
+
+    public int getNumSolucoes(){
+        return solucoes.size();
     }
 
     public void setSolucoes(List<Solucao> solucoes) {
