@@ -108,9 +108,9 @@ public class DashboardEmpresa implements Initializable{
         tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
         tbAreEmpresa.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getAreaEmpresa()));
         tbAcoes.setCellFactory(celula -> new TableCell<Projeto, Projeto>() {
-            private final Button verButton = new Button("Ver");
-            private final Button editarButton = new Button("Editar");
-            private final Button excluirButton = new Button("Excluir");
+            private final Button btnVer = new Button("Ver");
+            private final Button btnEditar = new Button("Editar");
+            private final Button btnExcluir = new Button("Excluir");
 
             private final Image imgVer = new Image(getClass().getResource("/com/integra/img/aaa.png").toExternalForm());
             private final Image imgEditar = new Image(getClass().getResource("/com/integra/img/editIcon.png").toExternalForm());
@@ -123,34 +123,34 @@ public class DashboardEmpresa implements Initializable{
                 //
                 iconeVer.setFitWidth(30);
                 iconeVer.setFitHeight(30);
-                verButton.setGraphic(iconeVer);
-                verButton.setText("");
+                btnVer.setGraphic(iconeVer);
+                btnVer.setText("");
                 //
                 iconeEditar.setFitWidth(30);
                 iconeEditar.setFitHeight(30);
-                editarButton.setText("");
-                editarButton.setGraphic(iconeEditar);
+                btnEditar.setText("");
+                btnEditar.setGraphic(iconeEditar);
                 //
                 iconeExcluir.setFitWidth(30);
                 iconeExcluir.setFitHeight(30);
-                excluirButton.setText("");
-                excluirButton.setGraphic(iconeExcluir);
+                btnExcluir.setText("");
+                btnExcluir.setGraphic(iconeExcluir);
                 //
-                verButton.getStyleClass().add("btn-read");
-                editarButton.getStyleClass().add("btn-update");
-                excluirButton.getStyleClass().add("btn-delete");
+                btnVer.getStyleClass().add("btn-read");
+                btnEditar.getStyleClass().add("btn-update");
+                btnExcluir.getStyleClass().add("btn-delete");
                 // Adicione eventos aos botões (por exemplo, abrir um diálogo de visualização, edição ou exclusão)
-                verButton.setOnAction(event -> {
+                btnVer.setOnAction(event -> {
                     Projeto projeto = getTableView().getItems().get(getIndex());
                     // Lógica para visualizar o projeto
                 });
 
-                editarButton.setOnAction(event -> {
+                btnEditar.setOnAction(event -> {
                     Projeto projeto = getTableView().getItems().get(getIndex());
                     // Lógica para editar o projeto
                 });
 
-                excluirButton.setOnAction(event -> {
+                btnExcluir.setOnAction(event -> {
                     Projeto projeto = getTableView().getItems().get(getIndex());
                     // Lógica para excluir o projeto
                 });
@@ -162,9 +162,9 @@ public class DashboardEmpresa implements Initializable{
             if (empty) {
                 setGraphic(null);
             } else {
-                HBox buttonsBox = new HBox(verButton, editarButton, excluirButton);
-                setGraphic(buttonsBox);
-                buttonsBox.getStyleClass().add("tb-hbox");
+                HBox hboxBtnCRUD = new HBox(btnVer, btnEditar, btnExcluir);
+                setGraphic(hboxBtnCRUD);
+                hboxBtnCRUD.getStyleClass().add("tb-hbox");
             }
         }
     });
