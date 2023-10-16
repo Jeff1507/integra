@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
@@ -29,7 +30,12 @@
          <children>
             <Pane fx:id="aba1" layoutX="-1.0" prefHeight="723.0" prefWidth="1041.0" styleClass="pane-aba1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Pane fx:id="aba3" layoutX="10.0" layoutY="69.0" prefHeight="654.0" prefWidth="1062.0" styleClass="pane-aba3" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Pane fx:id="aba2" layoutX="20.0" layoutY="127.0" prefHeight="596.0" prefWidth="1062.0" styleClass="pane-aba4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Pane fx:id="aba2" layoutX="20.0" layoutY="127.0" prefHeight="596.0" prefWidth="1062.0" styleClass="pane-aba4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField fx:id="tfTitulo" layoutX="65.0" layoutY="121.0" />
+                  <TextArea fx:id="taDescricao" layoutX="65.0" layoutY="227.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Button layoutX="351.0" layoutY="302.0" mnemonicParsing="false" onAction="#criarSolucao" text="Button" />
+               </children></Pane>
          </children></AnchorPane>
    </center>
    <top>
