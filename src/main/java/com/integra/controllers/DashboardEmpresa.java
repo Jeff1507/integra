@@ -84,7 +84,7 @@ public class DashboardEmpresa implements Initializable{
     }
 
     @FXML
-    private void criarProjeto(ActionEvent event){
+    void criarProjeto(ActionEvent event){
         String nome = tfNomeProjeto.getText();
         String areEmpresa = tfAreaEmpresa.getText();
         String descricao = taDescricao.getText();
@@ -101,7 +101,17 @@ public class DashboardEmpresa implements Initializable{
         } 
         alert.showAndWait();
     }
-    
+    @FXML
+    private void verProjeto(Projeto projeto){
+        String nome = projeto.getNome();
+        String areaEmpresa = projeto.getAreaEmpresa();
+        String descricao = projeto.getDescricao();
+
+        Alert alert = new Alert(AlertType.INFORMATION, nome+"\n"+
+                                                       areaEmpresa+"\n"+
+                                                       descricao);
+        alert.showAndWait();
+    }
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -139,7 +149,7 @@ public class DashboardEmpresa implements Initializable{
                 // Adicione eventos aos botões (por exemplo, abrir um diálogo de visualização, edição ou exclusão)
                 btnVer.setOnAction(event -> {
                     Projeto projeto = tbProjetosRecentes.getItems().get(getIndex());
-                    // Lógica para visualizar o projeto
+                    verProjeto(projeto);
                 });
 
                 btnEditar.setOnAction(event -> {
