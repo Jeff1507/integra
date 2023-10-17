@@ -23,21 +23,17 @@
       <VBox prefHeight="723.0" prefWidth="218.0" styleClass="menu-lateral" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btn_inicio" mnemonicParsing="false" onAction="#abrirAba" styleClass="btn-menu-lateral" text="Explorar" />
-            <Button fx:id="btn_menu_lateral1" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="346.0" styleClass="btn-menu-lateral" text="Meus Projetos" />
-            <Button fx:id="btn_menu_lateral2" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="361.0" styleClass="btn-menu-lateral" text="Criar Novo Projeto" />
-            <Button fx:id="btn_menu_lateral3" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="353.0" styleClass="btn-menu-lateral" text="Editar Projeto" />
-            <Button fx:id="btn_menu_lateral4" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="353.0" styleClass="btn-menu-lateral" text="Excluir Projeto" />
+            <Button fx:id="btn_menu_projetos" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="346.0" styleClass="btn-menu-lateral" text="Meus Projetos" />
+            <Button fx:id="btn_criar_projeto" mnemonicParsing="false" onAction="#abrirAba" styleClass="btn-menu-lateral" text="Criar Novo Projeto" />
          </children>
       </VBox>
    </left>
    <center>
       <AnchorPane id="dashboard-root" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="aba3" layoutX="10.0" layoutY="69.0" prefHeight="654.0" prefWidth="1062.0" styleClass="pane-aba3" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Pane fx:id="aba4" layoutX="20.0" layoutY="127.0" prefHeight="596.0" prefWidth="1062.0" styleClass="pane-aba4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Pane fx:id="aba2" layoutX="10.0" layoutY="32.0" prefHeight="691.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="abaCriarProjeto" layoutX="10.0" layoutY="32.0" prefHeight="691.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="469.0" layoutY="14.0" styleClass="titulo" text="Projeto" />
+                  <Label layoutX="417.0" layoutY="14.0" styleClass="titulo" text="Novo Projeto" />
                   <Label layoutX="167.0" layoutY="67.0" styleClass="lb" text="Nome" />
                   <TextField fx:id="tfNomeProjeto" layoutX="166.0" layoutY="94.0" prefHeight="27.0" prefWidth="731.0" promptText="Escreva o nome do seu projeto">
                      <styleClass>
@@ -62,7 +58,13 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="aba1" layoutX="-1.0" prefHeight="723.0" prefWidth="1041.0" styleClass="pane-aba1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label fx:id="lbNomeProjeto" alignment="CENTER" layoutX="486.0" layoutY="24.0" styleClass="titulo" />
+                  <Label fx:id="lbAreaEmpresa" layoutX="98.0" layoutY="119.0" styleClass="lb" text="Label" />
+                  <Label fx:id="lbDescricao" layoutX="98.0" layoutY="167.0" styleClass="lb" text="Label" />
+               </children>
+            </Pane>
             <Pane fx:id="abaInicio" layoutX="867.0" prefHeight="723.0" prefWidth="195.0" styleClass="pane-abainicio" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <HBox layoutX="42.0" layoutY="35.0" prefHeight="150.0" prefWidth="348.0" styleClass="fundo-titulo">
@@ -77,9 +79,11 @@
                   </HBox>
                   <TableView fx:id="tbProjetosRecentes" layoutX="42.0" layoutY="102.0" maxWidth="1.7976931348623157E308" prefHeight="586.0" prefWidth="975.0" styleClass="tbv">
                     <columns>
-                      <TableColumn fx:id="tbNome" prefWidth="327.2000198364258" text="Nome" />
-                      <TableColumn fx:id="tbAreEmpresa" prefWidth="306.3999328613281" text="Area de atuação" />
-                        <TableColumn fx:id="tbAcoes" prefWidth="335.2000732421875" text="Ações" />
+                        <TableColumn prefWidth="191.19998931884766" text="Usuário" />
+                      <TableColumn fx:id="tbNome" prefWidth="192.79998779296875" text="Nome" />
+                      <TableColumn fx:id="tbAreEmpresa" prefWidth="209.59994506835938" text="Area de atuação" />
+                        <TableColumn prefWidth="142.4000244140625" text="Soluções" />
+                        <TableColumn fx:id="tbAcoes" prefWidth="389.60003662109375" text="Ações" />
                     </columns>
                   </TableView>
                </children>

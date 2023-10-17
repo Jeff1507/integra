@@ -80,39 +80,31 @@
 /*BOTOES CRUD*/
 .btn-crud{
     -fx-text-fill: white;
+    -fx-font-size: 18px;
     -fx-font-weight: 800;
     -fx-cursor: hand;
-    -fx-background-radius: 8px;
-    -fx-border-radius: 8px;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
     -fx-pref-width: 150px;
     -fx-pref-height: 50px;
 }
+.btn-crud-icone{
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-background-radius: 100%;
+    -fx-border-radius: 100%;
+}
 .btn-create{
     -fx-background-color: #5cb85c;
-    -fx-font-size: 18px;
 }
 .btn-read{
     -fx-background-color: #3399FF;
-    /*-fx-font-size: 18px;*/
-    -fx-pref-width: 50px;
-    -fx-pref-height: 50px;
-    -fx-background-radius: 100%;
-    -fx-border-radius: 100%;
-
 }
 .btn-update{
     -fx-background-color: #f0ad4e;
-    -fx-pref-width: 50px;
-    -fx-pref-height: 50px;
-    -fx-background-radius: 100%;
-    -fx-border-radius: 100%;
 }
 .btn-delete{
     -fx-background-color: #d9534f;
-    -fx-pref-width: 50px;
-    -fx-pref-height: 50px;
-    -fx-background-radius: 100%;
-    -fx-border-radius: 100%;
 }
 /**/
 .btn-login{
@@ -236,17 +228,8 @@
 .pane-abainicio{
     -fx-background-color: #201b2c;
 }
-.pane-aba1{
-    -fx-background-color: white;
-}
 .pane-aba2{
     -fx-background-color: #201b2c;
-}
-.pane-aba3{
-    -fx-background-color: #201b2c;
-}
-.pane-aba4{
-    -fx-background-color: #514869;
 }
 .tf-projeto-solucao{
     -fx-font-size: 16px;

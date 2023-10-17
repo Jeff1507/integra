@@ -15,11 +15,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -49,14 +51,17 @@ public class DashboardEmpresa implements Initializable{
     @FXML
     private TableColumn<Projeto, Projeto> tbAcoes;
 
+    @FXML
+    private Label lbNomeProjeto, lbAreaEmpresa, lbDescricao;
+
     //@FXML
     //private ListView<Projeto> lstProjetosRecentes;
 
     @FXML
-    private Pane aba1, aba2, aba3, aba4, abaInicio;
+    private Pane abaCriarProjeto, abaInicio, abaVerProjeto;
 
     @FXML
-    private Button btn_menu_lateral1, btn_menu_lateral2, btn_menu_lateral3, btn_menu_lateral4, btn_inicio;
+    private Button btn_criar_projeto, btn_inicio;
 
     private RepositorioProjeto repositorioProjeto;
 
@@ -66,20 +71,11 @@ public class DashboardEmpresa implements Initializable{
  
     @FXML
     private void abrirAba(ActionEvent event){
-        if (event.getSource() == btn_menu_lateral1) {
-            aba1.toFront();
-        }
-        else if(event.getSource() == btn_menu_lateral2){
-            aba2.toFront();
-        }
-        else if(event.getSource() == btn_menu_lateral3){
-            aba3.toFront();
-        }
-        else if(event.getSource() == btn_menu_lateral4){
-            aba4.toFront();
-        }
-        else{
+        if (event.getSource() == btn_inicio) {
             abaInicio.toFront();
+        }
+        else if(event.getSource() == btn_criar_projeto){
+            abaCriarProjeto.toFront();
         }
     }
 
@@ -101,16 +97,17 @@ public class DashboardEmpresa implements Initializable{
         } 
         alert.showAndWait();
     }
+    
     @FXML
     private void verProjeto(Projeto projeto){
+        
         String nome = projeto.getNome();
         String areaEmpresa = projeto.getAreaEmpresa();
         String descricao = projeto.getDescricao();
 
-        Alert alert = new Alert(AlertType.INFORMATION, nome+"\n"+
-                                                       areaEmpresa+"\n"+
-                                                       descricao);
-        alert.showAndWait();
+        lbNomeProjeto.setText(nome);
+        lbAreaEmpresa.setText(areaEmpresa);
+        lbDescricao.setText(descricao);
     }
     
     @Override
@@ -143,13 +140,14 @@ public class DashboardEmpresa implements Initializable{
                 iconeExcluir.setFitHeight(30);
                 btnExcluir.setGraphic(iconeExcluir);
                 //
-                btnVer.getStyleClass().add("btn-read");
-                btnEditar.getStyleClass().add("btn-update");
-                btnExcluir.getStyleClass().add("btn-delete");
+                btnVer.getStyleClass().addAll("btn-read", "btn-crud-icone");
+                btnEditar.getStyleClass().addAll("btn-update", "btn-crud-icone");
+                btnExcluir.getStyleClass().addAll("btn-delete", "btn-crud-icone");
                 // Adicione eventos aos botões (por exemplo, abrir um diálogo de visualização, edição ou exclusão)
                 btnVer.setOnAction(event -> {
                     Projeto projeto = tbProjetosRecentes.getItems().get(getIndex());
                     verProjeto(projeto);
+                    abaVerProjeto.toFront();
                 });
 
                 btnEditar.setOnAction(event -> {
