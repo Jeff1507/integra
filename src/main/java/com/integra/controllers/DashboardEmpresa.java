@@ -108,9 +108,9 @@ public class DashboardEmpresa implements Initializable{
         tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
         tbAreEmpresa.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getAreaEmpresa()));
         tbAcoes.setCellFactory(celula -> new TableCell<Projeto, Projeto>() {
-            private final Button btnVer = new Button("Ver");
-            private final Button btnEditar = new Button("Editar");
-            private final Button btnExcluir = new Button("Excluir");
+            private final Button btnVer = new Button();
+            private final Button btnEditar = new Button();
+            private final Button btnExcluir = new Button();
 
             private final Image imgVer = new Image(getClass().getResource("/com/integra/img/aaa.png").toExternalForm());
             private final Image imgEditar = new Image(getClass().getResource("/com/integra/img/editIcon.png").toExternalForm());
@@ -124,16 +124,13 @@ public class DashboardEmpresa implements Initializable{
                 iconeVer.setFitWidth(30);
                 iconeVer.setFitHeight(30);
                 btnVer.setGraphic(iconeVer);
-                btnVer.setText("");
                 //
                 iconeEditar.setFitWidth(30);
                 iconeEditar.setFitHeight(30);
-                btnEditar.setText("");
                 btnEditar.setGraphic(iconeEditar);
                 //
                 iconeExcluir.setFitWidth(30);
                 iconeExcluir.setFitHeight(30);
-                btnExcluir.setText("");
                 btnExcluir.setGraphic(iconeExcluir);
                 //
                 btnVer.getStyleClass().add("btn-read");
@@ -141,7 +138,7 @@ public class DashboardEmpresa implements Initializable{
                 btnExcluir.getStyleClass().add("btn-delete");
                 // Adicione eventos aos botões (por exemplo, abrir um diálogo de visualização, edição ou exclusão)
                 btnVer.setOnAction(event -> {
-                    Projeto projeto = getTableView().getItems().get(getIndex());
+                    Projeto projeto = tbProjetosRecentes.getItems().get(getIndex());
                     // Lógica para visualizar o projeto
                 });
 
