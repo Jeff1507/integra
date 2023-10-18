@@ -30,6 +30,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class DashboardEmpresa implements Initializable{
 
@@ -100,15 +101,18 @@ public class DashboardEmpresa implements Initializable{
     
     @FXML
     private void verProjeto(Projeto projeto){
-        
+        /* 
         String nome = projeto.getNome();
         String areaEmpresa = projeto.getAreaEmpresa();
         String descricao = projeto.getDescricao();
 
         lbNomeProjeto.setText(nome);
         lbAreaEmpresa.setText(areaEmpresa);
-        lbDescricao.setText(descricao);
+        lbDescricao.setText(descricao);*/
     }
+    @FXML
+    VBox testebox;
+    @FXML
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -173,8 +177,7 @@ public class DashboardEmpresa implements Initializable{
             }
         }
     });
-        
-        //lstProjetosRecentes.getItems().clear();
+    
         Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosRecentes();
 
         if(resultado.foiErro()){
@@ -183,7 +186,25 @@ public class DashboardEmpresa implements Initializable{
         }
         List<Projeto> lista = (List<Projeto>)resultado.comoSucesso().getObj();
         tbProjetosRecentes.getItems().addAll(lista);
-        //lstProjetosRecentes.getItems().addAll(lista);
+         
+        /* 
+         Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosRecentes();
+        if(resultado.foiErro()){
+            Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            alert.showAndWait();
+        }
+        List<Projeto> lista = (List<Projeto>)resultado.comoSucesso().getObj();
+
+        testebox.getChildren().clear();
+
+        for (Projeto projeto : lista) {
+            TextField teste1=new TextField(projeto.getNome());
+            TextField teste2=new TextField(projeto.getAreaEmpresa());
+            TextArea teste3=new TextArea(projeto.getDescricao());
+            VBox testeteste=new VBox(teste1, teste2, teste3);
+            testebox.getChildren().add(testeteste);
+            
+        }*/
 
     }
 }

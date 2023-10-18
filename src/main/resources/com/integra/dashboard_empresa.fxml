@@ -60,9 +60,9 @@
             </Pane>
             <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="lbNomeProjeto" alignment="CENTER" layoutX="486.0" layoutY="24.0" styleClass="titulo" />
-                  <Label fx:id="lbAreaEmpresa" layoutX="98.0" layoutY="119.0" styleClass="lb" text="Label" />
-                  <Label fx:id="lbDescricao" layoutX="98.0" layoutY="167.0" styleClass="lb" text="Label" />
+                  <Label fx:id="lbNomeProjeto" alignment="CENTER" layoutX="86.0" layoutY="25.0" prefHeight="53.0" prefWidth="167.0" styleClass="titulo" />
+                  <Label fx:id="lbAreaEmpresa" layoutX="31.0" layoutY="24.0" styleClass="lb" text="Label" />
+                  <Label fx:id="lbDescricao" layoutX="31.0" layoutY="51.0" styleClass="lb" text="Label" />
                </children>
             </Pane>
             <Pane fx:id="abaInicio" layoutX="867.0" prefHeight="723.0" prefWidth="195.0" styleClass="pane-abainicio" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -77,7 +77,7 @@
                         <Label styleClass="lb" text="Recentes" />
                      </children>
                   </HBox>
-                  <TableView fx:id="tbProjetosRecentes" layoutX="42.0" layoutY="102.0" maxWidth="1.7976931348623157E308" prefHeight="586.0" prefWidth="975.0" styleClass="tbv">
+                  <TableView fx:id="tbProjetosRecentes" layoutX="42.0" layoutY="102.0" maxWidth="1.7976931348623157E308" prefHeight="586.0" prefWidth="934.0" styleClass="tbv">
                     <columns>
                         <TableColumn prefWidth="191.19998931884766" text="Usuário" />
                       <TableColumn fx:id="tbNome" prefWidth="192.79998779296875" text="Nome" />
@@ -86,6 +86,7 @@
                         <TableColumn fx:id="tbAcoes" prefWidth="389.60003662109375" text="Ações" />
                     </columns>
                   </TableView>
+                  <VBox fx:id="testebox" layoutX="1004.0" layoutY="102.0" prefHeight="217.0" prefWidth="28.0" style="-fx-background-color: white;" />
                </children>
             </Pane>
          </children></AnchorPane>
