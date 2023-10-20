@@ -89,6 +89,11 @@
                   <VBox fx:id="testebox" layoutX="1004.0" layoutY="102.0" prefHeight="217.0" prefWidth="28.0" style="-fx-background-color: white;" />
                </children>
             </Pane>
+            <Pane prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox fx:id="secaoProjeto" layoutX="60.0" layoutY="74.0" prefHeight="550.0" prefWidth="933.0" />
+               </children>
+            </Pane>
          </children></AnchorPane>
    </center>
    <top>

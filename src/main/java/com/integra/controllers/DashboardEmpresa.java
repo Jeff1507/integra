@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -111,12 +112,11 @@ public class DashboardEmpresa implements Initializable{
         lbDescricao.setText(descricao);*/
     }
     @FXML
-    VBox testebox;
-    @FXML
-    
+    private VBox secaoProjeto;
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
+        /*tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
         tbAreEmpresa.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getAreaEmpresa()));
         tbAcoes.setCellFactory(celula -> new TableCell<Projeto, Projeto>() {
             private final Button btnVer = new Button();
@@ -186,25 +186,55 @@ public class DashboardEmpresa implements Initializable{
         }
         List<Projeto> lista = (List<Projeto>)resultado.comoSucesso().getObj();
         tbProjetosRecentes.getItems().addAll(lista);
-         
-        /* 
-         Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosRecentes();
+         */
+        
+        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosRecentes();
         if(resultado.foiErro()){
             Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
             alert.showAndWait();
         }
         List<Projeto> lista = (List<Projeto>)resultado.comoSucesso().getObj();
 
-        testebox.getChildren().clear();
+        secaoProjeto.getChildren().clear();
 
         for (Projeto projeto : lista) {
-            TextField teste1=new TextField(projeto.getNome());
-            TextField teste2=new TextField(projeto.getAreaEmpresa());
-            TextArea teste3=new TextArea(projeto.getDescricao());
-            VBox testeteste=new VBox(teste1, teste2, teste3);
-            testebox.getChildren().add(testeteste);
+            VBox usuarioPerfil = new VBox();
+            VBox lbProjeto = new VBox();
+            VBox mostraProjeto = new VBox();
+            HBox btnProjeto = new HBox();
+            HBox projetoBox = new HBox();
+
+            Label usuarioNome = new Label("joao");
+            Label usuarioTipo = new Label("Empresa");
             
-        }*/
+            Label tituloProjeto = new Label(projeto.getNome());
+            
+            tituloProjeto.getStyleClass().add("projeto-lb");
+
+            Label areaProjeto = new Label(projeto.getAreaEmpresa());
+            areaProjeto.getStyleClass().add("lb");
+            Button btnVer = new Button("Ver Completo");
+            
+
+            usuarioPerfil.getChildren().addAll(usuarioNome, usuarioTipo);
+            usuarioNome.getStyleClass().add("user-lb");
+            usuarioTipo.getStyleClass().add("user-lb");
+            usuarioPerfil.getStyleClass().add("usuario-perfil");
+
+            lbProjeto.getChildren().addAll(tituloProjeto, areaProjeto);
+            btnProjeto.getChildren().add(btnVer);
+            btnVer.getStyleClass().addAll("btn-read", "btn-crud-secao-projeto");
+            btnProjeto.getStyleClass().add("btn-projeto");
+            mostraProjeto.getChildren().addAll(lbProjeto, btnProjeto);
+            mostraProjeto.getStyleClass().add("mostra-projeto");
+
+            projetoBox.getChildren().addAll(usuarioPerfil, mostraProjeto);
+            projetoBox.getStyleClass().add("projeto-box");
+
+            secaoProjeto.getChildren().add(projetoBox);
+            secaoProjeto.getStyleClass().add("secao-projeto");
+
+        }
 
     }
 }
