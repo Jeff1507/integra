@@ -99,17 +99,22 @@ public class DashboardEmpresa implements Initializable{
         } 
         alert.showAndWait();
     }
+    @FXML
+    VBox mostraProjetoAtual;
     
     @FXML
     private void verProjeto(Projeto projeto){
-        /* 
+        
         String nome = projeto.getNome();
         String areaEmpresa = projeto.getAreaEmpresa();
         String descricao = projeto.getDescricao();
 
         lbNomeProjeto.setText(nome);
         lbAreaEmpresa.setText(areaEmpresa);
-        lbDescricao.setText(descricao);*/
+        lbDescricao.setText(descricao);
+
+        
+
     }
     @FXML
     private VBox secaoProjeto;
@@ -198,6 +203,8 @@ public class DashboardEmpresa implements Initializable{
         secaoProjeto.getChildren().clear();
 
         for (Projeto projeto : lista) {
+            
+
             VBox usuarioPerfil = new VBox();
             VBox lbProjeto = new VBox();
             VBox mostraProjeto = new VBox();
@@ -223,6 +230,12 @@ public class DashboardEmpresa implements Initializable{
 
             lbProjeto.getChildren().addAll(tituloProjeto, areaProjeto);
             btnProjeto.getChildren().add(btnVer);
+
+            btnVer.setOnAction(event ->{
+                    verProjeto(projeto);
+                    abaVerProjeto.toFront();
+            });
+
             btnVer.getStyleClass().addAll("btn-read", "btn-crud-secao-projeto");
             btnProjeto.getStyleClass().add("btn-projeto");
             mostraProjeto.getChildren().addAll(lbProjeto, btnProjeto);

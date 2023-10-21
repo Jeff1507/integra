@@ -302,7 +302,7 @@
 }
 /*SEÇAO PROJETOS*/
 .mostra-projeto{
-    -fx-pref-width: 800px;
+    /*-fx-pref-width: 800px;*/
     -fx-background-color: #2f2841;
     -fx-border-radius: 8px;
     -fx-background-radius: 8px;

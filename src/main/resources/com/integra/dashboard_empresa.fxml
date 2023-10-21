@@ -58,13 +58,6 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label fx:id="lbNomeProjeto" alignment="CENTER" layoutX="86.0" layoutY="25.0" prefHeight="53.0" prefWidth="167.0" styleClass="titulo" />
-                  <Label fx:id="lbAreaEmpresa" layoutX="31.0" layoutY="24.0" styleClass="lb" text="Label" />
-                  <Label fx:id="lbDescricao" layoutX="31.0" layoutY="51.0" styleClass="lb" text="Label" />
-               </children>
-            </Pane>
             <Pane fx:id="abaInicio" layoutX="867.0" prefHeight="723.0" prefWidth="195.0" styleClass="pane-abainicio" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <HBox layoutX="42.0" layoutY="35.0" prefHeight="150.0" prefWidth="348.0" styleClass="fundo-titulo">
@@ -89,9 +82,19 @@
                   <VBox fx:id="testebox" layoutX="1004.0" layoutY="102.0" prefHeight="217.0" prefWidth="28.0" style="-fx-background-color: white;" />
                </children>
             </Pane>
+            <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox fx:id="mostraProjetoAtual" layoutX="207.0" layoutY="94.0" prefHeight="158.0" prefWidth="663.0" styleClass="mostra-projeto">
+                     <children>
+                        <Label fx:id="lbNomeProjeto" styleClass="projeto-lb" text="Label" />
+                        <Label fx:id="lbAreaEmpresa" styleClass="lb" text="Label" />
+                        <Label fx:id="lbDescricao" maxHeight="Infinity" styleClass="lb" text="Label" wrapText="true" />
+                     </children>
+                  </VBox>
+               </children></Pane>
             <Pane prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox fx:id="secaoProjeto" layoutX="60.0" layoutY="74.0" prefHeight="550.0" prefWidth="933.0" />
+                  <VBox fx:id="secaoProjeto" layoutX="13.0" prefHeight="622.0" prefWidth="1048.0" />
                </children>
             </Pane>
          </children></AnchorPane>
