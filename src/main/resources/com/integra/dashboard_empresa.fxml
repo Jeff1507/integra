@@ -84,7 +84,7 @@
             </Pane>
             <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox fx:id="mostraProjetoAtual" layoutX="207.0" layoutY="94.0" prefHeight="158.0" prefWidth="663.0" styleClass="mostra-projeto">
+                  <VBox fx:id="mostraProjetoAtual" layoutX="207.0" layoutY="94.0" prefHeight="158.0" prefWidth="663.0" maxHeight="Infinity" styleClass="mostra-projeto">
                      <children>
                         <Label fx:id="lbNomeProjeto" styleClass="projeto-lb" text="Label" />
                         <Label fx:id="lbAreaEmpresa" styleClass="lb" text="Label" />
