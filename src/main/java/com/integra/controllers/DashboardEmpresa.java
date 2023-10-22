@@ -12,6 +12,7 @@ import com.integra.model.repositories.RepositorioProjeto;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,10 +21,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -42,7 +45,7 @@ public class DashboardEmpresa implements Initializable{
     private TextField tfAreaEmpresa;
 
     @FXML
-    private TextArea taDescricao;
+    private TextArea taDescricao, taDescricaoAtual;
     
     @FXML
     private TableView<Projeto> tbProjetosRecentes;
@@ -100,7 +103,7 @@ public class DashboardEmpresa implements Initializable{
         alert.showAndWait();
     }
     @FXML
-    VBox mostraProjetoAtual;
+    private VBox mostraProjetoAtual;
     
     @FXML
     private void verProjeto(Projeto projeto){
@@ -111,13 +114,16 @@ public class DashboardEmpresa implements Initializable{
 
         lbNomeProjeto.setText(nome);
         lbAreaEmpresa.setText(areaEmpresa);
-        lbDescricao.setText(descricao);
+        //lbDescricao.setText(descricao);
+        taDescricaoAtual.setText(descricao);
 
-        
 
     }
     @FXML
     private VBox secaoProjeto;
+
+    @FXML
+    private ScrollPane sp;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -246,6 +252,9 @@ public class DashboardEmpresa implements Initializable{
 
             secaoProjeto.getChildren().add(projetoBox);
             secaoProjeto.getStyleClass().add("secao-projeto");
+
+            sp.setFitToWidth(true);
+            sp.setContent(secaoProjeto);
 
         }
 
