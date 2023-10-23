@@ -35,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 
 public class DashboardEmpresa implements Initializable{
 
@@ -217,7 +218,15 @@ public class DashboardEmpresa implements Initializable{
             HBox btnProjeto = new HBox();
             HBox projetoBox = new HBox();
 
-            Label usuarioNome = new Label("joao");
+            Image imgPerfil = new Image(getClass().getResource("/com/integra/img/482979.png").toExternalForm());
+            ImageView iViewPerfil = new ImageView(imgPerfil);
+            Button btnaaa=new Button();
+            iViewPerfil.setFitWidth(30);
+            iViewPerfil.setFitHeight(30);
+            btnaaa.setGraphic(iViewPerfil);
+            btnaaa.getStyleClass().add("btn-crud-icone");
+
+            Label usuarioNome = new Label("jefferson rodrigo da silva chaves");
             Label usuarioTipo = new Label("Empresa");
             
             Label tituloProjeto = new Label(projeto.getNome());
@@ -229,7 +238,7 @@ public class DashboardEmpresa implements Initializable{
             Button btnVer = new Button("Ver Completo");
             
 
-            usuarioPerfil.getChildren().addAll(usuarioNome, usuarioTipo);
+            usuarioPerfil.getChildren().addAll(btnaaa, usuarioNome, usuarioTipo);
             usuarioNome.getStyleClass().add("user-lb");
             usuarioTipo.getStyleClass().add("user-lb");
             usuarioPerfil.getStyleClass().add("usuario-perfil");

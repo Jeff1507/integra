@@ -59,6 +59,18 @@
                   </Button>
                </children>
             </Pane>
+            <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox fx:id="mostraProjetoAtual" layoutX="152.0" layoutY="52.0" maxHeight="Infinity" prefHeight="310.0" prefWidth="862.0" styleClass="mostra-projeto">
+                     <children>
+                        <Label fx:id="lbNomeProjeto" styleClass="projeto-lb" text="Label" />
+                        <Label fx:id="lbAreaEmpresa" styleClass="lb" text="Label" />
+                        <TextArea fx:id="taDescricaoAtual" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="ta" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <Label layoutX="56.0" layoutY="105.0" styleClass="user-lb" text="Label" />
+                  <Label layoutX="56.0" layoutY="134.0" styleClass="user-lb" text="Label" />
+               </children></Pane>
             <Pane fx:id="abaInicio" layoutX="867.0" prefHeight="723.0" prefWidth="195.0" styleClass="pane-abainicio" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <HBox layoutX="42.0" layoutY="35.0" prefHeight="150.0" prefWidth="348.0" styleClass="fundo-titulo">
@@ -80,21 +92,8 @@
                         <TableColumn fx:id="tbAcoes" prefWidth="389.60003662109375" text="Ações" />
                     </columns>
                   </TableView>
-                  <VBox fx:id="testebox" layoutX="1004.0" layoutY="102.0" prefHeight="217.0" prefWidth="28.0" style="-fx-background-color: white;" />
                </children>
             </Pane>
-            <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <VBox fx:id="mostraProjetoAtual" layoutX="152.0" layoutY="52.0" maxHeight="Infinity" prefHeight="310.0" prefWidth="862.0" styleClass="mostra-projeto">
-                     <children>
-                        <Label fx:id="lbNomeProjeto" styleClass="projeto-lb" text="Label" />
-                        <Label fx:id="lbAreaEmpresa" styleClass="lb" text="Label" />
-                        <TextArea fx:id="taDescricaoAtual" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="ta" wrapText="true" />
-                     </children>
-                  </VBox>
-                  <Label layoutX="56.0" layoutY="105.0" styleClass="user-lb" text="Label" />
-                  <Label layoutX="56.0" layoutY="134.0" styleClass="user-lb" text="Label" />
-               </children></Pane>
             <Pane prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ScrollPane fx:id="sp" hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1062.0" style="-fx-background-color: black;" styleClass="sp">
