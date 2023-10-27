@@ -67,9 +67,47 @@ public class Projeto {
     }
 
     @Override
-    public String toString() {
-        return "Projeto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", areaEmpresa=" + areaEmpresa
-                + "]";
+    public boolean equals(Object obj){
+        if(this == obj){
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Projeto outro = (Projeto) obj;
+        if (id != outro.id) {
+            return false;
+        }
+        if (nome == null) {
+            if (outro.nome != null) {
+                return false;
+            }
+        }
+        else if (!nome.equals(outro.nome)) {
+            return false;
+        }
+
+        if (areaEmpresa == null) {
+            if (outro.areaEmpresa != null) {
+                return false;
+            }
+        }
+        else if (!areaEmpresa.equals(outro.areaEmpresa)) {
+            return false;
+        }
+
+        if (descricao == null) {
+            if (outro.descricao != null) {
+                return false;
+            }
+        }
+        else if (!descricao.equals(outro.descricao)) {
+            return false;
+        }
+        return true;
     }
 
     
