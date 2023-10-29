@@ -82,6 +82,11 @@ public class Empresa {
     public void setLogado(boolean logado) {
         this.logado = logado;
     }
+    @Override
+    public String toString() {
+        return "Empresa [id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", senha="
+                + senha + ", logado=" + logado + ", projetos=" + projetos + "]";
+    }
     
     
     

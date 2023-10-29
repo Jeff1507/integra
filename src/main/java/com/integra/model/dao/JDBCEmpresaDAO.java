@@ -81,5 +81,11 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
             return Resultado.erro(e.getMessage());
         }
     }
+
+    @Override
+    public Resultado<Empresa> encontrarConta(Empresa empresa) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'encontrarConta'");
+    }
     
 }
