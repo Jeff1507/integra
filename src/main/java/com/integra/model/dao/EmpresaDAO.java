@@ -9,7 +9,7 @@ public interface EmpresaDAO {
 
     Resultado<Empresa> logar(String nome, String senha);
 
-    Resultado<Empresa> encontrarConta(Empresa empresa);
+    Empresa contaLogada(Empresa empresa);
 
     Resultado atualizar(int id, Empresa nova);
 

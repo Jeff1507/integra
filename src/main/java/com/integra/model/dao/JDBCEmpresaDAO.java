@@ -72,6 +72,7 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
                 String senhaEmpresa = resultSet.getString("senha");
 
                 Empresa empresa = new Empresa(nomeEmpresa, telefone, email, senhaEmpresa);
+                contaLogada(empresa);
 
                 return Resultado.sucesso("Bem Vindo De Volta " +nomeEmpresa+ "!", empresa);
             }
@@ -83,9 +84,8 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
     }
 
     @Override
-    public Resultado<Empresa> encontrarConta(Empresa empresa) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'encontrarConta'");
+    public Empresa contaLogada(Empresa empresa) {
+        return contaLogada(empresa);
     }
     
 }
