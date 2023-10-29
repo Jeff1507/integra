@@ -48,10 +48,10 @@
          <children>
             <Label id="titulo" layoutX="264.0" layoutY="59.0" styleClass="titulo" text="LOGIN" />
             <Label layoutX="70.0" layoutY="147.0" styleClass="lb" text="Nome de Usuário" />
-            <TextField layoutX="70.0" layoutY="174.0" prefHeight="26.0" prefWidth="427.0" styleClass="tf" />
+            <TextField fx:id="tfNome" layoutX="70.0" layoutY="174.0" prefHeight="26.0" prefWidth="427.0" styleClass="tf" />
             <Label layoutX="70.0" layoutY="251.0" styleClass="lb" text="Senha" />
-            <PasswordField layoutX="70.0" layoutY="279.0" prefHeight="26.0" prefWidth="426.0" styleClass="tf" />
-            <Button layoutX="70.0" layoutY="442.0" mnemonicParsing="false" text="Entrar">
+            <PasswordField fx:id="tfSenha" layoutX="70.0" layoutY="279.0" prefHeight="26.0" prefWidth="426.0" styleClass="tf" />
+            <Button layoutX="70.0" layoutY="442.0" mnemonicParsing="false" onAction="#logar" text="Entrar">
                <effect>
                   <DropShadow />
                </effect>

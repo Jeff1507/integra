@@ -7,10 +7,13 @@ import com.integra.controllers.DashboardEmpresa;
 import com.integra.controllers.DashboardEstudante;
 import com.integra.controllers.Login;
 import com.integra.model.dao.ConexaoBD;
+import com.integra.model.dao.EmpresaDAO;
+import com.integra.model.dao.JDBCEmpresaDAO;
 import com.integra.model.dao.JDBCProjetoDAO;
 import com.integra.model.dao.JDBCSolucaoDAO;
 import com.integra.model.dao.ProjetoDAO;
 import com.integra.model.dao.SolucaoDAO;
+import com.integra.model.repositories.RepositorioEmpresa;
 import com.integra.model.repositories.RepositorioProjeto;
 import com.integra.model.repositories.RepositorioSolucao;
 
@@ -25,6 +28,9 @@ public class App extends BaseAppNavigator{
     SolucaoDAO solucaoDAO = new JDBCSolucaoDAO(ConexaoBD.getInstance());
     RepositorioSolucao repositorioSolucao = new RepositorioSolucao(solucaoDAO);
 
+    EmpresaDAO empresaDAO = new JDBCEmpresaDAO(ConexaoBD.getInstance());
+    RepositorioEmpresa repositorioEmpresa = new RepositorioEmpresa(empresaDAO);
+
     public static void main(String[] args) {
         launch();
     }
@@ -36,13 +42,13 @@ public class App extends BaseAppNavigator{
 
     @Override
     public String getHome() {
-        return "DASHBOARDEMPRESA";
+        return "LOGIN";
     }
 
     @Override
     public void registrarTelas() {
         registraTela("LOGIN", 
-                     new ScreenRegistryFXML(App.class, "login.fxml", o->new Login()));
+                     new ScreenRegistryFXML(App.class, "login.fxml", o->new Login(repositorioEmpresa)));
         
         registraTela("CADASTRAR", 
                      new ScreenRegistryFXML(App.class, "cadastrar.fxml", o->new Cadastrar()));

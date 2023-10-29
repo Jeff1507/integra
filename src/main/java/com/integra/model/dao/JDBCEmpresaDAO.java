@@ -2,6 +2,7 @@ package com.integra.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -51,6 +52,34 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
     public Resultado atualizar(int id, Empresa nova) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+    }
+
+    @Override
+    public Resultado<Empresa> logar(String nome, String senha) {
+        try (Connection con = conexaoBD.getConnection()) {
+            
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM empresa WHERE nome=? AND senha=?");
+
+            pstm.setString(1, nome);
+            pstm.setString(2, senha);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            if (resultSet.next()) {
+                String nomeEmpresa = resultSet.getString("nome");
+                String telefone = resultSet.getString("telefone");
+                String email = resultSet.getString("email");
+                String senhaEmpresa = resultSet.getString("senha");
+
+                Empresa empresa = new Empresa(nomeEmpresa, telefone, email, senhaEmpresa);
+
+                return Resultado.sucesso("Bem Vindo De Volta " +nomeEmpresa+ "!", empresa);
+            }
+            return Resultado.erro("Essa Conta não existe!");
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
     
 }

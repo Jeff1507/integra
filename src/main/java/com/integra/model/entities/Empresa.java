@@ -19,6 +19,13 @@ public class Empresa {
         this.senha = senha;
         this.logado = false;
     }
+    public Empresa(String nome, String telefone, String email, String senha) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+        this.logado = false;
+    }
 
     public int getId() {
         return id;
