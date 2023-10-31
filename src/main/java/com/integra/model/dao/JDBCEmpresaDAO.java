@@ -88,23 +88,26 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
     @Override
     public String validarCadastro(String nome, String email) {
         try (Connection con = conexaoBD.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM empresa WHERE nome=?");
+            PreparedStatement pstm = con.prepareStatement("SELECT nome, email FROM empresa WHERE nome=? OR email=?");
 
             pstm.setString(1, nome);
+            pstm.setString(2, email);
 
             ResultSet resultSet = pstm.executeQuery();
 
-            if(resultSet.next()){ 
-                return "Esse nome já existe!";
-            }
+            if (resultSet.next()) {
+                String nomeExistente = resultSet.getString("nome");
+                String emailExistente = resultSet.getString("email");
 
-            PreparedStatement pstm2 = con.prepareStatement("SELECT * FROM empresa WHERE email=?");
-
-            pstm2.setString(1, email);
-
-            ResultSet resultSet2 = pstm2.executeQuery();
-            if (resultSet2.next()) {
-                return "Esse E-mail já existe!";
+                if (nomeExistente.equals(nome) && emailExistente.equals(email)) {
+                    return "Nome e E-mail já cadastrados!";
+                }
+                if (nomeExistente.equals(nome)) {
+                    return "Esse nome já existe!";
+                }
+                if (emailExistente.equals(email)) {
+                    return "Esse E-mail já existe!";
+                }
             }
             return "Sucesso";
         } catch (SQLException e) {

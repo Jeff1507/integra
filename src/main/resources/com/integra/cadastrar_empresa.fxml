@@ -31,8 +31,8 @@
                         <String fx:value="btn-login" />
                      </styleClass>
                   </Button>
-                  <PasswordField fx:id="tfSenha" layoutX="70.0" layoutY="533.0" styleClass="tf" />
-                  <Label layoutX="70.0" layoutY="506.0" styleClass="lb" text="Senha" />
+                  <PasswordField fx:id="tfSenha" layoutX="62.0" layoutY="342.0" styleClass="tf" />
+                  <Label layoutX="70.0" layoutY="305.0" styleClass="lb" text="Senha" />
                </children>
             </AnchorPane>
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#voltar">
