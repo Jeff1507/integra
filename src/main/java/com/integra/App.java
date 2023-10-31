@@ -42,7 +42,7 @@ public class App extends BaseAppNavigator{
 
     @Override
     public String getHome() {
-        return "LOGIN";
+        return "CADASTRAR";
     }
 
     @Override
@@ -54,7 +54,7 @@ public class App extends BaseAppNavigator{
                      new ScreenRegistryFXML(App.class, "cadastrar.fxml", o->new Cadastrar()));
 
         registraTela("CADASTRAREMPRESA", 
-                     new ScreenRegistryFXML(App.class, "cadastrar_empresa.fxml", o->new CadastrarEmpresa()));
+                     new ScreenRegistryFXML(App.class, "cadastrar_empresa.fxml", o->new CadastrarEmpresa(repositorioEmpresa)));
 
         registraTela("CADASTRARESTUDANTE", 
                      new ScreenRegistryFXML(App.class, "cadastrar_estudante.fxml", o->new CadastrarEstudante()));

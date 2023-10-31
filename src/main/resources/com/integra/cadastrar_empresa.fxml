@@ -22,21 +22,17 @@
                <children>
                   <Label layoutX="109.0" layoutY="48.0" styleClass="titulo" text="CADASTRO DE EMPRESA" />
                   <Label layoutX="68.0" layoutY="133.0" styleClass="lb" text="Nome de Usuário" />
-                  <TextField layoutX="70.0" layoutY="161.0" styleClass="tf" />
+                  <TextField fx:id="tfNome" layoutX="70.0" layoutY="161.0" styleClass="tf" />
                   <Label layoutX="69.0" layoutY="227.0" styleClass="lb" text="E-mail" />
-                  <TextField layoutX="70.0" layoutY="255.0" styleClass="tf" />
-                  <Label layoutX="72.0" layoutY="322.0" styleClass="lb" text="CNPJ" />
-                  <TextField layoutX="70.0" layoutY="349.0" styleClass="tf" />
-                  <Button layoutX="70.0" layoutY="650.0" mnemonicParsing="false" text="Cadastrar">
+                  <TextField fx:id="tfEmail" layoutX="70.0" layoutY="255.0" styleClass="tf" />
+                  <Button layoutX="70.0" layoutY="650.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="btn-login" />
                      </styleClass>
                   </Button>
-                  <Label layoutX="70.0" layoutY="413.0" styleClass="lb" text="Telefone" />
-                  <PasswordField layoutX="70.0" layoutY="533.0" styleClass="tf" />
+                  <PasswordField fx:id="tfSenha" layoutX="70.0" layoutY="533.0" styleClass="tf" />
                   <Label layoutX="70.0" layoutY="506.0" styleClass="lb" text="Senha" />
-                  <TextField layoutX="70.0" layoutY="440.0" styleClass="tf" />
                </children>
             </AnchorPane>
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#voltar">

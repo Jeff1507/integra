@@ -5,23 +5,20 @@ import java.util.List;
 public class Empresa {
     private int id;
     private String nome;
-    private String telefone;
     private String email;
     private String senha;
     private boolean logado;
     private List<Projeto> projetos;
 
-    public Empresa(int id, String nome, String telefone, String email, String senha) {
+    public Empresa(int id, String nome, String email, String senha) {
         this.id = id;
         this.nome = nome;
-        this.telefone = telefone;
         this.email = email;
         this.senha = senha;
         this.logado = false;
     }
-    public Empresa(String nome, String telefone, String email, String senha) {
+    public Empresa(String nome, String email, String senha) {
         this.nome = nome;
-        this.telefone = telefone;
         this.email = email;
         this.senha = senha;
         this.logado = false;
@@ -67,25 +64,12 @@ public class Empresa {
         this.projetos = projetos;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
     public boolean isLogado() {
         return logado;
     }
 
     public void setLogado(boolean logado) {
         this.logado = logado;
-    }
-    @Override
-    public String toString() {
-        return "Empresa [id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", senha="
-                + senha + ", logado=" + logado + ", projetos=" + projetos + "]";
     }
     
     

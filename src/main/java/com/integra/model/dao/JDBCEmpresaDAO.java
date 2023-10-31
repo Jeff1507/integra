@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
 
 import com.github.hugoperlin.results.Resultado;
 import com.integra.model.entities.Empresa;
@@ -15,7 +14,6 @@ import com.integra.utils.DBUtils;
 public class JDBCEmpresaDAO implements EmpresaDAO{
 
     private ConexaoBD conexaoBD;
-    private HashMap<String, String> logins = new HashMap<>();
 
     public JDBCEmpresaDAO(ConexaoBD conexaoBD){
         this.conexaoBD = conexaoBD;
@@ -26,12 +24,11 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
         try (Connection con = conexaoBD.getConnection()) {
 
             PreparedStatement pstm = con.
-            prepareStatement("INSERT INTO empresa(nome, telefone, email, senha) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            prepareStatement("INSERT INTO empresa(nome, email, senha) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
             pstm.setString(1, empresa.getNome());
-            pstm.setString(2, empresa.getTelefone());
-            pstm.setString(3, empresa.getEmail());
-            pstm.setString(4, empresa.getSenha());
+            pstm.setString(2, empresa.getEmail());
+            pstm.setString(3, empresa.getSenha());
 
             int ret = pstm.executeUpdate();
 
@@ -67,11 +64,10 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
 
             if (resultSet.next()) {
                 String nomeEmpresa = resultSet.getString("nome");
-                String telefone = resultSet.getString("telefone");
                 String email = resultSet.getString("email");
                 String senhaEmpresa = resultSet.getString("senha");
 
-                Empresa empresa = new Empresa(nomeEmpresa, telefone, email, senhaEmpresa);
+                Empresa empresa = new Empresa(nomeEmpresa, email, senhaEmpresa);
                 contaLogada(empresa);
 
                 return Resultado.sucesso("Bem Vindo De Volta " +nomeEmpresa+ "!", empresa);
@@ -85,7 +81,35 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
 
     @Override
     public Empresa contaLogada(Empresa empresa) {
-        return contaLogada(empresa);
+        empresa.setLogado(true);
+        return empresa;
+    }
+
+    @Override
+    public String validarCadastro(String nome, String email) {
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM empresa WHERE nome=?");
+
+            pstm.setString(1, nome);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            if(resultSet.next()){ 
+                return "Esse nome já existe!";
+            }
+
+            PreparedStatement pstm2 = con.prepareStatement("SELECT * FROM empresa WHERE email=?");
+
+            pstm2.setString(1, email);
+
+            ResultSet resultSet2 = pstm2.executeQuery();
+            if (resultSet2.next()) {
+                return "Esse E-mail já existe!";
+            }
+            return "Sucesso";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
     }
     
 }

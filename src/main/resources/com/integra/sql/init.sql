@@ -21,8 +21,15 @@ CREATE TABLE projeto_solucao(
 CREATE TABLE empresa(
     id int not null AUTO_INCREMENT,
     nome varchar(255) not null,
-    telefone varchar(255) not null,
     email varchar(255) not null,
     senha varchar(255) not null,
     PRIMARY KEY(id)
+    );
+CREATE TABLE empresa_projeto(
+    id int not null AUTO_INCREMENT,
+    empresa_id int not null,
+    projeto_id int not null,
+    PRIMARY KEY(id),
+    FOREIGN KEY(empresa_id) REFERENCES empresa(id),
+    FOREIGN KEY(projeto_id) REFERENCES projeto(id)
     );
