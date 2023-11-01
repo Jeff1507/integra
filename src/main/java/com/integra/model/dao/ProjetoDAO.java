@@ -6,11 +6,11 @@ import com.github.hugoperlin.results.Resultado;
 import com.integra.model.entities.Projeto;
 
 public interface ProjetoDAO {
-    Resultado<Projeto> criar(Projeto projeto);
+    Resultado<Projeto> criar(Projeto projeto, int empresaId);
 
     Resultado<ArrayList<Projeto>> listarPorNome(String Nome);
     Resultado<Projeto> getByid(int id);
-    Resultado<ArrayList<Projeto>> listarProjetoEmpresa(int idEmpresa);
+    Resultado<ArrayList<Projeto>> listarProjetoEmpresa(int empresaId);
     Resultado<ArrayList<Projeto>> listarProjetosRecentes();
 
     Resultado<Projeto> editar(int id, Projeto novo);

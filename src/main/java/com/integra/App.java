@@ -42,7 +42,7 @@ public class App extends BaseAppNavigator{
 
     @Override
     public String getHome() {
-        return "CADASTRAR";
+        return "DASHBOARDEMPRESA";
     }
 
     @Override

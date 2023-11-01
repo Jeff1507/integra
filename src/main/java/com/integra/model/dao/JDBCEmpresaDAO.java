@@ -63,16 +63,17 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
             ResultSet resultSet = pstm.executeQuery();
 
             if (resultSet.next()) {
+                int id = resultSet.getInt("id");
                 String nomeEmpresa = resultSet.getString("nome");
                 String email = resultSet.getString("email");
                 String senhaEmpresa = resultSet.getString("senha");
 
-                Empresa empresa = new Empresa(nomeEmpresa, email, senhaEmpresa);
+                Empresa empresa = new Empresa(id, nomeEmpresa, email, senhaEmpresa);
                 contaLogada(empresa);
 
                 return Resultado.sucesso("Bem Vindo De Volta " +nomeEmpresa+ "!", empresa);
             }
-            return Resultado.erro("Essa Conta não existe!");
+            return Resultado.erro("Credenciais inválidas!");
 
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());

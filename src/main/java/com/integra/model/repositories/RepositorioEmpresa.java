@@ -34,6 +34,7 @@ public class RepositorioEmpresa {
         if (senha.isEmpty() || senha.isBlank()) {
             return Resultado.erro("Senha em branco!");
         }
+        
         return empresaDAO.logar(nome, senha);
 
     }

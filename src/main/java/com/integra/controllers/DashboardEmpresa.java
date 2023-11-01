@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.github.hugoperlin.results.Resultado;
 import com.integra.model.entities.Projeto;
+import com.integra.model.repositories.RepositorioEmpresa;
 import com.integra.model.repositories.RepositorioProjeto;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -70,6 +71,7 @@ public class DashboardEmpresa implements Initializable{
     private Button btn_criar_projeto, btn_inicio;
 
     private RepositorioProjeto repositorioProjeto;
+    private RepositorioEmpresa repositorioEmpresa;
 
     public DashboardEmpresa(RepositorioProjeto repositorioProjeto){
         this.repositorioProjeto = repositorioProjeto;
@@ -91,7 +93,7 @@ public class DashboardEmpresa implements Initializable{
         String areEmpresa = tfAreaEmpresa.getText();
         String descricao = taDescricao.getText();
 
-        Resultado<Projeto> resultado = repositorioProjeto.criarProjeto(nome, areEmpresa, descricao);
+        Resultado<Projeto> resultado = repositorioProjeto.criarProjeto(1, nome, areEmpresa, descricao);
 
         Alert alert;
         if (resultado.foiErro()) {
@@ -200,7 +202,7 @@ public class DashboardEmpresa implements Initializable{
         tbProjetosRecentes.getItems().addAll(lista);
          */
         
-        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosRecentes();
+        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosEmpresa(1);
         if(resultado.foiErro()){
             Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
             alert.showAndWait();

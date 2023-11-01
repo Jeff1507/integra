@@ -20,10 +20,11 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     }
 
     @Override
-    public Resultado<Projeto> criar(Projeto projeto) {
+    public Resultado<Projeto> criar(Projeto projeto, int empresaId) {
         try (Connection con = conexao.getConnection()) {
 
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO projeto(nome, area_atuacao, descricao) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstm = con.
+            prepareStatement("INSERT INTO projeto(nome, area_atuacao, descricao) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
             pstm.setString(1, projeto.getNome());
             pstm.setString(2, projeto.getAreaEmpresa());
@@ -35,6 +36,14 @@ public class JDBCProjetoDAO implements ProjetoDAO{
 
                 int id = DBUtils.getLastId(pstm);
                 projeto.setId(id);
+
+                PreparedStatement pstm2 = con.
+                prepareStatement("INSERT INTO empresa_projeto(empresa_id, projeto_id) VALUES (?,?)");
+
+                pstm2.setInt(1, empresaId);
+                pstm2.setInt(2, id);
+
+                pstm2.executeUpdate();
 
                 return Resultado.sucesso("Projeto criado com sucesso!", projeto);
             }
@@ -75,15 +84,58 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     }
 
     @Override
-    public Resultado getByid(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getByid'");
+    public Resultado<Projeto> getByid(int id) {
+        try (Connection con = conexao.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM projeto WHERE id=?");
+
+            pstm.setInt(1, id);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            while (resultSet.next()) {
+                String nome = resultSet.getString("nome");
+                String areaEmpresa = resultSet.getString("area_atuacao");
+                String descricao = resultSet.getString("descricao");
+
+                Projeto projeto = new Projeto(id, nome, descricao, areaEmpresa);
+
+                return Resultado.sucesso("Projeto encontrado!", projeto);
+            }
+            return Resultado.erro("Projeto não encontrado!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
-    public Resultado listarProjetoEmpresa(int idEmpresa) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarProjetoEmpresa'");
+    public Resultado<ArrayList<Projeto>> listarProjetoEmpresa(int empresaId) {
+        try (Connection con = conexao.getConnection()) {
+            PreparedStatement pstm = con.
+            prepareStatement("SELECT projeto_id FROM empresa_projeto WHERE empresa_id=?");
+
+            pstm.setInt(1, empresaId);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            ArrayList<Projeto> projetos = new ArrayList<>();
+
+            while (resultSet.next()) {
+                int projetoId = resultSet.getInt("projeto_id");
+
+                Resultado<Projeto> resultado = getByid(projetoId);
+
+                if (resultado.foiSucesso()) {
+                    Projeto projeto = (Projeto) resultado.comoSucesso().getObj();
+                    projetos.add(projeto);
+                }
+                else{
+                    return resultado.comoErro();
+                }
+            }
+            return Resultado.sucesso("Projetos recuperados", projetos);
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
