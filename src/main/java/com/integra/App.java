@@ -42,7 +42,7 @@ public class App extends BaseAppNavigator{
 
     @Override
     public String getHome() {
-        return "DASHBOARDEMPRESA";
+        return "LOGIN";
     }
 
     @Override
@@ -60,7 +60,7 @@ public class App extends BaseAppNavigator{
                      new ScreenRegistryFXML(App.class, "cadastrar_estudante.fxml", o->new CadastrarEstudante()));
 
         registraTela("DASHBOARDEMPRESA", 
-                     new ScreenRegistryFXML(App.class, "dashboard_empresa.fxml", o->new DashboardEmpresa(repositorioProjeto)));
+                     new ScreenRegistryFXML(App.class, "dashboard_empresa.fxml", o->new DashboardEmpresa(repositorioProjeto, repositorioEmpresa)));
         
         registraTela("DASHBOARDESTUDANTE", 
                      new ScreenRegistryFXML(App.class, "dashboard_estudante.fxml", o->new DashboardEstudante(repositorioSolucao)));

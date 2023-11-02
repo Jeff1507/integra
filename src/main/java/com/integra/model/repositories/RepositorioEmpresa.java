@@ -7,6 +7,8 @@ import com.integra.model.entities.Empresa;
 public class RepositorioEmpresa {
     private EmpresaDAO empresaDAO;
 
+    private Empresa contaLogada;
+
     public RepositorioEmpresa(EmpresaDAO empresaDAO){
         this.empresaDAO = empresaDAO;
     }
@@ -33,9 +35,14 @@ public class RepositorioEmpresa {
         }
         if (senha.isEmpty() || senha.isBlank()) {
             return Resultado.erro("Senha em branco!");
-        }
+        } 
+        Resultado<Empresa> resultado = empresaDAO.logar(nome, senha);
+        this.contaLogada = (Empresa) resultado.comoSucesso().getObj();
         
-        return empresaDAO.logar(nome, senha);
+        return resultado;
 
+    }
+    public Empresa contaLogada(){
+        return contaLogada;
     }
 }

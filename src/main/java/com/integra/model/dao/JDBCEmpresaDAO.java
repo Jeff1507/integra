@@ -69,7 +69,6 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
                 String senhaEmpresa = resultSet.getString("senha");
 
                 Empresa empresa = new Empresa(id, nomeEmpresa, email, senhaEmpresa);
-                contaLogada(empresa);
 
                 return Resultado.sucesso("Bem Vindo De Volta " +nomeEmpresa+ "!", empresa);
             }
@@ -78,12 +77,6 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }
-    }
-
-    @Override
-    public Empresa contaLogada(Empresa empresa) {
-        empresa.setLogado(true);
-        return empresa;
     }
 
     @Override

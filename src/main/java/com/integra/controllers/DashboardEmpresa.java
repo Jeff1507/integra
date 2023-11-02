@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.github.hugoperlin.results.Resultado;
+import com.integra.model.entities.Empresa;
 import com.integra.model.entities.Projeto;
 import com.integra.model.repositories.RepositorioEmpresa;
 import com.integra.model.repositories.RepositorioProjeto;
@@ -72,9 +73,11 @@ public class DashboardEmpresa implements Initializable{
 
     private RepositorioProjeto repositorioProjeto;
     private RepositorioEmpresa repositorioEmpresa;
+    Empresa contaLogada;
 
-    public DashboardEmpresa(RepositorioProjeto repositorioProjeto){
+    public DashboardEmpresa(RepositorioProjeto repositorioProjeto, RepositorioEmpresa repositorioEmpresa){
         this.repositorioProjeto = repositorioProjeto;
+        this.repositorioEmpresa = repositorioEmpresa;
     }
  
     @FXML
@@ -93,7 +96,10 @@ public class DashboardEmpresa implements Initializable{
         String areEmpresa = tfAreaEmpresa.getText();
         String descricao = taDescricao.getText();
 
-        Resultado<Projeto> resultado = repositorioProjeto.criarProjeto(1, nome, areEmpresa, descricao);
+        //Empresa contaLogada = repositorioEmpresa.contaLogada();
+        contaLogada = repositorioEmpresa.contaLogada();
+
+        Resultado<Projeto> resultado = repositorioProjeto.criarProjeto(contaLogada.getId(), nome, areEmpresa, descricao);
 
         Alert alert;
         if (resultado.foiErro()) {
@@ -201,8 +207,9 @@ public class DashboardEmpresa implements Initializable{
         List<Projeto> lista = (List<Projeto>)resultado.comoSucesso().getObj();
         tbProjetosRecentes.getItems().addAll(lista);
          */
-        
-        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosEmpresa(1);
+        //Empresa contaLogada = repositorioEmpresa.contaLogada();
+        contaLogada = repositorioEmpresa.contaLogada();
+        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosEmpresa(contaLogada.getId());
         if(resultado.foiErro()){
             Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
             alert.showAndWait();
@@ -228,7 +235,7 @@ public class DashboardEmpresa implements Initializable{
             btnaaa.setGraphic(iViewPerfil);
             btnaaa.getStyleClass().add("btn-crud-icone");
 
-            Label usuarioNome = new Label("jefferson rodrigo da silva chaves");
+            Label usuarioNome = new Label(contaLogada.getNome());
             Label usuarioTipo = new Label("Empresa");
             
             Label tituloProjeto = new Label(projeto.getNome());
