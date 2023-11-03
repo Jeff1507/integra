@@ -366,7 +366,6 @@ public class DashboardEmpresa implements Initializable{
             sp.setContent(secaoProjeto);
 
         }*/
-
         listarProjetosRecentes();
 
     }
