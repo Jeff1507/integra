@@ -1,9 +1,11 @@
 package com.integra.model.repositories;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.github.hugoperlin.results.Resultado;
 import com.integra.model.dao.ProjetoDAO;
+import com.integra.model.entities.Empresa;
 import com.integra.model.entities.Projeto;
 
 public class RepositorioProjeto {
@@ -13,7 +15,7 @@ public class RepositorioProjeto {
         this.projetoDAO = projetoDAO;
     }
 
-    public Resultado<Projeto> criarProjeto(int empresaId, String nome, String areaEmpresa, String descricao){
+    public Resultado<Projeto> criarProjeto(Empresa contaLogada, String nome, String areaEmpresa, String descricao){
 
         if(nome.isBlank() || nome.isEmpty()){
             return Resultado.erro("Nome em branco!");
@@ -25,7 +27,12 @@ public class RepositorioProjeto {
             return Resultado.erro("Descrição em branco!");
         }
         Projeto projeto = new Projeto(nome, descricao, areaEmpresa);
-        return projetoDAO.criar(projeto, empresaId);
+        /* 
+        List<Projeto> projetos = new ArrayList<>();
+        projetos.add(projeto);
+        contaLogada.setProjetos(projetos);
+        */
+        return projetoDAO.criar(projeto, contaLogada.getId());
     }
 
     public Resultado<ArrayList<Projeto>> listarProjetosEmpresa(int empresaId){

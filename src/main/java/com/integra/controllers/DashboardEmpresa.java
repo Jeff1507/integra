@@ -105,7 +105,7 @@ public class DashboardEmpresa implements Initializable{
         //Empresa contaLogada = repositorioEmpresa.contaLogada();
         contaLogada = repositorioEmpresa.contaLogada();
 
-        Resultado<Projeto> resultado = repositorioProjeto.criarProjeto(contaLogada.getId(), nome, areEmpresa, descricao);
+        Resultado<Projeto> resultado = repositorioProjeto.criarProjeto(contaLogada, nome, areEmpresa, descricao);
 
         Alert alert;
         if (resultado.foiErro()) {
