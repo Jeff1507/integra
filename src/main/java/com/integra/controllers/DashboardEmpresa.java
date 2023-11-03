@@ -71,6 +71,12 @@ public class DashboardEmpresa implements Initializable{
     @FXML
     private Button btn_criar_projeto, btn_inicio;
 
+    @FXML
+    private VBox secaoProjeto;
+
+    @FXML
+    private ScrollPane sp;
+
     private RepositorioProjeto repositorioProjeto;
     private RepositorioEmpresa repositorioEmpresa;
     Empresa contaLogada;
@@ -128,11 +134,96 @@ public class DashboardEmpresa implements Initializable{
 
 
     }
-    @FXML
-    private VBox secaoProjeto;
+    private void verMeusProjetos(){
+        contaLogada = repositorioEmpresa.contaLogada();
 
-    @FXML
-    private ScrollPane sp;
+        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosEmpresa(contaLogada.getId());
+
+        if (resultado.foiErro()) {
+            Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            alert.showAndWait();
+        }
+        List<Projeto> listaMeusProjetos = (List<Projeto>)resultado.comoSucesso().getObj();
+
+        listarProjetos(listaMeusProjetos, contaLogada);
+    }
+
+    public void listarProjetosRecentes(){
+        contaLogada = repositorioEmpresa.contaLogada();
+
+        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosRecentes();
+
+        if(resultado.foiErro()){
+            Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            alert.showAndWait();
+        }
+        List<Projeto> listaProjetosRecentes = (List<Projeto>)resultado.comoSucesso().getObj();
+
+        listarProjetos(listaProjetosRecentes, contaLogada);
+    }
+
+    public void listarProjetos(List<Projeto> lista, Empresa contaLogada){
+
+        secaoProjeto.getChildren().clear();
+
+        for (Projeto projeto : lista) {
+
+            VBox usuarioPerfil = new VBox();
+            VBox lbProjeto = new VBox();
+            VBox mostraProjeto = new VBox();
+            HBox btnProjeto = new HBox();
+            HBox projetoBox = new HBox();
+
+            Image imgPerfil = new Image(getClass().getResource("/com/integra/img/482979.png").toExternalForm());
+            ImageView iViewPerfil = new ImageView(imgPerfil);
+            Button btnaaa=new Button();
+            iViewPerfil.setFitWidth(30);
+            iViewPerfil.setFitHeight(30);
+            btnaaa.setGraphic(iViewPerfil);
+            btnaaa.getStyleClass().add("btn-crud-icone");
+
+            Label usuarioNome = new Label(contaLogada.getNome());
+            Label usuarioTipo = new Label("Empresa");
+            
+            Label tituloProjeto = new Label(projeto.getNome());
+            
+            tituloProjeto.getStyleClass().add("projeto-lb");
+
+            Label areaProjeto = new Label(projeto.getAreaEmpresa());
+            areaProjeto.getStyleClass().add("lb");
+            Button btnVer = new Button("Ver Completo");
+            Button btnEditar = new Button("Editar");
+            Button btnExcluir = new Button("Excluir");
+            
+
+            usuarioPerfil.getChildren().addAll(btnaaa, usuarioNome, usuarioTipo);
+            usuarioNome.getStyleClass().add("user-lb");
+            usuarioTipo.getStyleClass().add("user-lb");
+            usuarioPerfil.getStyleClass().add("usuario-perfil");
+
+            lbProjeto.getChildren().addAll(tituloProjeto, areaProjeto);
+            btnProjeto.getChildren().add(btnVer);
+             
+            btnVer.setOnAction(event ->{
+                    verProjeto(projeto);
+                    abaVerProjeto.toFront();
+            });
+
+            btnVer.getStyleClass().addAll("btn-read", "btn-crud-secao-projeto");
+            btnProjeto.getStyleClass().add("btn-projeto");
+            mostraProjeto.getChildren().addAll(lbProjeto, btnProjeto);
+            mostraProjeto.getStyleClass().add("mostra-projeto");
+
+            projetoBox.getChildren().addAll(usuarioPerfil, mostraProjeto);
+            projetoBox.getStyleClass().add("projeto-box");
+
+            secaoProjeto.getChildren().add(projetoBox);
+            secaoProjeto.getStyleClass().add("secao-projeto");
+
+            sp.setFitToWidth(true);
+            sp.setContent(secaoProjeto);
+        }
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -207,8 +298,8 @@ public class DashboardEmpresa implements Initializable{
         List<Projeto> lista = (List<Projeto>)resultado.comoSucesso().getObj();
         tbProjetosRecentes.getItems().addAll(lista);
          */
-        //Empresa contaLogada = repositorioEmpresa.contaLogada();
-        contaLogada = repositorioEmpresa.contaLogada();
+        
+        /*contaLogada = repositorioEmpresa.contaLogada();
         Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosEmpresa(contaLogada.getId());
         if(resultado.foiErro()){
             Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
@@ -274,7 +365,9 @@ public class DashboardEmpresa implements Initializable{
             sp.setFitToWidth(true);
             sp.setContent(secaoProjeto);
 
-        }
+        }*/
+
+        listarProjetosRecentes();
 
     }
 }
