@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.github.hugoperlin.results.Resultado;
+import com.integra.model.entities.Empresa;
 import com.integra.model.entities.Projeto;
 import com.integra.utils.DBUtils;
 
@@ -20,30 +21,24 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     }
 
     @Override
-    public Resultado<Projeto> criar(Projeto projeto, int empresaId) {
+    public Resultado<Projeto> criar(Projeto projeto, Empresa contaLogada) {
         try (Connection con = conexao.getConnection()) {
 
             PreparedStatement pstm = con.
-            prepareStatement("INSERT INTO projeto(nome, area_atuacao, descricao) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            prepareStatement("INSERT INTO projeto(empresa_id, nome, area_atuacao, descricao) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
-            pstm.setString(1, projeto.getNome());
-            pstm.setString(2, projeto.getAreaEmpresa());
-            pstm.setString(3, projeto.getDescricao());
+            pstm.setInt(1, contaLogada.getId());
+            pstm.setString(2, projeto.getNome());
+            pstm.setString(3, projeto.getAreaEmpresa());
+            pstm.setString(4, projeto.getDescricao());
 
             int ret = pstm.executeUpdate();
 
             if(ret == 1){
 
                 int id = DBUtils.getLastId(pstm);
+
                 projeto.setId(id);
-
-                PreparedStatement pstm2 = con.
-                prepareStatement("INSERT INTO empresa_projeto(empresa_id, projeto_id) VALUES (?,?)");
-
-                pstm2.setInt(1, empresaId);
-                pstm2.setInt(2, id);
-
-                pstm2.executeUpdate();
 
                 return Resultado.sucesso("Projeto criado com sucesso!", projeto);
             }
@@ -68,7 +63,7 @@ public class JDBCProjetoDAO implements ProjetoDAO{
                 String areaEmpresa = resultSet.getString("area_atuacao");
                 String descricao = resultSet.getString("descricao");
 
-                Projeto projeto = new Projeto(id, nome, descricao, areaEmpresa);
+                Projeto projeto = new Projeto(id, nome, descricao, areaEmpresa, null);
                 projetosRecentes.add(projeto);
             }
             return Resultado.sucesso("Projetos listados!", projetosRecentes);
@@ -97,7 +92,7 @@ public class JDBCProjetoDAO implements ProjetoDAO{
                 String areaEmpresa = resultSet.getString("area_atuacao");
                 String descricao = resultSet.getString("descricao");
 
-                Projeto projeto = new Projeto(id, nome, descricao, areaEmpresa);
+                Projeto projeto = new Projeto(id, nome, descricao, areaEmpresa, null);
 
                 return Resultado.sucesso("Projeto encontrado!", projeto);
             }

@@ -182,7 +182,7 @@ public class DashboardEmpresa implements Initializable{
             btnaaa.setGraphic(iViewPerfil);
             btnaaa.getStyleClass().add("btn-crud-icone");
 
-            Label usuarioNome = new Label(contaLogada.getNome());
+            Label usuarioNome = new Label(projeto.getEmpresaProjeto().getNome());
             Label usuarioTipo = new Label("Empresa");
             
             Label tituloProjeto = new Label(projeto.getNome());
@@ -366,9 +366,7 @@ public class DashboardEmpresa implements Initializable{
             sp.setContent(secaoProjeto);
 
         }*/
-       
-        verMeusProjetos();
-         System.out.println(contaLogada.getProjetos());
+       listarProjetosRecentes();
 
     }
 }

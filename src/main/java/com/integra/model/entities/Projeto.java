@@ -7,19 +7,22 @@ public class Projeto {
     private String nome;
     private String descricao;
     private String areaEmpresa;
+    private Empresa empresaProjeto;
     private List<Solucao> solucoes;
     
-    public Projeto(int id, String nome, String descricao, String areaEmpresa) {
+    public Projeto(int id, String nome, String descricao, String areaEmpresa, Empresa empresaProjeto) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.areaEmpresa = areaEmpresa;
+        this.empresaProjeto = empresaProjeto;
     }
 
-    public Projeto(String nome, String descricao, String areaEmpresa) {
+    public Projeto(String nome, String descricao, String areaEmpresa, Empresa empresaProjeto) {
         this.nome = nome;
         this.descricao = descricao;
         this.areaEmpresa = areaEmpresa;
+        this.empresaProjeto = empresaProjeto;
     }
 
     public int getId() {
@@ -114,6 +117,14 @@ public class Projeto {
             return false;
         }
         return true;
+    }
+
+    public Empresa getEmpresaProjeto() {
+        return empresaProjeto;
+    }
+
+    public void setEmpresaProjeto(Empresa empresaProjeto) {
+        this.empresaProjeto = empresaProjeto;
     }
 
     

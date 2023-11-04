@@ -33,3 +33,12 @@ CREATE TABLE empresa_projeto(
     FOREIGN KEY(empresa_id) REFERENCES empresa(id),
     FOREIGN KEY(projeto_id) REFERENCES projeto(id)
     );
+CREATE TABLE projeto(
+    id int not null AUTO_INCREMENT,
+    empresa_id int not null,
+    nome varchar(255) not null,
+    area_atuacao varchar(255) not null,
+    descricao text not null,
+    PRIMARY KEY(id),
+    FOREIGN KEY(empresa_id) REFERENCES empresa(id)
+    );

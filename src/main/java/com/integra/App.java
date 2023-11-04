@@ -22,14 +22,14 @@ import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
 
 public class App extends BaseAppNavigator{
 
+    EmpresaDAO empresaDAO = new JDBCEmpresaDAO(ConexaoBD.getInstance());
+    RepositorioEmpresa repositorioEmpresa = new RepositorioEmpresa(empresaDAO);
+
     ProjetoDAO projetoDAO = new JDBCProjetoDAO(ConexaoBD.getInstance());
-    RepositorioProjeto repositorioProjeto = new RepositorioProjeto(projetoDAO);
+    RepositorioProjeto repositorioProjeto = new RepositorioProjeto(projetoDAO, empresaDAO);
 
     SolucaoDAO solucaoDAO = new JDBCSolucaoDAO(ConexaoBD.getInstance());
     RepositorioSolucao repositorioSolucao = new RepositorioSolucao(solucaoDAO);
-
-    EmpresaDAO empresaDAO = new JDBCEmpresaDAO(ConexaoBD.getInstance());
-    RepositorioEmpresa repositorioEmpresa = new RepositorioEmpresa(empresaDAO);
 
     public static void main(String[] args) {
         launch();

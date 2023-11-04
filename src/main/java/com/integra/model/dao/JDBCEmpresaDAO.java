@@ -104,8 +104,48 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
                 }
             }
             return "Sucesso";
-        } catch (SQLException e) {
+        } catch (Exception e) {
             return e.getMessage();
+        }
+    }
+
+    @Override
+    public Resultado<Empresa> getById(int id) {
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM empresa WHERE id=?");
+
+            pstm.setInt(1, id);
+            ResultSet resultSet = pstm.executeQuery();
+
+            if (resultSet.next()) {
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("email");
+
+                Empresa empresa = new Empresa(nome, email, senha);
+                return Resultado.sucesso("Empresa encontrada", empresa);
+            }
+            return Resultado.erro("Empresa não encontrada!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    @Override
+    public Resultado<Empresa> empresaProjeto(int projetoId) {
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT empresa_Id FROM projeto WHERE id=?");
+            pstm.setInt(1, projetoId);
+
+            ResultSet resultSet = pstm.executeQuery();
+            resultSet.next();
+
+            int empresaId = resultSet.getInt("empresa_id");
+
+            return getById(empresaId);
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
         }
     }
     
