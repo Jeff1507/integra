@@ -42,3 +42,5 @@ CREATE TABLE projeto(
     PRIMARY KEY(id),
     FOREIGN KEY(empresa_id) REFERENCES empresa(id)
     );
+    ALTER TABLE projeto
+ADD COLUMN data_criacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
