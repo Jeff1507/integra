@@ -137,7 +137,7 @@ public class DashboardEmpresa implements Initializable{
     private void verMeusProjetos(){
         contaLogada = repositorioEmpresa.contaLogada();
 
-        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosEmpresa(contaLogada.getId());
+        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.listarProjetosEmpresa(contaLogada);
 
         if (resultado.foiErro()) {
             Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
@@ -366,7 +366,9 @@ public class DashboardEmpresa implements Initializable{
             sp.setContent(secaoProjeto);
 
         }*/
-        listarProjetosRecentes();
+       
+        verMeusProjetos();
+         System.out.println(contaLogada.getProjetos());
 
     }
 }

@@ -1,6 +1,5 @@
 package com.integra.model.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Empresa {

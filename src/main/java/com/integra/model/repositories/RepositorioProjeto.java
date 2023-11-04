@@ -35,8 +35,14 @@ public class RepositorioProjeto {
         return projetoDAO.criar(projeto, contaLogada.getId());
     }
 
-    public Resultado<ArrayList<Projeto>> listarProjetosEmpresa(int empresaId){
-        return projetoDAO.listarProjetoEmpresa(empresaId);
+    public Resultado<ArrayList<Projeto>> listarProjetosEmpresa(Empresa empresa){
+
+        Resultado<ArrayList<Projeto>> resultado = projetoDAO.listarProjetoEmpresa(empresa.getId());
+        List<Projeto> projetos = (List<Projeto>) resultado.comoSucesso().getObj();
+
+        empresa.setProjetos(projetos);
+
+        return resultado;
     }
 
     public Resultado<ArrayList<Projeto>> listarProjetosRecentes(){
