@@ -10,7 +10,7 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
-    -fx-font-family: 'Roboto', sans-serif;
+    -fx-font-family: 'Poppins', sans-serif;
     
 }
 .hbox{
@@ -18,28 +18,58 @@
     -fx-padding: 50px;  
     
 }
+.aaa{
+    -fx-background-image: url('../img/borrado.jpg');
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-padding: 80;
+    -fx-alignment: center;
+    -fx-spacing: 40;
+}
+.titulo-login{
+    -fx-text-fill: #201b2c;
+    -fx-font-size: 36;
+    -fx-font-weight: 800;
+}
 .card-login{
-    -fx-background-color: #201b2c7a;
-    -fx-background-radius: 20px;
+    -fx-background-color: rgb(0, 0, 0, 0.5);
+    -fx-background-radius: 8px;
     -fx-border-style: solid;
-    -fx-border-color: rgb(255, 255, 255, 0.2);
+    -fx-border-color: rgb(255, 255, 255, 0.5);
     -fx-border-width: 1px;
-    -fx-border-radius: 20px;
+    -fx-border-radius: 8px;
     -fx-padding: 80;
     -fx-alignment: center;
     -fx-spacing: 40;
 }
 .tf-login2{
-    -fx-background-color: #514869;
+    -fx-background-color: transparent;
     -fx-background-radius: 25px;
     -fx-border-style: solid;
-    -fx-border-color: rgb(255, 255, 255, 0.2);
+    -fx-border-color: #201b2c;
     -fx-border-width: 1px;
     -fx-border-radius: 25px;
+    -fx-pref-height: 50;
 }
 .vb-tf-login{
-    -fx-alignment: center-left;
     -fx-spacing: 20;
+}
+.btn-login2{
+    -fx-background-color: #201b2c;
+    -fx-text-fill: white;
+    -fx-font-weight: 800;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-pref-width: 480;
+    -fx-pref-height: 50;
+    -fx-font-size: 18px;
+    -fx-font-weight: 800;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+}
+.btn-login2:hover{
+    -fx-background-color: #2f2841;
+    -fx-effect: dropshadow(gaussian, #514869, 20, 0, 0, 6);
 }
 .vb-btn-login{
     -fx-alignment: top-center;
