@@ -22,6 +22,22 @@
    <left>
       <VBox prefHeight="723.0" prefWidth="46.0" styleClass="menu-lateral" BorderPane.alignment="CENTER">
          <children>
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/download-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn-explorar" />
+                  <String fx:value="btn-menu-lateral" />
+               </styleClass>
+               <tooltip>
+                  <Tooltip text="jefferson" />
+               </tooltip>
+            </Button>
             <Button fx:id="btn_inicio" mnemonicParsing="false" onAction="#abrirAba" prefHeight="42.0" prefWidth="58.0">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
