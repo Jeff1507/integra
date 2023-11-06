@@ -15,8 +15,7 @@
 }
 .hbox{
     -fx-alignment: center;
-    -fx-padding: 50px;  
-    
+    -fx-padding: 50px;
 }
 .aaa{
     -fx-background-image: url('../img/borrado.jpg');
@@ -32,7 +31,7 @@
     -fx-font-weight: 800;
 }
 .card-login{
-    -fx-background-color: rgb(0, 0, 0, 0.5);
+    -fx-background-color: #2f2841;
     -fx-background-radius: 8px;
     -fx-border-style: solid;
     -fx-border-color: rgb(255, 255, 255, 0.5);
@@ -155,6 +154,18 @@
 .btn-delete{
     -fx-background-color: #d9534f;
 }
+.btn-explorar{
+    -fx-background-color: #f0ffffde;
+}
+.btn-explorar1:hover{
+    -fx-background-color: gray;
+}
+.btn-explorar2:hover{
+    -fx-background-color: #3399FF;
+}
+.btn-explorar3:hover{
+    -fx-background-color: #5cb85c;
+}
 /**/
 .btn-login{
     -fx-font-size: 24px;
@@ -262,17 +273,19 @@
     -fx-spacing: 37;
 }
 .btn-menu-lateral{
-    -fx-background-color: #201b2c;
+    /*-fx-background-color: #201b2c;
     -fx-pref-width: 400px;
     -fx-pref-height: 50px;
     -fx-font-size: 16px;
     -fx-font-weight: 700;
     -fx-text-fill: #f0ffffde;
+    */
     -fx-border-width: 0 0 1 0;
     -fx-background-radius: 0;
     -fx-border-radius: 0;
     -fx-border-style: solid;
-    -fx-border-color: rgb(255, 255, 255, 0.2);
+    /*-fx-border-color: rgb(255, 255, 255, 0.2);*/
+    -fx-border-color: rgb(0, 0, 0);
 }
 .pane-abainicio{
     -fx-background-color: #201b2c;

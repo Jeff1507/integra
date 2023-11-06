@@ -6,11 +6,10 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,11 +20,56 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.integra.controllers.DashboardEmpresa">
    <left>
-      <VBox prefHeight="723.0" prefWidth="218.0" styleClass="menu-lateral" BorderPane.alignment="CENTER">
+      <VBox prefHeight="723.0" prefWidth="46.0" styleClass="menu-lateral" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btn_inicio" mnemonicParsing="false" onAction="#abrirAba" styleClass="btn-menu-lateral" text="Explorar" />
-            <Button fx:id="btn_menu_projetos" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="346.0" styleClass="btn-menu-lateral" text="Meus Projetos" />
-            <Button fx:id="btn_criar_projeto" mnemonicParsing="false" onAction="#abrirAba" styleClass="btn-menu-lateral" text="Criar Novo Projeto" />
+            <Button fx:id="btn_inicio" mnemonicParsing="false" onAction="#abrirAba" prefHeight="42.0" prefWidth="58.0">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/7379148.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn-explorar" />
+                  <String fx:value="btn-menu-lateral" />
+                  <String fx:value="btn-explorar1" />
+               </styleClass>
+               <tooltip>
+                  <Tooltip text="Explorar" />
+               </tooltip></Button>
+            <Button fx:id="btn_meus_projetos" mnemonicParsing="false" onAction="#abrirAba" prefHeight="26.0" prefWidth="346.0">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/80-802237_icon-for-projects-png-transparent-png-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn-explorar" />
+                  <String fx:value="btn-menu-lateral" />
+                  <String fx:value="btn-explorar2" />
+               </styleClass>
+               <tooltip>
+                  <Tooltip text="Ver Meus Projetos" />
+               </tooltip></Button>
+            <Button fx:id="btn_criar_projeto" mnemonicParsing="false" onAction="#abrirAba" prefHeight="48.0" prefWidth="61.0">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/create-task-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn-explorar" />
+                  <String fx:value="btn-menu-lateral" />
+                  <String fx:value="btn-explorar3" />
+               </styleClass>
+               <tooltip>
+                  <Tooltip text="Criar Novo Projeto" />
+               </tooltip></Button>
          </children>
       </VBox>
    </left>
@@ -71,34 +115,20 @@
                   <Label layoutX="56.0" layoutY="105.0" styleClass="user-lb" text="Label" />
                   <Label layoutX="56.0" layoutY="134.0" styleClass="user-lb" text="Label" />
                </children></Pane>
-            <Pane fx:id="abaInicio" layoutX="867.0" prefHeight="723.0" prefWidth="195.0" styleClass="pane-abainicio" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <HBox layoutX="42.0" layoutY="35.0" prefHeight="150.0" prefWidth="348.0" styleClass="fundo-titulo">
-                     <children>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/8477477.png" />
-                           </image>
-                        </ImageView>
-                        <Label styleClass="lb" text="Recentes" />
-                     </children>
-                  </HBox>
-                  <TableView fx:id="tbProjetosRecentes" layoutX="42.0" layoutY="102.0" maxWidth="1.7976931348623157E308" prefHeight="586.0" prefWidth="934.0" styleClass="tbv">
-                    <columns>
-                        <TableColumn prefWidth="191.19998931884766" text="Usuário" />
-                      <TableColumn fx:id="tbNome" prefWidth="192.79998779296875" text="Nome" />
-                      <TableColumn fx:id="tbAreEmpresa" prefWidth="209.59994506835938" text="Area de atuação" />
-                        <TableColumn prefWidth="142.4000244140625" text="Soluções" />
-                        <TableColumn fx:id="tbAcoes" prefWidth="389.60003662109375" text="Ações" />
-                    </columns>
-                  </TableView>
-               </children>
-            </Pane>
-            <Pane prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ScrollPane fx:id="sp" hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1062.0" style="-fx-background-color: black;" styleClass="sp">
                      <content>
                         <VBox fx:id="secaoProjeto" prefHeight="723.0" prefWidth="1062.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="abaMeusProjetos" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane style="-fx-background-color: black;" styleClass="sp">
+                     <content>
+                        <VBox prefHeight="723.0" prefWidth="1061.0" />
                      </content>
                   </ScrollPane>
                </children>

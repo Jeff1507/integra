@@ -66,10 +66,10 @@ public class DashboardEmpresa implements Initializable{
     //private ListView<Projeto> lstProjetosRecentes;
 
     @FXML
-    private Pane abaCriarProjeto, abaInicio, abaVerProjeto;
+    private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos;
 
     @FXML
-    private Button btn_criar_projeto, btn_inicio;
+    private Button btn_criar_projeto, btn_inicio, btn_meus_projetos;
 
     @FXML
     private VBox secaoProjeto;
@@ -93,6 +93,9 @@ public class DashboardEmpresa implements Initializable{
         }
         else if(event.getSource() == btn_criar_projeto){
             abaCriarProjeto.toFront();
+        }
+        else if(event.getSource() == btn_meus_projetos){
+            abaMeusProjetos.toFront();
         }
     }
 

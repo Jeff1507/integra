@@ -42,30 +42,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.integra.controllers.Login">
+
+<HBox style="-fx-background-color: #201b2c;" styleClass="hbox" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.integra.controllers.Login">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="640.0" styleClass="card-login">
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="hbox" stylesheets="@css/style.css">
          <children>
-            <Label id="titulo" layoutX="264.0" layoutY="59.0" styleClass="titulo" text="LOGIN" />
-            <Label layoutX="70.0" layoutY="147.0" styleClass="lb" text="Nome de Usuário" />
-            <TextField fx:id="tfNome" layoutX="70.0" layoutY="174.0" prefHeight="26.0" prefWidth="427.0" styleClass="tf" />
-            <Label layoutX="70.0" layoutY="251.0" styleClass="lb" text="Senha" />
-            <PasswordField fx:id="tfSenha" layoutX="70.0" layoutY="279.0" prefHeight="26.0" prefWidth="426.0" styleClass="tf" />
-            <Button layoutX="70.0" layoutY="442.0" mnemonicParsing="false" onAction="#logar" text="Entrar">
-               <effect>
-                  <DropShadow />
-               </effect>
-               <styleClass>
-                  <String fx:value="btn" />
-                  <String fx:value="btn-login" />
-               </styleClass>
-            </Button>
-            <CheckBox layoutX="70.0" layoutY="343.0" mnemonicParsing="false" styleClass="lb" text="Manter Login" />
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="640.0" styleClass="card-login">
+               <children>
+                  <Label id="titulo" layoutX="264.0" layoutY="59.0" styleClass="titulo" text="LOGIN" />
+                  <Label layoutX="70.0" layoutY="147.0" styleClass="lb" text="Nome de Usuário" />
+                  <TextField fx:id="tfNome" layoutX="70.0" layoutY="174.0" prefHeight="53.0" prefWidth="500.0" styleClass="tf" />
+                  <Label layoutX="70.0" layoutY="251.0" styleClass="lb" text="Senha" />
+                  <PasswordField fx:id="tfSenha" layoutX="70.0" layoutY="279.0" prefHeight="53.0" prefWidth="500.0" styleClass="tf" />
+                  <Button layoutX="70.0" layoutY="442.0" mnemonicParsing="false" onAction="#logar" text="Entrar">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-login" />
+                     </styleClass>
+                  </Button>
+                  <CheckBox layoutX="70.0" layoutY="343.0" mnemonicParsing="false" styleClass="lb" text="Manter Login" />
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
+      </HBox>
    </children>
-   <styleClass>
-      <String fx:value="hbox" />
-      <String fx:value="root" />
-   </styleClass>
 </HBox>
