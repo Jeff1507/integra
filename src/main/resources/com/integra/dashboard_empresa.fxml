@@ -147,20 +147,20 @@
                   <Label layoutX="56.0" layoutY="105.0" styleClass="user-lb" text="Label" />
                   <Label layoutX="56.0" layoutY="134.0" styleClass="user-lb" text="Label" />
                </children></Pane>
-            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ScrollPane fx:id="sp" hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1062.0" style="-fx-background-color: black;" styleClass="sp">
-                     <content>
-                        <VBox fx:id="secaoProjeto" prefHeight="723.0" prefWidth="1062.0" />
-                     </content>
-                  </ScrollPane>
-               </children>
-            </Pane>
             <Pane fx:id="abaMeusProjetos" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ScrollPane style="-fx-background-color: black;" styleClass="sp">
                      <content>
                         <VBox prefHeight="723.0" prefWidth="1061.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane fx:id="sp" hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1201.0" style="-fx-background-color: black;" styleClass="sp">
+                     <content>
+                        <VBox fx:id="secaoProjeto" prefHeight="723.0" prefWidth="1201.0" />
                      </content>
                   </ScrollPane>
                </children>

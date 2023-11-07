@@ -137,6 +137,7 @@ public class DashboardEmpresa implements Initializable{
 
 
     }
+    
     private void verMeusProjetos(){
         contaLogada = repositorioEmpresa.contaLogada();
 

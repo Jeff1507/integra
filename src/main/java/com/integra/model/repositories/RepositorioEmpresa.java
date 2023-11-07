@@ -37,10 +37,14 @@ public class RepositorioEmpresa {
             return Resultado.erro("Senha em branco!");
         } 
         Resultado<Empresa> resultado = empresaDAO.logar(nome, senha);
-        this.contaLogada = (Empresa) resultado.comoSucesso().getObj();
-        
+        if (resultado.foiSucesso()) {
+            setContaLogada(resultado);
+        }
         return resultado;
 
+    }
+    public void setContaLogada(Resultado<Empresa> resultado){
+        contaLogada = (Empresa) resultado.comoSucesso().getObj();
     }
     public Empresa contaLogada(){
         return contaLogada;
