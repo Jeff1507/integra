@@ -156,15 +156,20 @@
 }
 .btn-explorar{
     -fx-background-color: #f0ffffde;
+    -fx-cursor: hand;
 }
 .btn-explorar1:hover{
-    -fx-background-color: gray;
+    -fx-background-color: #77ffc0;
 }
 .btn-explorar2:hover{
     -fx-background-color: #3399FF;
 }
 .btn-explorar3:hover{
     -fx-background-color: #5cb85c;
+}
+.btn-logout{
+    -fx-cursor: hand;
+    -fx-background-color: #201b2c;
 }
 /**/
 .btn-login{
@@ -280,9 +285,11 @@
     -fx-font-weight: 700;
     -fx-text-fill: #f0ffffde;
     */
-    -fx-border-width: 0 0 1 0;
-    -fx-background-radius: 0;
-    -fx-border-radius: 0;
+    -fx-pref-width: 55px;
+    -fx-pref-height: 55px;
+    -fx-border-width: 0;
+    -fx-background-radius: 100%;
+    -fx-border-radius: 100%;
     -fx-border-style: solid;
     /*-fx-border-color: rgb(255, 255, 255, 0.2);*/
     -fx-border-color: rgb(0, 0, 0);
