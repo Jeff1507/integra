@@ -15,4 +15,8 @@ public class Cadastrar {
     void CadastrarEstudante(){
         App.pushScreen("CADASTRARESTUDANTE");
     }
+    @FXML
+    private void voltar(){
+        App.popScreen();
+    }
 }
