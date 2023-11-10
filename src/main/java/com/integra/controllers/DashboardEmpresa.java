@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.github.hugoperlin.results.Resultado;
+import com.integra.App;
 import com.integra.model.entities.Empresa;
 import com.integra.model.entities.Projeto;
 import com.integra.model.repositories.RepositorioEmpresa;
@@ -67,7 +68,7 @@ public class DashboardEmpresa implements Initializable{
 
     @FXML
     private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos;
-
+    
     @FXML
     private Button btn_criar_projeto, btn_inicio, btn_meus_projetos;
 
@@ -119,6 +120,11 @@ public class DashboardEmpresa implements Initializable{
             alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
         } 
         alert.showAndWait();
+    }
+    @FXML
+    private void desconectar(ActionEvent event){
+
+        App.pushScreen("LOGIN");
     }
     @FXML
     private VBox mostraProjetoAtual;

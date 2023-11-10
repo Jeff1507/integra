@@ -17,10 +17,13 @@
     -fx-alignment: center;
     -fx-padding: 50px;
 }
-.aaa{
+.fundo-login{
     -fx-background-image: url('../img/borrado.jpg');
     -fx-background-position: center;
     -fx-background-size: cover;
+}
+.aaa{
+    -fx-background-color: rgba(0, 0, 0, 0.1);
     -fx-padding: 80;
     -fx-alignment: center;
     -fx-spacing: 40;
@@ -42,6 +45,8 @@
     -fx-spacing: 40;
 }
 .tf-login2{
+    -fx-text-fill: #201b2c;
+    -fx-font-size: 16px;
     -fx-background-color: transparent;
     -fx-background-radius: 25px;
     -fx-border-style: solid;
@@ -49,6 +54,19 @@
     -fx-border-width: 1px;
     -fx-border-radius: 25px;
     -fx-pref-height: 50;
+    -fx-padding: 0 20;
+}
+.lb-login-cadastro{
+    -fx-text-fill: #f0ffffde;
+    -fx-font-size: 16px;
+}
+.btn-login-cadastro{
+    -fx-text-fill: #f0ffffde;
+    -fx-font-size: 16px;
+    -fx-font-weight: 800;
+    -fx-background-color: transparent;
+    -fx-border: none;
+    -fx-cursor: hand;
 }
 .vb-tf-login{
     -fx-spacing: 20;
@@ -68,11 +86,16 @@
 }
 .btn-login2:hover{
     -fx-background-color: #2f2841;
-    -fx-effect: dropshadow(gaussian, #514869, 20, 0, 0, 6);
+    -fx-effect: dropshadow(gaussian, #514869, 10, 0, 0, 3);
 }
 .vb-btn-login{
     -fx-alignment: top-center;
     -fx-spacing: 20;
+}
+.lb-msg-erro{
+    -fx-text-fill: red;
+    -fx-font-size: 16px;
+    -fx-font-weight: 800;
 }
 .lb{
     -fx-text-fill: #f0ffffde;

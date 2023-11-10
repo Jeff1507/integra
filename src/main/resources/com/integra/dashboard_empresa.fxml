@@ -35,7 +35,7 @@
                   <String fx:value="btn-menu-lateral" />
                </styleClass>
                <tooltip>
-                  <Tooltip text="jefferson" />
+                  <Tooltip text="Configurações da Conta" />
                </tooltip>
             </Button>
             <Button fx:id="btn_inicio" mnemonicParsing="false" onAction="#abrirAba" prefHeight="42.0" prefWidth="58.0">
@@ -88,7 +88,7 @@
                </tooltip></Button>
             <VBox alignment="BOTTOM_CENTER" prefHeight="438.0" prefWidth="56.0" style="-fx-padding: 0 0 20 0;">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #201b2c;" styleClass="btn-logout">
+                  <Button mnemonicParsing="false" onAction="#desconectar" style="-fx-background-color: #201b2c;" styleClass="btn-logout">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
