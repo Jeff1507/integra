@@ -218,6 +218,9 @@ public class DashboardEmpresa implements Initializable{
                     verProjeto(projeto);
                     abaVerProjeto.toFront();
             });
+            if (contaLogada.getProjetos().contains(projeto)) {
+                
+            }
 
             btnVer.getStyleClass().addAll("btn-read", "btn-crud-secao-projeto");
             btnProjeto.getStyleClass().add("btn-projeto");
@@ -234,8 +237,8 @@ public class DashboardEmpresa implements Initializable{
             sp.setContent(secaoProjeto);
         }
     }
-    public void secaoProjeto(List<Projeto> projetos, VBox secao){
-
+    private void secaoProjeto(){
+        
     }
 
     @Override
@@ -379,7 +382,8 @@ public class DashboardEmpresa implements Initializable{
             sp.setContent(secaoProjeto);
 
         }*/
-        verMeusProjetos();
+
+        listarProjetosRecentes();
         System.out.println(contaLogada.getProjetos());
 
     }
