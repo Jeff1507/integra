@@ -28,7 +28,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#CadastrarEstudante" styleClass="btn-login-cadastro">
+                  <Button mnemonicParsing="false" onAction="#cadastrarEstudante" styleClass="btn-login-cadastro">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>

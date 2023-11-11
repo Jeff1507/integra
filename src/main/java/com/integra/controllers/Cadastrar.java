@@ -12,7 +12,7 @@ public class Cadastrar {
     }
 
     @FXML
-    void CadastrarEstudante(){
+    void cadastrarEstudante(){
         App.pushScreen("CADASTRARESTUDANTE");
     }
     @FXML

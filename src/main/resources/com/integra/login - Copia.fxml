@@ -7,7 +7,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="tfNome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.integra.controllers.CadastrarEmpresa">
@@ -29,16 +28,15 @@
                   <VBox prefHeight="267.0" prefWidth="480.0" styleClass="vb-tf-login">
                      <children>
                         <TextField fx:id="tfNome" promptText="Nome de Usuário" styleClass="tf-login2" />
-                        <PasswordField fx:id="tfEmail" promptText="E-mail" styleClass="tf-login2" />
-                        <TextField fx:id="tfSenha" promptText="Senha" styleClass="tf-login2" />
+                        <TextField fx:id="tfEmail" promptText="E-mail" styleClass="tf-login2" />
+                        <PasswordField fx:id="tfSenha" promptText="Senha" styleClass="tf-login2" />
                         <Label fx:id="msgErro" styleClass="lb-msg-erro" text="Label" visible="false" />
                      </children>
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" styleClass="vb-btn-login">
                      <children>
                         <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cadastrar" prefWidth="484.0" styleClass="btn-login2" text="Cadastrar" />
-                        <Button mnemonicParsing="false" styleClass="btn-login-cadastro" text="Voltar" underline="true" />
-                        <HBox alignment="BASELINE_CENTER" prefHeight="100.0" prefWidth="200.0" />
+                        <Button mnemonicParsing="false" onAction="#voltar" styleClass="btn-login-cadastro" text="Voltar" underline="true" />
                      </children>
                   </VBox>
                </children>
