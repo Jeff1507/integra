@@ -155,7 +155,7 @@ public class DashboardEmpresa implements Initializable{
         }
         List<Projeto> listaMeusProjetos = (List<Projeto>)resultado.comoSucesso().getObj();
 
-        listarProjetos(listaMeusProjetos, contaLogada);
+        listarProjetos(listaMeusProjetos);
     }
 
     public void listarProjetosRecentes(){
@@ -169,10 +169,10 @@ public class DashboardEmpresa implements Initializable{
         }
         List<Projeto> listaProjetosRecentes = (List<Projeto>)resultado.comoSucesso().getObj();
 
-        listarProjetos(listaProjetosRecentes, contaLogada);
+        listarProjetos(listaProjetosRecentes);
     }
 
-    public void listarProjetos(List<Projeto> lista, Empresa contaLogada){
+    public void listarProjetos(List<Projeto> lista){
 
         secaoProjeto.getChildren().clear();
 
@@ -233,6 +233,9 @@ public class DashboardEmpresa implements Initializable{
             sp.setFitToWidth(true);
             sp.setContent(secaoProjeto);
         }
+    }
+    public void secaoProjeto(List<Projeto> projetos, VBox secao){
+
     }
 
     @Override
@@ -376,7 +379,8 @@ public class DashboardEmpresa implements Initializable{
             sp.setContent(secaoProjeto);
 
         }*/
-       listarProjetosRecentes();
+        verMeusProjetos();
+        System.out.println(contaLogada.getProjetos());
 
     }
 }

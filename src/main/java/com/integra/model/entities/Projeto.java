@@ -126,7 +126,7 @@ public class Projeto {
     public void setEmpresaProjeto(Empresa empresaProjeto) {
         this.empresaProjeto = empresaProjeto;
     }
-
+    
     
     
 }

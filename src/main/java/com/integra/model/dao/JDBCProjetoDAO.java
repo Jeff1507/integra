@@ -106,7 +106,7 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     public Resultado<ArrayList<Projeto>> listarProjetoEmpresa(int empresaId) {
         try (Connection con = conexao.getConnection()) {
             PreparedStatement pstm = con.
-            prepareStatement("SELECT projeto_id FROM empresa_projeto WHERE empresa_id=?");
+            prepareStatement("SELECT id FROM projeto WHERE empresa_id=?");
 
             pstm.setInt(1, empresaId);
 
@@ -115,7 +115,7 @@ public class JDBCProjetoDAO implements ProjetoDAO{
             ArrayList<Projeto> projetos = new ArrayList<>();
 
             while (resultSet.next()) {
-                int projetoId = resultSet.getInt("projeto_id");
+                int projetoId = resultSet.getInt("id");
 
                 Resultado<Projeto> resultado = getByid(projetoId);
 

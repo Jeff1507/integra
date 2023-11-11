@@ -63,7 +63,7 @@ public class RepositorioProjeto {
 
         Resultado<ArrayList<Projeto>> resultado = projetoDAO.listarProjetoEmpresa(empresa.getId());
 
-        if (resultado.foiErro()) {
+        if (resultado.foiSucesso()) {
             List<Projeto> projetos = (List<Projeto>) resultado.comoSucesso().getObj();
             for (Projeto projeto : projetos) {
                 Resultado<Projeto> resultado2 = montarProjeto(projeto); 
@@ -72,8 +72,8 @@ public class RepositorioProjeto {
                     return resultado2.comoErro();
                 }
             }
+            empresa.setProjetos(projetos);
         }
-
         return resultado;
     }
 
