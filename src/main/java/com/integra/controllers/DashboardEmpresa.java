@@ -246,23 +246,26 @@ public class DashboardEmpresa implements Initializable{
     */
     public VBox secaoProjetos(List<Projeto> projetos){
         VBox secao = new VBox();
-        secao.getChildren().clear();
+        //secao.getChildren().clear();
 
         for (Projeto projeto : projetos) {
             VBox vBox1 = new VBox();
             VBox vBox2 = new VBox();
             HBox hBox1 = new HBox();
             HBox hBox2 = new HBox();
+            HBox hBox = new HBox();
 
             Label pjtNome = new Label(projeto.getNome());
             pjtNome.getStyleClass().add("projeto-lb");
             Label prjArea = new Label(projeto.getAreaEmpresa());
-            prjArea.getStyleClass().add("projeto-lb");
+            prjArea.getStyleClass().add("lb");
 
             Label userNome = new Label(projeto.getEmpresaProjeto().getNome());
-            userNome.getStyleClass().add("projeto-lb");
+            userNome.getStyleClass().add("user-lb");
+            hBox.getChildren().add(userNome);
+            hBox.getStyleClass().add("user-nome");
 
-            Button btnVer = new Button("ver");
+            Button btnVer = new Button("Ver Completo");
             Button btnEditar = new Button("editar");
             btnEditar.setVisible(false);
             Button btnExcluir = new Button("excluir");
@@ -273,6 +276,7 @@ public class DashboardEmpresa implements Initializable{
                     abaVerProjeto.toFront();
                 });
             if (contaLogada.getProjetos().contains(projeto)) {
+
                 btnEditar.setVisible(true);
                 btnExcluir.setVisible(true);
 
@@ -280,7 +284,7 @@ public class DashboardEmpresa implements Initializable{
                     verProjeto(projeto);
                     abaVerProjeto.toFront();
                 });
-                
+
                 btnExcluir.setOnAction(event -> {
                     verProjeto(projeto);
                     abaVerProjeto.toFront();
@@ -288,12 +292,16 @@ public class DashboardEmpresa implements Initializable{
                 
             }
 
-            hBox1.getChildren().addAll(btnVer, btnEditar, btnExcluir);
-            hBox2.getChildren().addAll(userNome, hBox1);
+            hBox1.getChildren().addAll(btnEditar, btnExcluir, btnVer);
+            hBox1.getStyleClass().add("btns");
+            hBox2.getChildren().addAll(hBox, hBox1);
+            hBox2.getStyleClass().add("user-lb-e-btns");
             vBox1.getChildren().addAll(pjtNome, prjArea);
 
             vBox2.getChildren().addAll(vBox1, hBox2);
+            vBox2.getStyleClass().add("projeto-box");
             secao.getChildren().add(vBox2);
+            secao.getStyleClass().add("secao-projeto");
         }
         return secao;
     }
