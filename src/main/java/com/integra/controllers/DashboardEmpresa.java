@@ -38,7 +38,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 
 public class DashboardEmpresa implements Initializable{
 
@@ -76,7 +75,10 @@ public class DashboardEmpresa implements Initializable{
     private VBox secaoProjeto;
 
     @FXML
-    private ScrollPane sp;
+    VBox v1, v2;
+
+    @FXML
+    private ScrollPane sp, sp1;
 
     private RepositorioProjeto repositorioProjeto;
     private RepositorioEmpresa repositorioEmpresa;
@@ -155,7 +157,9 @@ public class DashboardEmpresa implements Initializable{
         }
         List<Projeto> listaMeusProjetos = (List<Projeto>)resultado.comoSucesso().getObj();
 
-        listarProjetos(listaMeusProjetos);
+        //listarProjetos(listaMeusProjetos);
+        //v1.getChildren().clear();
+        v1.getChildren().add(secaoProjetos(listaMeusProjetos));
     }
 
     public void listarProjetosRecentes(){
@@ -169,9 +173,12 @@ public class DashboardEmpresa implements Initializable{
         }
         List<Projeto> listaProjetosRecentes = (List<Projeto>)resultado.comoSucesso().getObj();
 
-        listarProjetos(listaProjetosRecentes);
-    }
+        //listarProjetos(listaProjetosRecentes);
+        //v2.getChildren().clear();
+        v2.getChildren().add(secaoProjetos(listaProjetosRecentes));
 
+    }
+    /* 
     public void listarProjetos(List<Projeto> lista){
 
         secaoProjeto.getChildren().clear();
@@ -219,9 +226,8 @@ public class DashboardEmpresa implements Initializable{
                     abaVerProjeto.toFront();
             });
             if (contaLogada.getProjetos().contains(projeto)) {
-                
+                System.out.println("sexo");
             }
-
             btnVer.getStyleClass().addAll("btn-read", "btn-crud-secao-projeto");
             btnProjeto.getStyleClass().add("btn-projeto");
             mostraProjeto.getChildren().addAll(lbProjeto, btnProjeto);
@@ -237,10 +243,60 @@ public class DashboardEmpresa implements Initializable{
             sp.setContent(secaoProjeto);
         }
     }
-    private void secaoProjeto(){
-        
-    }
+    */
+    public VBox secaoProjetos(List<Projeto> projetos){
+        VBox secao = new VBox();
+        secao.getChildren().clear();
 
+        for (Projeto projeto : projetos) {
+            VBox vBox1 = new VBox();
+            VBox vBox2 = new VBox();
+            HBox hBox1 = new HBox();
+            HBox hBox2 = new HBox();
+
+            Label pjtNome = new Label(projeto.getNome());
+            pjtNome.getStyleClass().add("projeto-lb");
+            Label prjArea = new Label(projeto.getAreaEmpresa());
+            prjArea.getStyleClass().add("projeto-lb");
+
+            Label userNome = new Label(projeto.getEmpresaProjeto().getNome());
+            userNome.getStyleClass().add("projeto-lb");
+
+            Button btnVer = new Button("ver");
+            Button btnEditar = new Button("editar");
+            btnEditar.setVisible(false);
+            Button btnExcluir = new Button("excluir");
+            btnExcluir.setVisible(false);
+
+            btnVer.setOnAction(event -> {
+                    verProjeto(projeto);
+                    abaVerProjeto.toFront();
+                });
+            if (contaLogada.getProjetos().contains(projeto)) {
+                btnEditar.setVisible(true);
+                btnExcluir.setVisible(true);
+
+                btnEditar.setOnAction(event -> {
+                    verProjeto(projeto);
+                    abaVerProjeto.toFront();
+                });
+                
+                btnExcluir.setOnAction(event -> {
+                    verProjeto(projeto);
+                    abaVerProjeto.toFront();
+                });
+                
+            }
+
+            hBox1.getChildren().addAll(btnVer, btnEditar, btnExcluir);
+            hBox2.getChildren().addAll(userNome, hBox1);
+            vBox1.getChildren().addAll(pjtNome, prjArea);
+
+            vBox2.getChildren().addAll(vBox1, hBox2);
+            secao.getChildren().add(vBox2);
+        }
+        return secao;
+    }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         /*tbNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
@@ -382,7 +438,7 @@ public class DashboardEmpresa implements Initializable{
             sp.setContent(secaoProjeto);
 
         }*/
-
+        verMeusProjetos();
         listarProjetosRecentes();
         System.out.println(contaLogada.getProjetos());
 

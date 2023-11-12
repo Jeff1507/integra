@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
@@ -150,20 +149,12 @@
                </children></Pane>
             <Pane fx:id="abaMeusProjetos" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ScrollPane style="-fx-background-color: black;" styleClass="sp">
-                     <content>
-                        <VBox prefHeight="723.0" prefWidth="1061.0" />
-                     </content>
-                  </ScrollPane>
+                  <VBox fx:id="v1" prefHeight="723.0" prefWidth="1201.0" />
                </children>
             </Pane>
             <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ScrollPane fx:id="sp" hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1201.0" style="-fx-background-color: black;" styleClass="sp">
-                     <content>
-                        <VBox fx:id="secaoProjeto" prefHeight="723.0" prefWidth="1201.0" />
-                     </content>
-                  </ScrollPane>
+                  <VBox fx:id="v2" prefHeight="723.0" prefWidth="1201.0" />
                </children>
             </Pane>
          </children></AnchorPane>
