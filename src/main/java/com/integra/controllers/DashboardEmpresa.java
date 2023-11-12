@@ -75,10 +75,10 @@ public class DashboardEmpresa implements Initializable{
     private VBox secaoProjeto;
 
     @FXML
-    VBox v1, v2;
+    private VBox v1, v2;
 
     @FXML
-    private ScrollPane sp, sp1;
+    private ScrollPane spExplorar, spMeusProjetos;
 
     private RepositorioProjeto repositorioProjeto;
     private RepositorioEmpresa repositorioEmpresa;
@@ -160,6 +160,8 @@ public class DashboardEmpresa implements Initializable{
         //listarProjetos(listaMeusProjetos);
         //v1.getChildren().clear();
         v1.getChildren().add(secaoProjetos(listaMeusProjetos));
+        spMeusProjetos.setFitToWidth(true);
+        spMeusProjetos.setContent(v1);
     }
 
     public void listarProjetosRecentes(){
@@ -176,7 +178,8 @@ public class DashboardEmpresa implements Initializable{
         //listarProjetos(listaProjetosRecentes);
         //v2.getChildren().clear();
         v2.getChildren().add(secaoProjetos(listaProjetosRecentes));
-
+        spExplorar.setFitToWidth(true);
+        spExplorar.setContent(v2);
     }
     /* 
     public void listarProjetos(List<Projeto> lista){
@@ -260,15 +263,30 @@ public class DashboardEmpresa implements Initializable{
             Label prjArea = new Label(projeto.getAreaEmpresa());
             prjArea.getStyleClass().add("lb");
 
-            Label userNome = new Label(projeto.getEmpresaProjeto().getNome());
+            Label userNome = new Label("Criado por: "+projeto.getEmpresaProjeto().getNome());
             userNome.getStyleClass().add("user-lb");
             hBox.getChildren().add(userNome);
             hBox.getStyleClass().add("user-nome");
 
             Button btnVer = new Button("Ver Completo");
-            Button btnEditar = new Button("editar");
+            btnVer.getStyleClass().addAll("btn-read", "btn-crud-secao-projeto", "btn-ver-completo");
+
+            Image imgEditar = new Image(getClass().getResource("/com/integra/img/edit-icon-removebg-preview.png").toExternalForm());
+            ImageView iViewEdit = new ImageView(imgEditar);
+            iViewEdit.setFitWidth(40);
+            iViewEdit.setFitHeight(40);
+            Button btnEditar = new Button();
+            btnEditar.setGraphic(iViewEdit);
+            btnEditar.getStyleClass().addAll("btn-update", "btn-crud-secao-projeto");
             btnEditar.setVisible(false);
-            Button btnExcluir = new Button("excluir");
+
+            Image imgExcluir = new Image(getClass().getResource("/com/integra/img/delete_icon-removebg-preview.png").toExternalForm());
+            ImageView iViewExcluir = new ImageView(imgExcluir);
+            iViewExcluir.setFitWidth(40);
+            iViewExcluir.setFitHeight(40);
+            Button btnExcluir = new Button();
+            btnExcluir.setGraphic(iViewExcluir);
+            btnExcluir.getStyleClass().addAll("btn-delete", "btn-crud-secao-projeto");
             btnExcluir.setVisible(false);
 
             btnVer.setOnAction(event -> {
