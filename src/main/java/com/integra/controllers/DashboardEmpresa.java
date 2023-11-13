@@ -28,6 +28,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableCell;
@@ -60,16 +61,13 @@ public class DashboardEmpresa implements Initializable{
     private TableColumn<Projeto, Projeto> tbAcoes;
 
     @FXML
-    private Label lbNomeProjeto, lbAreaEmpresa, lbDescricao;
-
-    //@FXML
-    //private ListView<Projeto> lstProjetosRecentes;
+    private Label lbNomeProjeto, lbAreaEmpresa, lbDescricao, lbUserNome, lbUserEmail, lbUserProjetos;
 
     @FXML
-    private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos;
+    private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos, abaVerConta;
     
     @FXML
-    private Button btn_criar_projeto, btn_inicio, btn_meus_projetos;
+    private Button btn_criar_projeto, btn_inicio, btn_meus_projetos, btnVerConta, btnFecharVerPerfil;
 
     @FXML
     private VBox secaoProjeto;
@@ -88,7 +86,6 @@ public class DashboardEmpresa implements Initializable{
         this.repositorioProjeto = repositorioProjeto;
         this.repositorioEmpresa = repositorioEmpresa;
     }
- 
     @FXML
     private void abrirAba(ActionEvent event){
         if (event.getSource() == btn_inicio) {
@@ -99,6 +96,13 @@ public class DashboardEmpresa implements Initializable{
         }
         else if(event.getSource() == btn_meus_projetos){
             abaMeusProjetos.toFront();
+        }
+        else if (event.getSource() == btnVerConta) {
+            verConta();
+            abaVerConta.toFront();
+        }
+        else if (event.getSource() == btnFecharVerPerfil) {
+            abaVerConta.toBack();
         }
     }
 
@@ -180,6 +184,12 @@ public class DashboardEmpresa implements Initializable{
         v2.getChildren().add(secaoProjetos(listaProjetosRecentes));
         spExplorar.setFitToWidth(true);
         spExplorar.setContent(v2);
+    }
+    @FXML
+    private void verConta(){
+        lbUserNome.setText("Nome: "+contaLogada.getNome());
+        lbUserEmail.setText("E-mail: "+contaLogada.getEmail());
+        lbUserProjetos.setText("Projetos: "+contaLogada.getProjetos().size());
     }
     /* 
     public void listarProjetos(List<Projeto> lista){
@@ -464,6 +474,7 @@ public class DashboardEmpresa implements Initializable{
             sp.setContent(secaoProjeto);
 
         }*/
+
         verMeusProjetos();
         listarProjetosRecentes();
         System.out.println(contaLogada.getProjetos());
