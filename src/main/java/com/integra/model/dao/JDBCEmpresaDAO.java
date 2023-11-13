@@ -46,10 +46,28 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
     }
 
     @Override
-    public Resultado atualizar(int id, Empresa nova) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+    public Resultado<Empresa> atualizar(int id, Empresa nova) {
+        try (Connection con = conexaoBD.getConnection()) {
+            
+            PreparedStatement pstm = con.prepareStatement("UPDATE empresa SET nome=?, email=?, senha=? WHERE id=?");
+
+            pstm.setString(1, nova.getNome());
+            pstm.setString(2, nova.getEmail());
+            pstm.setString(3, nova.getSenha());
+            pstm.setInt(4, id);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Perfil atualizado!/nFeche o aplicativo e abra denovo", nova);
+            }
+            return Resultado.erro("Não foi possível atualizar a conta!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
+
+    
 
     @Override
     public Resultado<Empresa> logar(String nome, String senha) {

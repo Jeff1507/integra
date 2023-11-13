@@ -43,7 +43,7 @@ import javafx.scene.layout.VBox;
 public class DashboardEmpresa implements Initializable{
 
     @FXML
-    private TextField tfNomeProjeto;
+    private TextField tfNomeProjeto, tfEditNomeConta, tfEditEmailConta, tfEditSenhaConta;
 
     @FXML
     private TextField tfAreaEmpresa;
@@ -64,10 +64,11 @@ public class DashboardEmpresa implements Initializable{
     private Label lbNomeProjeto, lbAreaEmpresa, lbDescricao, lbUserNome, lbUserEmail, lbUserProjetos;
 
     @FXML
-    private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos, abaVerConta;
+    private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos, abaVerConta, abaEditarConta;
     
     @FXML
-    private Button btn_criar_projeto, btn_inicio, btn_meus_projetos, btnVerConta, btnFecharVerPerfil;
+    private Button btn_criar_projeto, btn_inicio, btn_meus_projetos, btnVerConta, btnFecharVerPerfil, btn_editar_conta
+    , btnFecharEditarConta;
 
     @FXML
     private VBox secaoProjeto;
@@ -103,6 +104,14 @@ public class DashboardEmpresa implements Initializable{
         }
         else if (event.getSource() == btnFecharVerPerfil) {
             abaVerConta.toBack();
+        }
+        else if(event.getSource() == btn_editar_conta){
+            editarConta();
+            abaEditarConta.toFront();
+            
+        }
+        else if (event.getSource() == btnFecharEditarConta) {
+            abaEditarConta.toBack();
         }
     }
 
@@ -185,11 +194,34 @@ public class DashboardEmpresa implements Initializable{
         spExplorar.setFitToWidth(true);
         spExplorar.setContent(v2);
     }
-    @FXML
+    
     private void verConta(){
         lbUserNome.setText("Nome: "+contaLogada.getNome());
         lbUserEmail.setText("E-mail: "+contaLogada.getEmail());
         lbUserProjetos.setText("Projetos: "+contaLogada.getProjetos().size());
+    }
+    private void editarConta(){
+        tfEditNomeConta.setText(contaLogada.getNome());
+        tfEditEmailConta.setText(contaLogada.getEmail());
+        tfEditSenhaConta.setText(contaLogada.getSenha());
+    }
+    @FXML
+    private void editarPerfil(ActionEvent event){
+        String nome = tfEditNomeConta.getText();
+        String email = tfEditEmailConta.getText();
+        String senha = tfEditSenhaConta.getText();
+        
+        Resultado<Empresa> resultado = repositorioEmpresa.editarConta(contaLogada.getId(), nome, email, senha);
+
+        Alert alert;
+        
+        if(resultado.foiErro()){
+            alert = new Alert(AlertType.ERROR, resultado.getMsg());
+        }else{
+            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+        }
+
+        alert.showAndWait();
     }
     /* 
     public void listarProjetos(List<Projeto> lista){

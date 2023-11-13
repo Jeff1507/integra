@@ -49,4 +49,18 @@ public class RepositorioEmpresa {
     public Empresa contaLogada(){
         return contaLogada;
     }
+    public Resultado<Empresa> editarConta(int id, String nome, String email, String senha){
+        if (nome.isEmpty() || nome.isBlank()) {
+            return Resultado.erro("Nome em branco!");
+        }
+        if (email.isEmpty() || email.isBlank()) {
+            return Resultado.erro("E-mail em branco!");
+        }
+        if (senha.isEmpty() || senha.isBlank()) {
+            return Resultado.erro("Senha em branco!");
+        }
+
+        Empresa novaEmpresa = new Empresa(nome, email, senha);
+        return empresaDAO.atualizar(id, novaEmpresa);
+    }
 }

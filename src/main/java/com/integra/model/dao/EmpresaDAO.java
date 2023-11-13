@@ -15,6 +15,6 @@ public interface EmpresaDAO {
 
     Resultado<Empresa> logar(String nome, String senha);
 
-    Resultado atualizar(int id, Empresa nova);
+    Resultado<Empresa> atualizar(int id, Empresa nova);
 
 }
