@@ -152,7 +152,7 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
                 }
             }
             return "Sucesso";
-        } catch (Exception e) {
+        } catch (SQLException e) {
             return e.getMessage();
         }
     }

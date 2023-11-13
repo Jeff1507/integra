@@ -96,4 +96,17 @@ public class RepositorioProjeto {
         }
         return resultado;
     }
+    public Resultado<Projeto> editarProjeto(int id, String nome, String areaEmpresa, String descricao){
+        if (nome.isEmpty() || nome.isBlank()) {
+            return Resultado.erro("Nome em branco!");
+        }
+        if (areaEmpresa.isEmpty() || areaEmpresa.isBlank()) {
+            return Resultado.erro("Area de atuação em branco!");
+        }
+        if (descricao.isEmpty() || descricao.isBlank()) {
+            return Resultado.erro("Descrição em branco!");
+        }
+        Projeto projeto = new Projeto(nome, descricao, areaEmpresa, null);
+        return projetoDAO.editar(id, projeto);
+    }
 }

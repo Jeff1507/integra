@@ -4,8 +4,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -24,23 +22,6 @@
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="723.0" prefWidth="46.0" style="-fx-padding: 10; -fx-spacing: 10;" styleClass="menu-lateral" BorderPane.alignment="CENTER">
          <children>
-            <MenuButton alignment="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefWidth="56.0">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Informações da conta" />
-                <MenuItem mnemonicParsing="false" text="Editar Conta" />
-              </items>
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/download-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <styleClass>
-                  <String fx:value="btn-explorar" />
-                  <String fx:value="btn-menu-lateral" />
-               </styleClass>
-            </MenuButton>
             <Button fx:id="btn_inicio" mnemonicParsing="false" onAction="#abrirAba" prefHeight="42.0" prefWidth="58.0">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -89,7 +70,7 @@
                <tooltip>
                   <Tooltip text="Criar Novo Projeto" />
                </tooltip></Button>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="438.0" prefWidth="56.0" style="-fx-padding: 0 0 20 0;">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="510.0" prefWidth="56.0" style="-fx-padding: 0 0 20 0;">
                <children>
                   <Button mnemonicParsing="false" onAction="#desconectar" style="-fx-background-color: #201b2c;" styleClass="btn-logout">
                      <graphic>
@@ -258,6 +239,29 @@
                         <VBox fx:id="v2" prefHeight="723.0" prefWidth="1201.0" />
                      </content>
                   </ScrollPane>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="234.0" layoutY="85.0" styleClass="lb" text="Nome do Projeto" />
+                  <TextField layoutX="234.0" layoutY="112.0" prefHeight="27.0" prefWidth="665.0" styleClass="tf" />
+                  <TextField layoutX="234.0" layoutY="179.0" prefHeight="27.0" prefWidth="663.0" styleClass="tf" />
+                  <TextArea layoutX="234.0" layoutY="253.0" prefHeight="350.0" prefWidth="659.0" style="-fx-border-color: rgb(255, 255, 255, 0.5);" styleClass="ta" wrapText="true" />
+                  <Label layoutX="234.0" layoutY="152.0" styleClass="lb" text="Area de atuação do projeto" />
+                  <Label layoutX="234.0" layoutY="227.0" styleClass="lb" text="Descrição" />
+                  <Label layoutX="447.0" layoutY="13.0" styleClass="titulo" text="Editar Projeto" />
+                  <Button layoutX="743.0" layoutY="620.0" mnemonicParsing="false" text="Editar Projeto">
+                     <styleClass>
+                        <String fx:value="btn-crud" />
+                        <String fx:value="btn-update" />
+                     </styleClass>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-font-size: 24;" text="&lt;">
+                     <styleClass>
+                        <String fx:value="btn-explorar" />
+                        <String fx:value="btn-menu-lateral" />
+                     </styleClass>
+                  </Button>
                </children>
             </Pane>
          </children></AnchorPane>

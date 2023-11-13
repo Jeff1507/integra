@@ -134,9 +134,23 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     }
 
     @Override
-    public Resultado editar(int id, Projeto novo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editar'");
+    public Resultado<Projeto> editar(int id, Projeto novo) {
+        try (Connection con = conexao.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("UPDATE projeto SET nome=?, area_atuacao=?, descricao=? WHERE id=?");
+            pstm.setString(1, novo.getNome());
+            pstm.setString(2, novo.getAreaEmpresa());
+            pstm.setString(id, novo.getDescricao());
+            pstm.setInt(4, id);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Projeto atualizado!\nFeche o aplicativo e abra denovo", novo);
+            }
+            return Resultado.erro("Não foi possível atualizar o projeto!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
