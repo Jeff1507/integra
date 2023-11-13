@@ -83,7 +83,7 @@ public class DashboardEmpresa implements Initializable{
     private VBox v1, v2;
 
     @FXML
-    private Text teste;
+    private Text txExcluirDescricaoPjt;
 
     @FXML
     private ScrollPane spExplorar, spMeusProjetos;
@@ -261,7 +261,22 @@ public class DashboardEmpresa implements Initializable{
     private void setExcluirProjeto(Projeto projeto){
         lbExcluirNomePjt.setText(projeto.getNome());
         lbExcluirAreaPjt.setText(projeto.getAreaEmpresa());
-        teste.setText(projeto.getDescricao());
+        txExcluirDescricaoPjt.setText(projeto.getDescricao());
+        idProjetoAtual = projeto.getId();
+    }
+    @FXML
+    private void excluirProjeto(ActionEvent event){
+        Resultado<Projeto> resultado = repositorioProjeto.excluirProjeto(idProjetoAtual);
+
+        Alert alert;
+        
+        if(resultado.foiErro()){
+            alert = new Alert(AlertType.ERROR, resultado.getMsg());
+        }else{
+            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+        }
+
+        alert.showAndWait();
     }
     /* 
     public void listarProjetos(List<Projeto> lista){
