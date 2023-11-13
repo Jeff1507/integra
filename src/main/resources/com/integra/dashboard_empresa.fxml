@@ -114,41 +114,6 @@
                   </ScrollPane>
                </children>
             </Pane>
-            <Pane fx:id="abaVerConta" prefHeight="351.0" prefWidth="1202.0" style="-fx-background-color: rgb(0, 0, 0, 0.7);" AnchorPane.bottomAnchor="372.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label fx:id="lbUserNome" layoutX="341.0" layoutY="77.0" styleClass="projeto-lb" text="Label" />
-                  <Label fx:id="lbUserEmail" layoutX="341.0" layoutY="135.0" styleClass="projeto-lb" text="Label" />
-                  <HBox alignment="CENTER" layoutX="32.0" layoutY="25.0" prefHeight="254.0" prefWidth="242.0" style="-fx-background-radius: 100%; -fx-border-radius: 100%; -fx-background-color: #f0ffffde;">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/482979.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Button fx:id="btn_editar_conta" layoutX="326.0" layoutY="279.0" mnemonicParsing="false" onAction="#abrirAba" style="-fx-background-color: #f0ffffde; -fx-text-fill: #201b2c;" styleClass="btn-crud" text="Editar Perfil" />
-                  <Button layoutX="514.0" layoutY="279.0" mnemonicParsing="false" style="-fx-background-color: #f0ffffde; -fx-text-fill: #201b2c;" styleClass="btn-crud" text="Desconectar" />
-                  <Label fx:id="lbUserProjetos" layoutX="341.0" layoutY="191.0" styleClass="projeto-lb" text="Label" />
-                  <Label layoutX="105.0" layoutY="294.0" styleClass="projeto-lb" text="Empresa" />
-                  <Button fx:id="btnFecharVerPerfil" layoutX="1080.0" layoutY="25.0" mnemonicParsing="false" onAction="#abrirAba">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/close.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <styleClass>
-                        <String fx:value="btn-delete" />
-                        <String fx:value="btn-menu-lateral" />
-                     </styleClass>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-            </Pane>
             <Pane fx:id="abaEditarConta" layoutY="109.0" prefHeight="408.0" prefWidth="758.0" styleClass="projeto-box" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="109.0">
                <children>
                   <TextField fx:id="tfEditNomeConta" layoutX="208.0" layoutY="144.0" prefHeight="38.0" prefWidth="500.0">
@@ -295,6 +260,41 @@
                         </VBox>
                      </content>
                   </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="abaVerConta" prefHeight="351.0" prefWidth="1202.0" style="-fx-background-color: rgb(0, 0, 0, 0.7);" AnchorPane.bottomAnchor="372.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label fx:id="lbUserNome" layoutX="341.0" layoutY="77.0" styleClass="projeto-lb" text="Label" />
+                  <Label fx:id="lbUserEmail" layoutX="341.0" layoutY="135.0" styleClass="projeto-lb" text="Label" />
+                  <HBox alignment="CENTER" layoutX="32.0" layoutY="25.0" prefHeight="254.0" prefWidth="242.0" style="-fx-background-radius: 100%; -fx-border-radius: 100%; -fx-background-color: #f0ffffde;">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/482979.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btn_editar_conta" layoutX="813.0" layoutY="279.0" mnemonicParsing="false" onAction="#abrirAba" style="-fx-background-color: #f0ffffde; -fx-text-fill: #201b2c;" styleClass="btn-crud" text="Editar Perfil" />
+                  <Button layoutX="985.0" layoutY="279.0" mnemonicParsing="false" style="-fx-background-color: #f0ffffde; -fx-text-fill: #201b2c;" styleClass="btn-crud" text="Desconectar" />
+                  <Label fx:id="lbUserProjetos" layoutX="341.0" layoutY="191.0" styleClass="projeto-lb" text="Label" />
+                  <Label layoutX="105.0" layoutY="294.0" styleClass="projeto-lb" text="Empresa" />
+                  <Button fx:id="btnFecharVerPerfil" layoutX="1080.0" layoutY="25.0" mnemonicParsing="false" onAction="#abrirAba">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/close.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="btn-delete" />
+                        <String fx:value="btn-menu-lateral" />
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
