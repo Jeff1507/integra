@@ -66,9 +66,24 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
             return Resultado.erro(e.getMessage());
         }
     }
+    /* 
+    public String validarAtualizr(String nome, String email, Empresa contaLogada){
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT nome, email FROM empresa WHERE nome=? OR email=?");
 
-    
+            pstm.setString(1, nome);
+            pstm.setString(2, email);
 
+            ResultSet resultSet = pstm.executeQuery();
+
+            if (resultSet.next()) {
+                
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+        }
+    }
+    */
     @Override
     public Resultado<Empresa> logar(String nome, String senha) {
         try (Connection con = conexaoBD.getConnection()) {
