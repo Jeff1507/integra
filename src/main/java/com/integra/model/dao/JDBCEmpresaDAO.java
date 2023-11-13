@@ -59,31 +59,46 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
             int ret = pstm.executeUpdate();
 
             if (ret == 1) {
-                return Resultado.sucesso("Perfil atualizado!/nFeche o aplicativo e abra denovo", nova);
+                return Resultado.sucesso("Perfil atualizado!\nFeche o aplicativo e abra denovo", nova);
             }
             return Resultado.erro("Não foi possível atualizar a conta!");
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }
     }
-    /* 
-    public String validarAtualizr(String nome, String email, Empresa contaLogada){
+    
+    public String validarAtualizar(String nome, String email, int id){
         try (Connection con = conexaoBD.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("SELECT nome, email FROM empresa WHERE nome=? OR email=?");
+            PreparedStatement pstm = con.
+            prepareStatement("SELECT nome, email FROM empresa WHERE (nome=? OR email=?) AND id <> ?");
 
             pstm.setString(1, nome);
             pstm.setString(2, email);
+            pstm.setInt(3, id);
 
             ResultSet resultSet = pstm.executeQuery();
 
             if (resultSet.next()) {
+                String nomeExistente = resultSet.getString("nome");
+                String emailExistente = resultSet.getString("email");
+
+                if (nomeExistente.equals(nome) && emailExistente.equals(email)) {
+                    return "Esse Nome e E-mail já existem!";
+                }
+                if (nomeExistente.equals(nome)) {
+                    return "Esse nome já existe!";
+                }
+                if (emailExistente.equals(email)) {
+                    return "Esse E-mail já existe!";
+                }
                 
             }
+            return "Sucesso";
         } catch (SQLException e) {
-            // TODO: handle exception
+            return e.getMessage();
         }
     }
-    */
+    
     @Override
     public Resultado<Empresa> logar(String nome, String senha) {
         try (Connection con = conexaoBD.getConnection()) {

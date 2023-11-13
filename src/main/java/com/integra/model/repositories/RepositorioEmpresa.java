@@ -59,7 +59,9 @@ public class RepositorioEmpresa {
         if (senha.isEmpty() || senha.isBlank()) {
             return Resultado.erro("Senha em branco!");
         }
-
+        if (!empresaDAO.validarAtualizar(nome, email, id).equals("Sucesso")) {
+            return Resultado.erro(empresaDAO.validarAtualizar(nome, email, id));
+        }
         Empresa novaEmpresa = new Empresa(nome, email, senha);
         return empresaDAO.atualizar(id, novaEmpresa);
     }

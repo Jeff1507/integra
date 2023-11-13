@@ -17,4 +17,5 @@ public interface EmpresaDAO {
 
     Resultado<Empresa> atualizar(int id, Empresa nova);
 
+    public String validarAtualizar(String nome, String email, int id);
 }
