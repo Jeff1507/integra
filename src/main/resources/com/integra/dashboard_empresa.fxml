@@ -92,33 +92,6 @@
    <center>
       <AnchorPane id="dashboard-root" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="abaCriarProjeto" layoutX="10.0" layoutY="32.0" prefHeight="691.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label layoutX="417.0" layoutY="14.0" styleClass="titulo" text="Novo Projeto" />
-                  <Label layoutX="167.0" layoutY="67.0" styleClass="lb" text="Nome" />
-                  <TextField fx:id="tfNomeProjeto" layoutX="166.0" layoutY="94.0" prefHeight="27.0" prefWidth="731.0" promptText="Escreva o nome do seu projeto">
-                     <styleClass>
-                        <String fx:value="tf" />
-                        <String fx:value="tf-projeto-solucao" />
-                     </styleClass>
-                  </TextField>
-                  <Label layoutX="167.0" layoutY="146.0" styleClass="lb" text="Area de atuação do Projeto" />
-                  <TextField fx:id="tfAreaEmpresa" layoutX="167.0" layoutY="173.0" prefHeight="27.0" prefWidth="728.0" promptText="Seu projeto será voltado para o que?">
-                     <styleClass>
-                        <String fx:value="tf" />
-                        <String fx:value="tf-projeto-solucao" />
-                     </styleClass>
-                  </TextField>
-                  <Label layoutX="166.0" layoutY="223.0" styleClass="lb" text="Descrição do Projeto" />
-                  <TextArea fx:id="taDescricao" layoutX="166.0" layoutY="250.0" prefHeight="338.0" prefWidth="730.0" promptText="Seu projeto fará o que?" styleClass="ta" wrapText="true" />
-                  <Button layoutX="747.0" layoutY="608.0" mnemonicParsing="false" onAction="#criarProjeto" prefHeight="53.0" prefWidth="116.0" text="Criar">
-                     <styleClass>
-                        <String fx:value="btn-create" />
-                        <String fx:value="btn-crud" />
-                     </styleClass>
-                  </Button>
-               </children>
-            </Pane>
             <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox fx:id="mostraProjetoAtual" layoutX="152.0" layoutY="52.0" maxHeight="Infinity" prefHeight="310.0" prefWidth="862.0" styleClass="mostra-projeto">
@@ -241,22 +214,59 @@
                   </ScrollPane>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="abaCriarProjeto" layoutX="10.0" layoutY="32.0" prefHeight="691.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="417.0" layoutY="14.0" styleClass="titulo" text="Novo Projeto" />
+                  <Label layoutX="167.0" layoutY="67.0" styleClass="lb" text="Nome" />
+                  <TextField fx:id="tfNomeProjeto" layoutX="166.0" layoutY="94.0" prefHeight="27.0" prefWidth="731.0" promptText="Escreva o nome do seu projeto">
+                     <styleClass>
+                        <String fx:value="tf" />
+                        <String fx:value="tf-projeto-solucao" />
+                     </styleClass>
+                  </TextField>
+                  <Label layoutX="167.0" layoutY="146.0" styleClass="lb" text="Area de atuação do Projeto" />
+                  <TextField fx:id="tfAreaEmpresa" layoutX="167.0" layoutY="173.0" prefHeight="27.0" prefWidth="728.0" promptText="Seu projeto será voltado para o que?">
+                     <styleClass>
+                        <String fx:value="tf" />
+                        <String fx:value="tf-projeto-solucao" />
+                     </styleClass>
+                  </TextField>
+                  <Label layoutX="166.0" layoutY="223.0" styleClass="lb" text="Descrição do Projeto" />
+                  <TextArea fx:id="taDescricao" layoutX="166.0" layoutY="250.0" prefHeight="338.0" prefWidth="730.0" promptText="Seu projeto fará o que?" styleClass="ta" wrapText="true" />
+                  <Button layoutX="747.0" layoutY="608.0" mnemonicParsing="false" onAction="#criarProjeto" prefHeight="53.0" prefWidth="116.0" text="Criar">
+                     <styleClass>
+                        <String fx:value="btn-create" />
+                        <String fx:value="btn-crud" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="abaEditarProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="234.0" layoutY="85.0" styleClass="lb" text="Nome do Projeto" />
-                  <TextField layoutX="234.0" layoutY="112.0" prefHeight="27.0" prefWidth="665.0" styleClass="tf" />
-                  <TextField layoutX="234.0" layoutY="179.0" prefHeight="27.0" prefWidth="663.0" styleClass="tf" />
-                  <TextArea layoutX="234.0" layoutY="253.0" prefHeight="350.0" prefWidth="659.0" style="-fx-border-color: rgb(255, 255, 255, 0.5);" styleClass="ta" wrapText="true" />
+                  <TextField fx:id="tfEditNomePjt" layoutX="234.0" layoutY="112.0" prefHeight="27.0" prefWidth="665.0">
+                     <styleClass>
+                        <String fx:value="tf" />
+                        <String fx:value="tf-projeto-solucao" />
+                     </styleClass>
+                  </TextField>
+                  <TextField fx:id="tfEditAreaPjt" layoutX="234.0" layoutY="179.0" prefHeight="27.0" prefWidth="663.0">
+                     <styleClass>
+                        <String fx:value="tf" />
+                        <String fx:value="tf-projeto-solucao" />
+                     </styleClass>
+                  </TextField>
+                  <TextArea fx:id="taEditDescricao" layoutX="237.0" layoutY="256.0" prefHeight="350.0" prefWidth="659.0" style="-fx-border-color: rgb(255, 255, 255, 0.5); -fx-region-border: 0;" styleClass="ta" wrapText="true" />
                   <Label layoutX="234.0" layoutY="152.0" styleClass="lb" text="Area de atuação do projeto" />
-                  <Label layoutX="234.0" layoutY="227.0" styleClass="lb" text="Descrição" />
+                  <Label layoutX="234.0" layoutY="229.0" styleClass="lb" text="Descrição" />
                   <Label layoutX="447.0" layoutY="13.0" styleClass="titulo" text="Editar Projeto" />
-                  <Button layoutX="743.0" layoutY="620.0" mnemonicParsing="false" text="Editar Projeto">
+                  <Button layoutX="743.0" layoutY="620.0" mnemonicParsing="false" onAction="#editarProjeto" text="Editar Projeto">
                      <styleClass>
                         <String fx:value="btn-crud" />
                         <String fx:value="btn-update" />
                      </styleClass>
                   </Button>
-                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-font-size: 24;" text="&lt;">
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-font-size: 26;" text="&lt;">
                      <styleClass>
                         <String fx:value="btn-explorar" />
                         <String fx:value="btn-menu-lateral" />

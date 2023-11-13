@@ -43,13 +43,15 @@ import javafx.scene.layout.VBox;
 public class DashboardEmpresa implements Initializable{
 
     @FXML
-    private TextField tfNomeProjeto, tfEditNomeConta, tfEditEmailConta, tfEditSenhaConta;
+    private TextField tfNomeProjeto, 
+    tfEditNomeConta, tfEditEmailConta, tfEditSenhaConta,
+    tfEditNomePjt, tfEditAreaPjt;
 
     @FXML
     private TextField tfAreaEmpresa;
 
     @FXML
-    private TextArea taDescricao, taDescricaoAtual;
+    private TextArea taDescricao, taDescricaoAtual, taEditDescricao;
     
     @FXML
     private TableView<Projeto> tbProjetosRecentes;
@@ -64,7 +66,7 @@ public class DashboardEmpresa implements Initializable{
     private Label lbNomeProjeto, lbAreaEmpresa, lbDescricao, lbUserNome, lbUserEmail, lbUserProjetos;
 
     @FXML
-    private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos, abaVerConta, abaEditarConta;
+    private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos, abaVerConta, abaEditarConta, abaEditarProjeto;
     
     @FXML
     private Button btn_criar_projeto, btn_inicio, btn_meus_projetos, btnVerConta, btnFecharVerPerfil, btn_editar_conta
@@ -81,7 +83,8 @@ public class DashboardEmpresa implements Initializable{
 
     private RepositorioProjeto repositorioProjeto;
     private RepositorioEmpresa repositorioEmpresa;
-    Empresa contaLogada;
+    private Empresa contaLogada;
+    private int idProjetoAtual;
 
     public DashboardEmpresa(RepositorioProjeto repositorioProjeto, RepositorioEmpresa repositorioEmpresa){
         this.repositorioProjeto = repositorioProjeto;
@@ -210,8 +213,33 @@ public class DashboardEmpresa implements Initializable{
         String nome = tfEditNomeConta.getText();
         String email = tfEditEmailConta.getText();
         String senha = tfEditSenhaConta.getText();
-        
+
         Resultado<Empresa> resultado = repositorioEmpresa.editarConta(contaLogada.getId(), nome, email, senha);
+
+        Alert alert;
+        
+        if(resultado.foiErro()){
+            alert = new Alert(AlertType.ERROR, resultado.getMsg());
+        }else{
+            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+        }
+
+        alert.showAndWait();
+    }
+    @FXML
+    private void setEditarProjeto(Projeto projeto){
+        tfEditNomePjt.setText(projeto.getNome());
+        tfEditAreaPjt.setText(projeto.getAreaEmpresa());
+        taEditDescricao.setText(projeto.getDescricao());
+        idProjetoAtual = projeto.getId();
+    }
+    @FXML
+    private void editarProjeto(ActionEvent event){
+        String nome = tfEditNomePjt.getText();
+        String area = tfEditAreaPjt.getText();
+        String descricao = taEditDescricao.getText();
+
+        Resultado<Projeto> resultado = repositorioProjeto.editarProjeto(idProjetoAtual, nome, area, descricao);
 
         Alert alert;
         
@@ -341,8 +369,8 @@ public class DashboardEmpresa implements Initializable{
                 btnExcluir.setVisible(true);
 
                 btnEditar.setOnAction(event -> {
-                    verProjeto(projeto);
-                    abaVerProjeto.toFront();
+                    setEditarProjeto(projeto);
+                    abaEditarProjeto.toFront();
                 });
 
                 btnExcluir.setOnAction(event -> {
