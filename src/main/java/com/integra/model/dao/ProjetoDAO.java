@@ -16,5 +16,5 @@ public interface ProjetoDAO {
 
     Resultado<Projeto> editar(int id, Projeto novo);
 
-    Resultado<Projeto> excluir();
+    Resultado<Projeto> excluir(int id);
 }

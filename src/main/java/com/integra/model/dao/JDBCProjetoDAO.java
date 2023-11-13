@@ -154,9 +154,21 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     }
 
     @Override
-    public Resultado excluir() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'excluir'");
+    public Resultado<Projeto> excluir(int id) {
+        try (Connection con = conexao.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM projeto WHERE id=?");
+
+            pstm.setInt(1, id);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Projeto excluido com sucesso!", null);
+            }
+            return Resultado.erro("Não foi possivel excluir o projeto!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
 }

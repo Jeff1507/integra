@@ -109,4 +109,7 @@ public class RepositorioProjeto {
         Projeto projeto = new Projeto(nome, descricao, areaEmpresa, null);
         return projetoDAO.editar(id, projeto);
     }
+    public Resultado<Projeto> excluirProjeto(int id){
+        return projetoDAO.excluir(id);
+    }
 }

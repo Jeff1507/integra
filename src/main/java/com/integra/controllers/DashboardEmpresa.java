@@ -39,6 +39,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class DashboardEmpresa implements Initializable{
 
@@ -63,10 +64,13 @@ public class DashboardEmpresa implements Initializable{
     private TableColumn<Projeto, Projeto> tbAcoes;
 
     @FXML
-    private Label lbNomeProjeto, lbAreaEmpresa, lbDescricao, lbUserNome, lbUserEmail, lbUserProjetos;
+    private Label lbNomeProjeto, lbAreaEmpresa, lbDescricao, 
+                  lbUserNome, lbUserEmail, lbUserProjetos,
+                  lbExcluirNomePjt, lbExcluirAreaPjt, lbteste;
 
     @FXML
-    private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos, abaVerConta, abaEditarConta, abaEditarProjeto;
+    private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos, abaVerConta, abaEditarConta, abaEditarProjeto,
+    abaExcluirProjeto;
     
     @FXML
     private Button btn_criar_projeto, btn_inicio, btn_meus_projetos, btnVerConta, btnFecharVerPerfil, btn_editar_conta
@@ -77,6 +81,9 @@ public class DashboardEmpresa implements Initializable{
 
     @FXML
     private VBox v1, v2;
+
+    @FXML
+    private Text teste;
 
     @FXML
     private ScrollPane spExplorar, spMeusProjetos;
@@ -251,6 +258,11 @@ public class DashboardEmpresa implements Initializable{
 
         alert.showAndWait();
     }
+    private void setExcluirProjeto(Projeto projeto){
+        lbExcluirNomePjt.setText(projeto.getNome());
+        lbExcluirAreaPjt.setText(projeto.getAreaEmpresa());
+        teste.setText(projeto.getDescricao());
+    }
     /* 
     public void listarProjetos(List<Projeto> lista){
 
@@ -374,8 +386,8 @@ public class DashboardEmpresa implements Initializable{
                 });
 
                 btnExcluir.setOnAction(event -> {
-                    verProjeto(projeto);
-                    abaVerProjeto.toFront();
+                    setExcluirProjeto(projeto);
+                    abaExcluirProjeto.toFront();
                 });
                 
             }
