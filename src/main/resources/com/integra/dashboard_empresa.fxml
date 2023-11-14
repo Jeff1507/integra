@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
@@ -16,6 +17,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -40,7 +42,7 @@
                   <Tooltip text="Recarregar" />
                </tooltip>
             </Button>
-            <Button fx:id="btnPesquisar" mnemonicParsing="false" onAction="#abrirAba" style="-fx-background-color: #2f2841; -fx-border-color: rgba(255, 255, 255, 0.2); -fx-border-width: 1;" styleClass="btn-menu-lateral">
+            <ToggleButton fx:id="btnPesquisar" mnemonicParsing="false" onAction="#abrirAba" style="-fx-background-color: #2f2841; -fx-border-color: rgba(255, 255, 255, 0.2); -fx-border-width: 1;" styleClass="btn-menu-lateral">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,7 +50,10 @@
                      </image>
                   </ImageView>
                </graphic>
-            </Button>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ToggleButton>
             <Button fx:id="btn_inicio" mnemonicParsing="false" onAction="#abrirAba" prefHeight="42.0" prefWidth="58.0">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -97,7 +102,7 @@
                <tooltip>
                   <Tooltip text="Criar Novo Projeto" />
                </tooltip></Button>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="322.0" prefWidth="56.0" style="-fx-padding: 0 0 20 0;">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="371.0" prefWidth="58.0" style="-fx-padding: 0 0 20 0;">
                <children>
                   <Button mnemonicParsing="false" onAction="#desconectar" style="-fx-background-color: #201b2c;" styleClass="btn-logout">
                      <graphic>
@@ -325,11 +330,16 @@
             </Pane>
             <Pane fx:id="abaPesquisar" prefHeight="723.0" prefWidth="434.0" style="-fx-background-color: #201b2c; -fx-border-color: rgba(255, 255, 255, 0.2);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
+                  <StackPane layoutY="200.0" prefHeight="357.0" prefWidth="434.0">
+                     <children>
+                        <Label fx:id="lbPesquisaErro" styleClass="projeto-lb" text="Label" visible="false" />
+                     </children>
+                  </StackPane>
                   <VBox prefHeight="723.0" prefWidth="434.0" style="-fx-padding: 20; -fx-spacing: 20;">
                      <children>
                         <Label styleClass="projeto-lb" text="Pesquisar" />
                         <TextField fx:id="tfBarraPesquisa" onKeyTyped="#pesquisarProjeto" promptText="Busque um Projeto pelo nome..." styleClass="barra-pesquisa" />
-                        <ListView fx:id="lstProjetosPesquisa" prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="lstProjetosPesquisa" prefHeight="562.0" styleClass="lst" />
                      </children>
                   </VBox>
                </children>

@@ -36,6 +36,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -67,7 +68,8 @@ public class DashboardEmpresa implements Initializable{
     @FXML
     private Label lbNomeProjeto, lbAreaEmpresa, lbDescricao, 
                   lbUserNome, lbUserEmail, lbUserProjetos,
-                  lbExcluirNomePjt, lbExcluirAreaPjt, lbteste;
+                  lbExcluirNomePjt, lbExcluirAreaPjt, lbteste,
+                  lbPesquisaErro;
 
     @FXML
     private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos, abaVerConta, abaEditarConta, abaEditarProjeto,
@@ -75,8 +77,10 @@ public class DashboardEmpresa implements Initializable{
     
     @FXML
     private Button btn_criar_projeto, btn_inicio, btn_meus_projetos, btnVerConta, btnFecharVerPerfil, btn_editar_conta
-    , btnFecharEditarConta, btnPesquisar;
+    , btnFecharEditarConta;
 
+    @FXML
+    private ToggleButton btnPesquisar;
     @FXML
     private VBox secaoProjeto;
 
@@ -128,7 +132,12 @@ public class DashboardEmpresa implements Initializable{
             abaEditarConta.toBack();
         }
         else if (event.getSource() == btnPesquisar) {
-            abaPesquisar.toFront();
+            if (btnPesquisar.isSelected()) {
+                abaPesquisar.toFront();
+            }
+            else{
+                abaPesquisar.toBack();
+            }
         }
     }
 
@@ -362,14 +371,23 @@ public class DashboardEmpresa implements Initializable{
     @FXML
     private void pesquisarProjeto(KeyEvent keyEvent){
         String pesquisa = tfBarraPesquisa.getText();
+        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.filtraPorNome(pesquisa);
+        List<Projeto> projetos = (List<Projeto>) resultado.comoSucesso().getObj();
 
-        if (!tfBarraPesquisa.getText().isEmpty() || !tfBarraPesquisa.getText().isBlank()) {
-            Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.filtraPorNome(pesquisa);
-            List<Projeto> projetos = (List<Projeto>) resultado.comoSucesso().getObj();
+        if (resultado.foiSucesso()) {
+            atualizarListaPesquisa(projetos);
+        }
 
-            if (resultado.foiSucesso()) {
-                atualizarListaPesquisa(projetos);
-            }
+        if (tfBarraPesquisa.getText().isEmpty() || tfBarraPesquisa.getText().isBlank() || lstProjetosPesquisa.getItems().isEmpty()) {
+            lbPesquisaErro.setVisible(true);
+            lstProjetosPesquisa.setVisible(false);
+            lbPesquisaErro.setText("Não há nada pra mostrar aqui!");
+        }
+
+        else {
+            lbPesquisaErro.setVisible(false);
+            lstProjetosPesquisa.setVisible(true);
+       
         }
     }
     private void atualizarListaPesquisa(List<Projeto> projetos){

@@ -71,8 +71,7 @@ public class Projeto {
     
     @Override
     public String toString() {
-        return "Projeto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", areaEmpresa=" + areaEmpresa
-                + ", solucoes=" + solucoes + "]";
+        return nome;
     }
 
     @Override

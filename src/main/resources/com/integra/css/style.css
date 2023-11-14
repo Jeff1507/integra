@@ -284,10 +284,10 @@
     -fx-pref-width: 400px;
     -fx-pref-height: 40px;
     -fx-border-color: rgba(255, 255, 255, 0.500);
-    -fx-background-radius: 8px 0 0 8px;
+    -fx-background-radius: 8px;
     -fx-border-style: solid;
     -fx-border-width: 1px;
-    -fx-border-radius: 8px 0 0 8px;
+    -fx-border-radius: 8px;
 }
 .icone-pesquisa{
     -fx-background-color: #201b2c;
@@ -474,4 +474,21 @@
     -fx-pref-width: 130px;
     -fx-pref-height: 50;
 
+}
+/*PESQUISAR*/
+.lst{
+    -fx-background-color: #2f2841;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+}
+.list-cell {
+    -fx-background-color: #2f2841;
+    -fx-border-width: 0;
+    -fx-text-fill: #f0ffffde;
+    -fx-font-size: 16px;
+    -fx-font-weight: 800;
+}
+.lst .cell:selected {
+    -fx-background-color: #514869;
 }
