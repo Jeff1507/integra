@@ -112,4 +112,7 @@ public class RepositorioProjeto {
     public Resultado<Projeto> excluirProjeto(int id){
         return projetoDAO.excluir(id);
     }
+    public Resultado<ArrayList<Projeto>> filtraPorNome(String nome){
+        return projetoDAO.listarPorNome(nome);
+    }
 }

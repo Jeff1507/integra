@@ -73,9 +73,26 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     }
 
     @Override
-    public Resultado listarPorNome(String Nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarPorNome'");
+    public Resultado<ArrayList<Projeto>> listarPorNome(String nome) {
+        try (Connection con = conexao.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM projeto WHERE nome LIKE ?");
+            pstm.setString(1, "%" +nome+ "%");
+
+            ResultSet resultSet = pstm.executeQuery();
+            ArrayList<Projeto> projetos = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nomeProjeto = resultSet.getString("nome");
+                String area = resultSet.getString("area_atuacao");
+                String descricao = resultSet.getString("descricao");
+
+                Projeto projeto = new Projeto(id, nomeProjeto, descricao, area, null);
+                projetos.add(projeto);
+            }
+            return Resultado.sucesso("Projetos encontrados!", projetos);
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override

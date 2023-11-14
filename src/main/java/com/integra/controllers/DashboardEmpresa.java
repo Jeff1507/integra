@@ -46,7 +46,8 @@ public class DashboardEmpresa implements Initializable{
     @FXML
     private TextField tfNomeProjeto, 
     tfEditNomeConta, tfEditEmailConta, tfEditSenhaConta,
-    tfEditNomePjt, tfEditAreaPjt;
+    tfEditNomePjt, tfEditAreaPjt,
+    tfBarraPesquisa;
 
     @FXML
     private TextField tfAreaEmpresa;
@@ -70,11 +71,11 @@ public class DashboardEmpresa implements Initializable{
 
     @FXML
     private Pane abaCriarProjeto, abaInicio, abaVerProjeto, abaMeusProjetos, abaVerConta, abaEditarConta, abaEditarProjeto,
-    abaExcluirProjeto;
+    abaExcluirProjeto, abaPesquisar;
     
     @FXML
     private Button btn_criar_projeto, btn_inicio, btn_meus_projetos, btnVerConta, btnFecharVerPerfil, btn_editar_conta
-    , btnFecharEditarConta;
+    , btnFecharEditarConta, btnPesquisar;
 
     @FXML
     private VBox secaoProjeto;
@@ -87,6 +88,9 @@ public class DashboardEmpresa implements Initializable{
 
     @FXML
     private ScrollPane spExplorar, spMeusProjetos;
+
+    @FXML
+    private ListView<Projeto> lstProjetosPesquisa;
 
     private RepositorioProjeto repositorioProjeto;
     private RepositorioEmpresa repositorioEmpresa;
@@ -122,6 +126,9 @@ public class DashboardEmpresa implements Initializable{
         }
         else if (event.getSource() == btnFecharEditarConta) {
             abaEditarConta.toBack();
+        }
+        else if (event.getSource() == btnPesquisar) {
+            abaPesquisar.toFront();
         }
     }
 
@@ -344,9 +351,34 @@ public class DashboardEmpresa implements Initializable{
         }
     }
     */
+    @FXML
+    private void atualizar(ActionEvent event){
+        v1.getChildren().clear();
+        v2.getChildren().clear();
+
+        verMeusProjetos();
+        listarProjetosRecentes();    
+    }
+    @FXML
+    private void pesquisarProjeto(KeyEvent keyEvent){
+        String pesquisa = tfBarraPesquisa.getText();
+
+        if (!tfBarraPesquisa.getText().isEmpty() || !tfBarraPesquisa.getText().isBlank()) {
+            Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.filtraPorNome(pesquisa);
+            List<Projeto> projetos = (List<Projeto>) resultado.comoSucesso().getObj();
+
+            if (resultado.foiSucesso()) {
+                atualizarListaPesquisa(projetos);
+            }
+        }
+    }
+    private void atualizarListaPesquisa(List<Projeto> projetos){
+        lstProjetosPesquisa.getItems().clear();
+        lstProjetosPesquisa.getItems().addAll(projetos);
+    }
     public VBox secaoProjetos(List<Projeto> projetos){
         VBox secao = new VBox();
-        //secao.getChildren().clear();
+        secao.getChildren().clear();
 
         for (Projeto projeto : projetos) {
             VBox vBox1 = new VBox();
