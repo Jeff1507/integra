@@ -174,7 +174,7 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
                 String emailExistente = resultSet.getString("email");
 
                 if (nomeExistente.equals(nome) && emailExistente.equals(email)) {
-                    return "Nome e E-mail já cadastrados!";
+                    return "Nome e E-mail já está cadastrados!";
                 }
                 if (nomeExistente.equals(nome)) {
                     return "Esse nome já existe!";
