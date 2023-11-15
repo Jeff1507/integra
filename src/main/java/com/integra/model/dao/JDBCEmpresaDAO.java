@@ -22,7 +22,6 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
     @Override
     public Resultado<Empresa> cadastrar(Empresa empresa) {
         try (Connection con = conexaoBD.getConnection()) {
-
             PreparedStatement pstm = con.
             prepareStatement("INSERT INTO empresa(nome, email, senha) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
@@ -42,6 +41,39 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
             return Resultado.erro("Não foi possível cadastrar a conta!");
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
+        }
+    }
+    @Override
+    public String validarEmail(String email){
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT validar_email(?)");
+            pstm.setString(1, email);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            if (resultSet.next() && resultSet.getInt(1) != 1) {
+                return "Formato de E-mail invalido";
+            }
+            return "Sucesso";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
+    }
+    @Override
+    public String validarConta(String nome, String email){
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT validar_cadastro(?,?)");
+            pstm.setString(1, nome);
+            pstm.setString(2, email);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            if (resultSet.next() && resultSet.getInt(1) != 1) {
+                return "Essa conta já cadastrada!";
+            }
+            return "Sucesso";
+        } catch (SQLException e) {
+            return e.getMessage();
         }
     }
 

@@ -13,6 +13,10 @@ public interface EmpresaDAO {
 
     String validarCadastro(String nome, String email);
 
+    String validarConta(String nome, String email);
+
+    String validarEmail(String email);
+
     Resultado<Empresa> logar(String nome, String senha);
 
     Resultado<Empresa> atualizar(int id, Empresa nova);

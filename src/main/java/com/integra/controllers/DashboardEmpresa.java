@@ -137,6 +137,8 @@ public class DashboardEmpresa implements Initializable{
             }
             else{
                 abaPesquisar.toBack();
+                tfBarraPesquisa.clear();
+                lstProjetosPesquisa.getItems().clear();
             }
         }
     }

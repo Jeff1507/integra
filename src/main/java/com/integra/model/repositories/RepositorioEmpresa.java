@@ -22,8 +22,14 @@ public class RepositorioEmpresa {
         if (senha.isEmpty() || senha.isBlank()) {
             return Resultado.erro("Senha em branco!");
         }
-        if (!empresaDAO.validarCadastro(nome, email).equals("Sucesso")) {
+        /*if (!empresaDAO.validarCadastro(nome, email).equals("Sucesso")) {
             return Resultado.erro(empresaDAO.validarCadastro(nome, email));
+        }*/
+        if (!empresaDAO.validarEmail(email).equals("Sucesso")) {
+            return Resultado.erro(empresaDAO.validarEmail(email));
+        }
+        if (!empresaDAO.validarConta(nome, email).equals("Sucesso")) {
+            return Resultado.erro(empresaDAO.validarConta(nome, email));
         }
 
         Empresa empresa = new Empresa(nome, email, senha);

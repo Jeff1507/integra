@@ -371,19 +371,7 @@
                      </children>
                   </HBox>
                </children></HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="440.0">
-               <children>
-                  <TextField promptText="Buscar projeto por nome..." styleClass="barra-pesquisa" />
-                  <Button minHeight="-Infinity" mnemonicParsing="false" prefHeight="40.0" styleClass="icone-pesquisa">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/1200px-VisualEditor_-_Icon_-_Search-big_-_white.svg.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children></HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="440.0" />
             <HBox alignment="CENTER_RIGHT" layoutX="214.0" layoutY="10.0" prefHeight="54.0" prefWidth="195.0" styleClass="hb3">
                <children>
                   <Button fx:id="btnVerConta" mnemonicParsing="false" onAction="#abrirAba" prefHeight="48.0" prefWidth="198.0" wrapText="true">
