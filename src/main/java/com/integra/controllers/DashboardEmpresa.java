@@ -392,6 +392,15 @@ public class DashboardEmpresa implements Initializable{
        
         }
     }
+    @FXML
+    private void verProjetoPesquisa(){
+        Projeto projeto = lstProjetosPesquisa.getSelectionModel().getSelectedItem();
+        if (projeto != null) {
+            verProjeto(projeto);
+            abaVerProjeto.toFront();
+        }
+        
+    }
     private void atualizarListaPesquisa(List<Projeto> projetos){
         lstProjetosPesquisa.getItems().clear();
         lstProjetosPesquisa.getItems().addAll(projetos);

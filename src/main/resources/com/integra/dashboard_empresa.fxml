@@ -339,7 +339,7 @@
                      <children>
                         <Label styleClass="projeto-lb" text="Pesquisar" />
                         <TextField fx:id="tfBarraPesquisa" onKeyTyped="#pesquisarProjeto" promptText="Busque um Projeto pelo nome..." styleClass="barra-pesquisa" />
-                        <ListView fx:id="lstProjetosPesquisa" prefHeight="562.0" styleClass="lst" />
+                        <ListView fx:id="lstProjetosPesquisa" onMouseClicked="#verProjetoPesquisa" prefHeight="562.0" styleClass="lst" />
                      </children>
                   </VBox>
                </children>
