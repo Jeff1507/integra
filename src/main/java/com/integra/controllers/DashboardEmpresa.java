@@ -162,6 +162,10 @@ public class DashboardEmpresa implements Initializable{
         else{
             alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
         } 
+        
+        
+        atualizar();
+        abaMeusProjetos.toFront();
         alert.showAndWait();
     }
     @FXML
@@ -248,7 +252,6 @@ public class DashboardEmpresa implements Initializable{
         }else{
             alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
         }
-
         alert.showAndWait();
     }
     @FXML
@@ -273,8 +276,10 @@ public class DashboardEmpresa implements Initializable{
         }else{
             alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
         }
-
+        atualizar();
+        abaMeusProjetos.toFront();
         alert.showAndWait();
+        
     }
     private void setExcluirProjeto(Projeto projeto){
         lbExcluirNomePjt.setText(projeto.getNome());
@@ -293,8 +298,10 @@ public class DashboardEmpresa implements Initializable{
         }else{
             alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
         }
-
+        atualizar();
+        abaMeusProjetos.toFront();
         alert.showAndWait();
+        
     }
     /* 
     public void listarProjetos(List<Projeto> lista){
@@ -362,13 +369,16 @@ public class DashboardEmpresa implements Initializable{
         }
     }
     */
-    @FXML
-    private void atualizar(ActionEvent event){
+    private void atualizar(){
         v1.getChildren().clear();
         v2.getChildren().clear();
 
         verMeusProjetos();
-        listarProjetosRecentes();    
+        listarProjetosRecentes(); 
+    }
+    @FXML
+    private void atualizar(ActionEvent event){
+        atualizar();  
     }
     @FXML
     private void pesquisarProjeto(KeyEvent keyEvent){
@@ -398,6 +408,7 @@ public class DashboardEmpresa implements Initializable{
         if (projeto != null) {
             verProjeto(projeto);
             abaVerProjeto.toFront();
+            abaPesquisar.toBack();
         }
         
     }
