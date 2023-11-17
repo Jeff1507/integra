@@ -46,8 +46,24 @@ public class JDBCEstudanteDAO implements EstudanteDAO{
 
     @Override
     public Resultado<Estudante> atualizar(int id, Estudante novo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+        try (Connection con = conexaoBD.getConnection()) {
+            
+            PreparedStatement pstm = con.prepareStatement("UPDATE estudante SET nome=?, email=?, senha=? WHERE id=?");
+
+            pstm.setString(1, novo.getNome());
+            pstm.setString(2, novo.getEmail());
+            pstm.setString(3, novo.getSenha());
+            pstm.setInt(4, id);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Perfil atualizado!\nFeche o aplicativo e abra denovo", novo);
+            }
+            return Resultado.erro("Não foi possível atualizar a conta!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
@@ -110,6 +126,39 @@ public class JDBCEstudanteDAO implements EstudanteDAO{
 
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
+        }
+    }
+
+    @Override
+    public String validarAtualizar(String nome, String email, int id) {
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.
+            prepareStatement("SELECT nome, email FROM estudante WHERE (nome=? OR email=?) AND id <> ?");
+
+            pstm.setString(1, nome);
+            pstm.setString(2, email);
+            pstm.setInt(3, id);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            if (resultSet.next()) {
+                String nomeExistente = resultSet.getString("nome");
+                String emailExistente = resultSet.getString("email");
+
+                if (nomeExistente.equals(nome) && emailExistente.equals(email)) {
+                    return "Esse Nome e E-mail já existem!";
+                }
+                if (nomeExistente.equals(nome)) {
+                    return "Esse nome já existe!";
+                }
+                if (emailExistente.equals(email)) {
+                    return "Esse E-mail já existe!";
+                }
+                
+            }
+            return "Sucesso";
+        } catch (SQLException e) {
+            return e.getMessage();
         }
     }
     

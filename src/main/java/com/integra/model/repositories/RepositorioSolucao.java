@@ -2,6 +2,8 @@ package com.integra.model.repositories;
 
 import com.github.hugoperlin.results.Resultado;
 import com.integra.model.dao.SolucaoDAO;
+import com.integra.model.entities.Estudante;
+import com.integra.model.entities.Projeto;
 import com.integra.model.entities.Solucao;
 
 public class RepositorioSolucao {
@@ -10,15 +12,15 @@ public class RepositorioSolucao {
     public RepositorioSolucao(SolucaoDAO solucaoDAO){
         this.solucaoDAO = solucaoDAO;
     }
-
-    public Resultado<Solucao> criarSolucao(String titulo, String descricao){
-        if(titulo.isBlank() || titulo.isEmpty()){
-            return Resultado.erro("Título em branco!");
+    public Resultado<Solucao> criar(String nome, String descricao, Estudante contaLogada, Projeto projeto){
+        if(nome.isBlank() || nome.isEmpty()){
+            return Resultado.erro("Nome em branco!");
         }
         if(descricao.isBlank() || descricao.isEmpty()){
             return Resultado.erro("Descrição em branco!");
         }
-        Solucao solucao = new Solucao(titulo, descricao);
-        return solucaoDAO.criar(solucao);
+        Solucao solucao = new Solucao(nome, descricao, contaLogada, projeto);
+        return solucaoDAO.criar(solucao, contaLogada, projeto);
     }
+
 }

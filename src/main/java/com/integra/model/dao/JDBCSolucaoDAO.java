@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.github.hugoperlin.results.Resultado;
+import com.integra.model.entities.Estudante;
+import com.integra.model.entities.Projeto;
 import com.integra.model.entities.Solucao;
 import com.integra.utils.DBUtils;
 
@@ -18,13 +20,16 @@ public class JDBCSolucaoDAO implements SolucaoDAO{
     }
 
     @Override
-    public Resultado<Solucao> criar(Solucao solucao) {
+    public Resultado<Solucao> criar(Solucao solucao, Estudante contaLogada, Projeto projeto) {
         try (Connection con = conexaoBD.getConnection()) {
-            
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO solucao(titulo, descricao) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstm = con.
+            prepareStatement("INSERT INTO solucao(nome, descricao, projeto_id, estudante_id) VALUES (?,?,?,?)", 
+            Statement.RETURN_GENERATED_KEYS);
 
             pstm.setString(1, solucao.getTitulo());
             pstm.setString(2, solucao.getDescricao());
+            pstm.setInt(3, projeto.getId());
+            pstm.setInt(4, contaLogada.getId());
 
             int ret = pstm.executeUpdate();
 
@@ -33,9 +38,9 @@ public class JDBCSolucaoDAO implements SolucaoDAO{
 
                 solucao.setId(id);
 
-                return Resultado.sucesso("Soluçao criada com sucesso!", solucao);
+                return Resultado.sucesso("Solução criada!", solucao);
             }
-            return Resultado.erro("Erro ao criar Solução");
+            return Resultado.erro("Erro ao criar Solução!");
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }
@@ -48,7 +53,7 @@ public class JDBCSolucaoDAO implements SolucaoDAO{
     }
 
     @Override
-    public Resultado listarSolucaoProblema(int idProblema) {
+    public Resultado listarSolucaoProjeto(int idProjeto) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'listarSolucaoProblema'");
     }

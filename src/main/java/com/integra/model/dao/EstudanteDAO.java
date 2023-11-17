@@ -13,4 +13,6 @@ public interface EstudanteDAO {
     Resultado<Estudante> logar(String nome, String senha);
 
     Resultado<Estudante> atualizar(int id, Estudante novo);
+
+    public String validarAtualizar(String nome, String email, int id);
 }

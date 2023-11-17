@@ -54,5 +54,21 @@ public class RepositorioEstudante {
         return resultado;
 
     }
+    public Resultado<Estudante> editarConta(int id, String nome, String email, String senha){
+        if (nome.isEmpty() || nome.isBlank()) {
+            return Resultado.erro("Nome em branco!");
+        }
+        if (email.isEmpty() || email.isBlank()) {
+            return Resultado.erro("E-mail em branco!");
+        }
+        if (senha.isEmpty() || senha.isBlank()) {
+            return Resultado.erro("Senha em branco!");
+        }
+        if (!estudanteDAO.validarAtualizar(nome, email, id).equals("Sucesso")) {
+            return Resultado.erro(estudanteDAO.validarAtualizar(nome, email, id));
+        }
+        Estudante novoEstudante = new Estudante(nome, email, senha);
+        return estudanteDAO.atualizar(id, novoEstudante);
+    }
     
 }
