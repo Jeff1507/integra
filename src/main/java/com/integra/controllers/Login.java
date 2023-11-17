@@ -3,7 +3,9 @@ package com.integra.controllers;
 import com.github.hugoperlin.results.Resultado;
 import com.integra.App;
 import com.integra.model.entities.Empresa;
+import com.integra.model.entities.Estudante;
 import com.integra.model.repositories.RepositorioEmpresa;
+import com.integra.model.repositories.RepositorioEstudante;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,10 +28,12 @@ public class Login {
     private Label msgErro;
 
     private RepositorioEmpresa repositorioEmpresa;
+    private RepositorioEstudante repositorioEstudante;
     private static final Duration delay = Duration.seconds(3);
 
-    public Login(RepositorioEmpresa repositorioEmpresa){
+    public Login(RepositorioEmpresa repositorioEmpresa, RepositorioEstudante repositorioEstudante){
         this.repositorioEmpresa = repositorioEmpresa;
+        this.repositorioEstudante = repositorioEstudante;
     }
 
     @FXML
@@ -39,15 +43,32 @@ public class Login {
 
         Resultado<Empresa> resultado = repositorioEmpresa.login(nome, senha);
         
-        if(resultado.foiErro()){
-            msgErro.setVisible(true);
-            msgErro.setText(resultado.getMsg());
-            esconderMsgErro();
-        }else{
-            msgErro.setVisible(true);
-            msgErro.setText(resultado.getMsg());
-            esconderMsgErro();
+        if (resultado.foiSucesso()) {
             App.pushScreen("DASHBOARDEMPRESA");
+        }
+        /*if(resultado.foiErro()){
+            msgErro.setVisible(true);
+            msgErro.setText(resultado.getMsg());
+            esconderMsgErro();
+        }
+        else{
+            App.pushScreen("DASHBOARDEMPRESA");
+        }*/
+        Resultado<Estudante> resultado2 = repositorioEstudante.login(nome, senha);
+        if (resultado2.foiSucesso()) {
+            App.pushScreen("CADASTRARESTUDANTE");
+        }
+        else{
+            if (resultado.foiErro()) {
+                msgErro.setVisible(true);
+                msgErro.setText(resultado.getMsg());
+                esconderMsgErro();
+            }
+            else{
+                msgErro.setVisible(true);
+                msgErro.setText(resultado2.getMsg());
+                esconderMsgErro();
+            }
         }
 
         

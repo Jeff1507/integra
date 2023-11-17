@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.github.hugoperlin.results.Resultado;
+import com.integra.model.entities.Empresa;
 import com.integra.model.entities.Estudante;
 import com.integra.utils.DBUtils;
 
@@ -81,6 +82,34 @@ public class JDBCEstudanteDAO implements EstudanteDAO{
             return "Sucesso";
         } catch (SQLException e) {
             return e.getMessage();
+        }
+    }
+
+    @Override
+    public Resultado<Estudante> logar(String nome, String senha) {
+        try (Connection con = conexaoBD.getConnection()) {
+            
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM estudante WHERE nome=? AND senha=?");
+
+            pstm.setString(1, nome);
+            pstm.setString(2, senha);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nomeEstudante = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String senhaEstudante = resultSet.getString("senha");
+
+                Estudante estudante = new Estudante(id, nomeEstudante, email, senhaEstudante);
+
+                return Resultado.sucesso("Bem Vindo De Volta " +nomeEstudante+ "!", estudante);
+            }
+            return Resultado.erro("Credenciais inválidas!");
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
         }
     }
     

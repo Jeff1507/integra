@@ -10,5 +10,7 @@ public interface EstudanteDAO {
 
     String validarEmail(String email);
 
+    Resultado<Estudante> logar(String nome, String senha);
+
     Resultado<Estudante> atualizar(int id, Estudante novo);
 }

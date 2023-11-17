@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.integra.controllers.DashboardEmpresa">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.integra.controllers.DashboardEstudante">
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="723.0" prefWidth="46.0" style="-fx-padding: 10; -fx-spacing: 10;" styleClass="menu-lateral" BorderPane.alignment="CENTER">
          <children>
@@ -86,7 +86,7 @@
                <tooltip>
                   <Tooltip text="Ver Meus Projetos" />
                </tooltip></Button>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="371.0" prefWidth="58.0" style="-fx-padding: 0 0 20 0;">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="438.0" prefWidth="58.0" style="-fx-padding: 0 0 20 0;">
                <children>
                   <Button mnemonicParsing="false" onAction="#desconectar" style="-fx-background-color: #201b2c;" styleClass="btn-logout">
                      <graphic>

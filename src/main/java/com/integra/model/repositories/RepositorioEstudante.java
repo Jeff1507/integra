@@ -2,6 +2,7 @@ package com.integra.model.repositories;
 
 import com.github.hugoperlin.results.Resultado;
 import com.integra.model.dao.EstudanteDAO;
+import com.integra.model.entities.Empresa;
 import com.integra.model.entities.Estudante;
 
 public class RepositorioEstudante {
@@ -37,6 +38,21 @@ public class RepositorioEstudante {
     }
     public Estudante contaLogada(){
         return contaLogada;
+    }
+    public Resultado<Estudante> login(String nome, String senha){
+        if (nome.isEmpty() || nome.isBlank()) {
+            return Resultado.erro("Nome em branco!");
+        }
+        if (senha.isEmpty() || senha.isBlank()) {
+            return Resultado.erro("Senha em branco!");
+        } 
+        Resultado<Estudante> resultado = estudanteDAO.logar(nome, senha);
+        if (resultado.foiSucesso()) {
+            Estudante estudante = (Estudante) resultado.comoSucesso().getObj();
+            setContaLogada(estudante);
+        }
+        return resultado;
+
     }
     
 }
