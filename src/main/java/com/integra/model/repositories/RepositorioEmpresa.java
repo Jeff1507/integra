@@ -17,7 +17,7 @@ public class RepositorioEmpresa {
             return Resultado.erro("Nome em branco!");
         }
         if (email.isEmpty() || email.isBlank()) {
-            return Resultado.erro("Nome em branco!");
+            return Resultado.erro("E-mail em branco!");
         }
         if (senha.isEmpty() || senha.isBlank()) {
             return Resultado.erro("Senha em branco!");

@@ -98,7 +98,7 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
             return Resultado.erro(e.getMessage());
         }
     }
-    
+    @Override
     public String validarAtualizar(String nome, String email, int id){
         try (Connection con = conexaoBD.getConnection()) {
             PreparedStatement pstm = con.
