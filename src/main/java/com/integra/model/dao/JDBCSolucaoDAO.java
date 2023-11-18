@@ -61,11 +61,11 @@ public class JDBCSolucaoDAO implements SolucaoDAO{
                 String nome = resultSet.getString("nome");
                 String descricao = resultSet.getString("descricao");
 
-                Solucao solucao = new Solucao(nome, descricao, null, null);
+                Solucao solucao = new Solucao(id, nome, descricao, null, null);
 
-                return Resultado.sucesso("Solução encontrada!", solucao);
+                return Resultado.sucesso("Solução encontrada", solucao);
             }
-            return Resultado.erro("Solução não encontrada!");
+            return Resultado.erro("Solução não encontrada");
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }
@@ -93,7 +93,7 @@ public class JDBCSolucaoDAO implements SolucaoDAO{
                     solucoes.add(solucao);
                 }
                 else{
-                    return resultado.erro("ERRO");
+                    return resultado.comoErro();
                 }
             }
             return Resultado.sucesso("Soluções recuperadas", solucoes);
@@ -124,7 +124,7 @@ public class JDBCSolucaoDAO implements SolucaoDAO{
                     solucoes.add(solucao);
                 }
                 else{
-                    return resultado.erro("ERRO");
+                    return resultado.comoErro();
                 }
             }
             return Resultado.sucesso("Soluções recuperadas", solucoes);

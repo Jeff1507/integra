@@ -121,9 +121,9 @@
                </children></Pane>
             <Pane fx:id="abaMinhasSolucoes" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" styleClass="sp">
+                  <ScrollPane fx:id="spMinhasSolucoes" fitToWidth="true" style="-fx-background-color: transparent;" styleClass="sp">
                      <content>
-                        <VBox prefHeight="723.0" prefWidth="1201.0" />
+                        <VBox fx:id="v1" prefHeight="723.0" prefWidth="1201.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -201,15 +201,6 @@
                   </VBox>
                </children>
             </Pane>
-            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ScrollPane style="-fx-background-color: transparent;" styleClass="sp">
-                     <content>
-                        <VBox prefHeight="723.0" prefWidth="1201.0" />
-                     </content>
-                  </ScrollPane>
-               </children>
-            </Pane>
             <Pane fx:id="abaVerConta" prefHeight="351.0" prefWidth="1202.0" style="-fx-background-color: rgb(0, 0, 0, 0.7);" AnchorPane.bottomAnchor="372.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="341.0" layoutY="77.0" styleClass="projeto-lb" text="Label" />
@@ -243,6 +234,15 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane fx:id="spExplorar" style="-fx-background-color: transparent;" styleClass="sp">
+                     <content>
+                        <VBox fx:id="v2" prefHeight="723.0" prefWidth="1201.0" />
+                     </content>
+                  </ScrollPane>
                </children>
             </Pane>
          </children></AnchorPane>

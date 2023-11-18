@@ -37,7 +37,7 @@ public class RepositorioSolucao {
         Resultado<Estudante> eResultado = estudanteDAO.estudanteSolucao(solucao.getId());
 
         if (eResultado.foiErro()) {
-            return eResultado.erro("ERRO");
+            return eResultado.comoErro();
         }
         Estudante estudante = (Estudante) eResultado.comoSucesso().getObj();
         solucao.setEstudanteSolucao(estudante);
@@ -45,7 +45,7 @@ public class RepositorioSolucao {
         Resultado<Projeto> pResultado = projetoDAO.projetoSolucao(solucao.getId());
 
         if (pResultado.foiErro()) {
-            return pResultado.erro("ERRO");
+            return pResultado.comoErro();
         }
         Projeto projeto = (Projeto) pResultado.comoSucesso().getObj();
         solucao.setProjetoSolucao(projeto);

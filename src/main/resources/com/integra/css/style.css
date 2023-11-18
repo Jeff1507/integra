@@ -492,3 +492,6 @@
 .lst .cell:selected {
     -fx-background-color: #514869;
 }
+.lbTitulo{
+    -fx-text-alignment: CENTER;
+}
