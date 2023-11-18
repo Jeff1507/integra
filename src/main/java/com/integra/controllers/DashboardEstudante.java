@@ -20,7 +20,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -46,6 +48,15 @@ public class DashboardEstudante implements Initializable{
 
     @FXML
     private ScrollPane spExplorar, spMinhasSolucoes;
+
+    @FXML
+    private TextField tfBarraPesquisa;
+
+    @FXML
+    private ListView<Projeto> lstProjetosPesquisa;
+
+    @FXML
+    private Label lbPesquisaErro;
 
     private Estudante contaLogada;
     private RepositorioEstudante repositorioEstudante;
@@ -222,15 +233,52 @@ public class DashboardEstudante implements Initializable{
     }
 
     @FXML
-    void pesquisarProjeto(KeyEvent event) {
+    private void pesquisarProjeto(KeyEvent event) {
+        String pesquisa = tfBarraPesquisa.getText();
+        Resultado<ArrayList<Projeto>> resultado = repositorioProjeto.filtraPorNome(pesquisa);
+        List<Projeto> projetos = (List<Projeto>) resultado.comoSucesso().getObj();
 
+        if (resultado.foiSucesso()) {
+            atualizarListaPesquisa(projetos);
+        }
+
+        if (tfBarraPesquisa.getText().isEmpty() || tfBarraPesquisa.getText().isBlank() || lstProjetosPesquisa.getItems().isEmpty()) {
+            lbPesquisaErro.setVisible(true);
+            lstProjetosPesquisa.setVisible(false);
+            lbPesquisaErro.setText("Não há nada pra mostrar aqui!");
+        }
+
+        else {
+            lbPesquisaErro.setVisible(false);
+            lstProjetosPesquisa.setVisible(true);
+       
+        }
     }
-
+    private void atualizarListaPesquisa(List<Projeto> projetos){
+        lstProjetosPesquisa.getItems().clear();
+        lstProjetosPesquisa.getItems().addAll(projetos);
+    }
     @FXML
-    void verProjetoPesquisa(MouseEvent event) {
-
+    private void verProjetoPesquisa(){
+        Projeto projeto = lstProjetosPesquisa.getSelectionModel().getSelectedItem();
+        if (projeto != null) {
+            //verProjeto(projeto);
+            abaVerProjeto.toFront();
+            abaPesquisar.toBack();
+        }
+        
     }
+    private void atualizar(){
+        v1.getChildren().clear();
+        v2.getChildren().clear();
 
+        verMinhasSolucoes();
+        listarProjetosRecentes();
+    }
+    @FXML
+    private void atualizar(ActionEvent event){
+        atualizar();  
+    }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         verMinhasSolucoes();
