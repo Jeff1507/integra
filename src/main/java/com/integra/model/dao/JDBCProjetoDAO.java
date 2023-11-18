@@ -96,7 +96,7 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     }
 
     @Override
-    public Resultado<Projeto> getByid(int id) {
+    public Resultado<Projeto> getById(int id) {
         try (Connection con = conexao.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM projeto WHERE id=?");
 
@@ -134,7 +134,7 @@ public class JDBCProjetoDAO implements ProjetoDAO{
             while (resultSet.next()) {
                 int projetoId = resultSet.getInt("id");
 
-                Resultado<Projeto> resultado = getByid(projetoId);
+                Resultado<Projeto> resultado = getById(projetoId);
 
                 if (resultado.foiSucesso()) {
                     Projeto projeto = (Projeto) resultado.comoSucesso().getObj();
@@ -183,6 +183,24 @@ public class JDBCProjetoDAO implements ProjetoDAO{
                 return Resultado.sucesso("Projeto excluido com sucesso!", null);
             }
             return Resultado.erro("Não foi possivel excluir o projeto!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    @Override
+    public Resultado<Projeto> projetoSolucao(int solucaoId) {
+        try (Connection con = conexao.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT projeto_id FROM solucao WHERE id=?");
+            pstm.setInt(1, solucaoId);
+
+            ResultSet resultSet = pstm.executeQuery();
+            resultSet.next();
+
+            int projetoId = resultSet.getInt("projeto_id");
+
+            return getById(projetoId);
+
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }

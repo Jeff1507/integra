@@ -49,7 +49,7 @@ public class RepositorioProjeto {
 
     public Resultado<Projeto> getById(int projetoId) {
 
-        Resultado<Projeto> r0 = projetoDAO.getByid(projetoId);
+        Resultado<Projeto> r0 = projetoDAO.getById(projetoId);
 
         if (r0.foiSucesso()) {
             Projeto projeto = (Projeto) r0.comoSucesso().getObj();

@@ -15,4 +15,8 @@ public interface EstudanteDAO {
     Resultado<Estudante> atualizar(int id, Estudante novo);
 
     public String validarAtualizar(String nome, String email, int id);
+
+    Resultado<Estudante> getById(int id);
+
+    Resultado<Estudante> estudanteSolucao(int solucaoId);
 }

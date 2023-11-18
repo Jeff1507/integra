@@ -35,7 +35,7 @@ public class App extends BaseAppNavigator{
     RepositorioProjeto repositorioProjeto = new RepositorioProjeto(projetoDAO, empresaDAO);
 
     SolucaoDAO solucaoDAO = new JDBCSolucaoDAO(ConexaoBD.getInstance());
-    RepositorioSolucao repositorioSolucao = new RepositorioSolucao(solucaoDAO);
+    RepositorioSolucao repositorioSolucao = new RepositorioSolucao(solucaoDAO, estudanteDAO, projetoDAO);
 
     public static void main(String[] args) {
         launch();

@@ -10,8 +10,13 @@ public interface ProjetoDAO {
     Resultado<Projeto> criar(Projeto projeto, Empresa contaLogada);
 
     Resultado<ArrayList<Projeto>> listarPorNome(String nome);
-    Resultado<Projeto> getByid(int id);
+
+    Resultado<Projeto> getById(int id);
+
+    Resultado<Projeto> projetoSolucao(int solucaoId);
+
     Resultado<ArrayList<Projeto>> listarProjetoEmpresa(int empresaId);
+
     Resultado<ArrayList<Projeto>> listarProjetosRecentes();
 
     Resultado<Projeto> editar(int id, Projeto novo);

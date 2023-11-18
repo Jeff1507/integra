@@ -161,5 +161,46 @@ public class JDBCEstudanteDAO implements EstudanteDAO{
             return e.getMessage();
         }
     }
+
+    @Override
+    public Resultado<Estudante> getById(int id) {
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM estudante WHERE id=?");
+
+            pstm.setInt(1, id);
+            ResultSet resultSet = pstm.executeQuery();
+
+            if (resultSet.next()) {
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+
+                Estudante estudante = new Estudante(nome, email, senha);
+                return Resultado.sucesso("Estudante encontrado", estudante);
+            }
+            return Resultado.erro("Estudante não encontrado!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    @Override
+    public Resultado<Estudante> estudanteSolucao(int solucaoId) {
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT estudante_id FROM solucao WHERE id=?");
+            pstm.setInt(1, solucaoId);
+
+            ResultSet resultSet = pstm.executeQuery();
+            resultSet.next();
+
+            int estudanteId = resultSet.getInt("estudante_id");
+
+            return getById(estudanteId);
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+    
     
 }

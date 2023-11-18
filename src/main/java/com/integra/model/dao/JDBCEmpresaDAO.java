@@ -200,7 +200,7 @@ public class JDBCEmpresaDAO implements EmpresaDAO{
             if (resultSet.next()) {
                 String nome = resultSet.getString("nome");
                 String email = resultSet.getString("email");
-                String senha = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
 
                 Empresa empresa = new Empresa(nome, email, senha);
                 return Resultado.sucesso("Empresa encontrada", empresa);

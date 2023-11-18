@@ -2,8 +2,10 @@ package com.integra.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.github.hugoperlin.results.Resultado;
 import com.integra.model.entities.Estudante;
@@ -47,31 +49,73 @@ public class JDBCSolucaoDAO implements SolucaoDAO{
     }
 
     @Override
-    public Resultado getById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    public Resultado<Solucao> getById(int id) {
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solucao WHERE id=?");
+
+            pstm.setInt(1, id);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            while (resultSet.next()) {
+                String nome = resultSet.getString("nome");
+                String descricao = resultSet.getString("descricao");
+
+                Solucao solucao = new Solucao(nome, descricao, null, null);
+
+                return Resultado.sucesso("Solução encontrada!", solucao);
+            }
+            return Resultado.erro("Solução não encontrada!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
-    public Resultado listarSolucaoProjeto(int idProjeto) {
+    public Resultado<ArrayList<Solucao>> listarSolucaoProjeto(int idProjeto) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'listarSolucaoProblema'");
     }
 
     @Override
-    public Resultado listarSolucaoEstudante(int idEstudante) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarSolucaoEstudante'");
+    public Resultado<ArrayList<Solucao>> listarSolucaoEstudante(int idEstudante) {
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.
+            prepareStatement("SELECT id FROM solucao WHERE estudante_id=?");
+
+            pstm.setInt(1, idEstudante);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            ArrayList<Solucao> solucoes = new ArrayList<>();
+
+            while(resultSet.next()){
+                int solucaoId = resultSet.getInt("id");
+
+                Resultado<Solucao> resultado = getById(solucaoId);
+
+                if (resultado.foiSucesso()) {
+                    Solucao solucao = (Solucao) resultado.comoSucesso().getObj();
+                    solucoes.add(solucao);
+                }
+                else{
+                    return resultado.erro("ERRO");
+                }
+            }
+            return Resultado.sucesso("Soluções recuperadas", solucoes);
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
-    public Resultado editar(int id, Solucao nova) {
+    public Resultado<Solucao> editar(int id, Solucao nova) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'editar'");
     }
 
     @Override
-    public Resultado excluir(int id) {
+    public Resultado<Solucao> excluir(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'excluir'");
     }
