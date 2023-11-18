@@ -56,7 +56,7 @@ public class Login {
         }*/
         Resultado<Estudante> resultado2 = repositorioEstudante.login(nome, senha);
         if (resultado2.foiSucesso()) {
-            App.pushScreen("CADASTRARESTUDANTE");
+            App.pushScreen("DASHBOARDESTUDANTE");
         }
         else{
             if (resultado.foiErro()) {
