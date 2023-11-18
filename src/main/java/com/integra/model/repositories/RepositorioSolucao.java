@@ -1,6 +1,7 @@
 package com.integra.model.repositories;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.github.hugoperlin.results.Resultado;
 import com.integra.model.dao.EstudanteDAO;
@@ -62,8 +63,40 @@ public class RepositorioSolucao {
         return resultado;
     }
 
-    public Resultado<ArrayList<Solucao>> listarSolucaoEstudante(){
-        return null;
+    public Resultado<ArrayList<Solucao>> listarSolucaoEstudante(Estudante estudante){
+        Resultado<ArrayList<Solucao>> resultado = solucaoDAO.listarSolucaoEstudante(estudante.getId());
+
+        if (resultado.foiSucesso()) {
+            List<Solucao> solucoes = (List<Solucao>) resultado.comoSucesso().getObj();
+
+            for (Solucao solucao : solucoes) {
+                Resultado<Solucao> resultado2 = montarSolucao(solucao);
+
+                if (resultado2.foiErro()) {
+                    return resultado2.comoErro();
+                }
+            }
+            estudante.setSolucoes(solucoes);
+        }
+        return resultado;
+    }
+
+    public Resultado<ArrayList<Solucao>> listarSolucaoProjeto(Projeto projeto){
+        Resultado<ArrayList<Solucao>> resultado = solucaoDAO.listarSolucaoProjeto(projeto.getId());
+
+        if (resultado.foiSucesso()) {
+            List<Solucao> solucoes = (List<Solucao>) resultado.comoSucesso().getObj();
+
+            for (Solucao solucao : solucoes) {
+                Resultado<Solucao> resultado2 = montarSolucao(solucao);
+
+                if (resultado2.foiErro()) {
+                    return resultado2.comoErro();
+                }
+            }
+            projeto.setSolucoes(solucoes);
+        }
+        return resultado;
     }
 
 }

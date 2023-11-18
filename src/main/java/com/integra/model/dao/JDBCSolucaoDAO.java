@@ -73,8 +73,33 @@ public class JDBCSolucaoDAO implements SolucaoDAO{
 
     @Override
     public Resultado<ArrayList<Solucao>> listarSolucaoProjeto(int idProjeto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarSolucaoProblema'");
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.
+            prepareStatement("SELECT id FROM solucao WHERE projeto_id=?");
+
+            pstm.setInt(1, idProjeto);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            ArrayList<Solucao> solucoes = new ArrayList<>();
+
+            while(resultSet.next()){
+                int solucaoId = resultSet.getInt("id");
+
+                Resultado<Solucao> resultado = getById(solucaoId);
+
+                if (resultado.foiSucesso()) {
+                    Solucao solucao = (Solucao) resultado.comoSucesso().getObj();
+                    solucoes.add(solucao);
+                }
+                else{
+                    return resultado.erro("ERRO");
+                }
+            }
+            return Resultado.sucesso("Soluções recuperadas", solucoes);
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
