@@ -50,13 +50,13 @@ public class DashboardEstudante implements Initializable{
     private ScrollPane spExplorar, spMinhasSolucoes;
 
     @FXML
-    private TextField tfBarraPesquisa;
+    private TextField tfBarraPesquisa, tfEditUserNome, tfEditUserEmail, tfEditUserSenha;
 
     @FXML
     private ListView<Projeto> lstProjetosPesquisa;
 
     @FXML
-    private Label lbPesquisaErro;
+    private Label lbPesquisaErro, lbUserNome, lbUserEmail, lbUserSolucoes;
 
     private Estudante contaLogada;
     private RepositorioEstudante repositorioEstudante;
@@ -78,12 +78,14 @@ public class DashboardEstudante implements Initializable{
             abaMinhasSolucoes.toFront();
         }
         else if (event.getSource() == btnVerConta) {
+            verConta();
             abaVerConta.toFront();
         }
         else if (event.getSource() == btnFecharVerPerfil) {
             abaVerConta.toBack();
         }
         else if (event.getSource() == btnEditarConta) {
+            editarConta();
             abaEditarConta.toFront();
         }
         else if (event.getSource() == btnFecharEditarConta) {
@@ -278,6 +280,33 @@ public class DashboardEstudante implements Initializable{
     @FXML
     private void atualizar(ActionEvent event){
         atualizar();  
+    }
+    private void verConta(){
+        lbUserNome.setText("Nome: "+contaLogada.getNome());
+        lbUserEmail.setText("E-mail: "+contaLogada.getEmail());
+        lbUserSolucoes.setText("Soluções: "+contaLogada.getSolucoes().size());
+    }
+    private void editarConta(){
+        tfEditUserNome.setText(contaLogada.getNome());
+        tfEditUserEmail.setText(contaLogada.getEmail());
+        tfEditUserSenha.setText(contaLogada.getSenha());
+    }
+    @FXML
+    private void editarPerfil(ActionEvent event){
+        String nome = tfEditUserNome.getText();
+        String email = tfEditUserEmail.getText();
+        String senha = tfEditUserSenha.getText();
+
+        Resultado<Estudante> resultado = repositorioEstudante.editarConta(contaLogada.getId(), nome, email, senha);
+
+        Alert alert;
+        
+        if(resultado.foiErro()){
+            alert = new Alert(AlertType.ERROR, resultado.getMsg());
+        }else{
+            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+        }
+        alert.showAndWait();
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
