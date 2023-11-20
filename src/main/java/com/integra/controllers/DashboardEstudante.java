@@ -31,6 +31,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class DashboardEstudante implements Initializable{
 
@@ -38,7 +39,8 @@ public class DashboardEstudante implements Initializable{
     private Pane abaEditarConta, abaInicio, abaMinhasSolucoes, abaPesquisar, abaVerProjeto, abaVerConta;
 
     @FXML
-    private Button btnInicio, btnMinhasSolucoes, btnVerConta, btnFecharVerPerfil, btnEditarConta, btnFecharEditarConta;
+    private Button btnInicio, btnMinhasSolucoes, btnVerConta, btnFecharVerPerfil, btnEditarConta, btnFecharEditarConta
+    , btnVerProjeto;
 
     @FXML
     private ToggleButton btnPesquisar;
@@ -56,7 +58,10 @@ public class DashboardEstudante implements Initializable{
     private ListView<Projeto> lstProjetosPesquisa;
 
     @FXML
-    private Label lbPesquisaErro, lbUserNome, lbUserEmail, lbUserSolucoes;
+    private Label lbPesquisaErro, lbUserNome, lbUserEmail, lbUserSolucoes, projTitulo, projArea, projUser;
+
+    @FXML
+    private Text txtDescricao;
 
     private Estudante contaLogada;
     private RepositorioEstudante repositorioEstudante;
@@ -115,6 +120,12 @@ public class DashboardEstudante implements Initializable{
         spExplorar.setFitToWidth(true);
         spExplorar.setContent(v2);
     }
+    private void verProjeto(Projeto projeto){
+        projTitulo.setText(projeto.getNome());
+        projArea.setText(projeto.getAreaEmpresa());
+        projUser.setText("Criado por: "+projeto.getEmpresaProjeto().getNome());
+        txtDescricao.setText(projeto.getDescricao());
+    }
     private VBox secaoProjetos(List<Projeto> projetos){
         VBox secao = new VBox();
         secao.getChildren().clear();
@@ -140,9 +151,9 @@ public class DashboardEstudante implements Initializable{
             btnVer.getStyleClass().addAll("btn-read", "btn-crud-secao-projeto", "btn-ver-completo");
 
             btnVer.setOnAction(event -> {
-                    //verProjeto(projeto);
+                    verProjeto(projeto);
                     abaVerProjeto.toFront();
-                });
+            });
 
             Button btnSolucao = new Button("Criar Solução");
             hBox1.getChildren().addAll(btnSolucao, btnVer);
@@ -216,8 +227,7 @@ public class DashboardEstudante implements Initializable{
             btnExcluir.getStyleClass().addAll("btn-delete", "btn-crud-secao-projeto");
 
             btnVer.setOnAction(event -> {
-                    //verProjeto(projeto);
-                    abaVerProjeto.toFront();
+                
             });
 
             hBox1.getChildren().addAll(btnEditar, btnExcluir, btnVer);
@@ -308,6 +318,7 @@ public class DashboardEstudante implements Initializable{
         }
         alert.showAndWait();
     }
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         verMinhasSolucoes();
