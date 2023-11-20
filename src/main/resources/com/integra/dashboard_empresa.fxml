@@ -124,18 +124,6 @@
    <center>
       <AnchorPane id="dashboard-root" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <VBox fx:id="mostraProjetoAtual" layoutX="152.0" layoutY="52.0" maxHeight="Infinity" prefHeight="310.0" prefWidth="862.0" styleClass="mostra-projeto">
-                     <children>
-                        <Label fx:id="lbNomeProjeto" styleClass="projeto-lb" text="Label" />
-                        <Label fx:id="lbAreaEmpresa" styleClass="lb" text="Label" />
-                        <TextArea fx:id="taDescricaoAtual" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="ta" wrapText="true" />
-                     </children>
-                  </VBox>
-                  <Label layoutX="56.0" layoutY="105.0" styleClass="user-lb" text="Label" />
-                  <Label layoutX="56.0" layoutY="134.0" styleClass="user-lb" text="Label" />
-               </children></Pane>
             <Pane fx:id="abaMeusProjetos" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ScrollPane fx:id="spMeusProjetos" fitToWidth="true" style="-fx-background-color: transparent;" styleClass="sp">
@@ -276,7 +264,7 @@
                      </children>
                   </HBox>
                   <Button fx:id="btn_editar_conta" layoutX="813.0" layoutY="279.0" mnemonicParsing="false" onAction="#abrirAba" style="-fx-background-color: #f0ffffde; -fx-text-fill: #201b2c;" styleClass="btn-crud" text="Editar Perfil" />
-                  <Button layoutX="985.0" layoutY="279.0" mnemonicParsing="false" style="-fx-background-color: #f0ffffde; -fx-text-fill: #201b2c;" styleClass="btn-crud" text="Desconectar" />
+                  <Button layoutX="985.0" layoutY="279.0" mnemonicParsing="false" onAction="#desconectar" style="-fx-background-color: #f0ffffde; -fx-text-fill: #201b2c;" styleClass="btn-crud" text="Desconectar" />
                   <Label fx:id="lbUserProjetos" layoutX="341.0" layoutY="191.0" styleClass="projeto-lb" text="Label" />
                   <Label layoutX="105.0" layoutY="294.0" styleClass="projeto-lb" text="Empresa" />
                   <Button fx:id="btnFecharVerPerfil" layoutX="1080.0" layoutY="25.0" mnemonicParsing="false" onAction="#abrirAba">
@@ -342,6 +330,33 @@
                         <ListView fx:id="lstProjetosPesquisa" onMouseClicked="#verProjetoPesquisa" prefHeight="562.0" styleClass="lst" />
                      </children>
                   </VBox>
+               </children>
+            </Pane>
+            <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1200.0" style="-fx-background-color: transparent;" styleClass="sp">
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="723.0" prefWidth="1200.0" style="-fx-padding: 20; -fx-spacing: 50;">
+                           <children>
+                              <Label styleClass="titulo" text="Projeto" />
+                              <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" styleClass="projeto-box">
+                                 <children>
+                                    <Label fx:id="projTitulo" styleClass="projeto-lb" text="Label" />
+                                    <HBox prefHeight="26.0" prefWidth="1123.0" style="-fx-spacing: 50;">
+                                       <children>
+                                          <Label fx:id="projArea" styleClass="lb" text="Label" />
+                                          <Label fx:id="projUser" styleClass="lb" text="Label" />
+                                       </children>
+                                    </HBox>
+                                    <Text fx:id="txtDescricao" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lb" text="Text" wrappingWidth="831.6000366210938" />
+                                 </children>
+                              </VBox>
+                              <Label styleClass="titulo" text="Soluções" />
+                              <VBox fx:id="secao" prefHeight="200.0" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
                </children>
             </Pane>
             <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

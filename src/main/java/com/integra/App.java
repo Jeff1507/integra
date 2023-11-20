@@ -66,7 +66,7 @@ public class App extends BaseAppNavigator{
                      new ScreenRegistryFXML(App.class, "cadastrar_estudante.fxml", o->new CadastrarEstudante(repositorioEstudante)));
 
         registraTela("DASHBOARDEMPRESA", 
-                     new ScreenRegistryFXML(App.class, "dashboard_empresa.fxml", o->new DashboardEmpresa(repositorioProjeto, repositorioEmpresa)));
+                     new ScreenRegistryFXML(App.class, "dashboard_empresa.fxml", o->new DashboardEmpresa(repositorioProjeto, repositorioEmpresa, repositorioSolucao)));
         
         registraTela("DASHBOARDESTUDANTE", 
                      new ScreenRegistryFXML(App.class, "dashboard_estudante.fxml", o->new DashboardEstudante(repositorioEstudante,
