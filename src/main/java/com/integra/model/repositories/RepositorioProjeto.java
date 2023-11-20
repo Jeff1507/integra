@@ -8,6 +8,7 @@ import com.integra.model.dao.EmpresaDAO;
 import com.integra.model.dao.ProjetoDAO;
 import com.integra.model.entities.Empresa;
 import com.integra.model.entities.Projeto;
+import com.integra.model.entities.Solucao;
 
 public class RepositorioProjeto {
     private ProjetoDAO projetoDAO;
@@ -113,6 +114,19 @@ public class RepositorioProjeto {
         return projetoDAO.excluir(id);
     }
     public Resultado<ArrayList<Projeto>> filtraPorNome(String nome){
-        return projetoDAO.listarPorNome(nome);
+        Resultado<ArrayList<Projeto>> resultado = projetoDAO.listarPorNome(nome);
+        if (resultado.foiSucesso()) {
+
+            List<Projeto> projetos = (List<Projeto>) resultado.comoSucesso().getObj();
+
+            for (Projeto projeto : projetos) {
+                Resultado resultado2 = montarProjeto(projeto);
+                
+                if (resultado2.foiErro()) {
+                    return resultado2;
+                }
+            }
+        }
+        return resultado;
     }
 }

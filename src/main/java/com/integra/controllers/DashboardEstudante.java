@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.github.hugoperlin.results.Resultado;
+import com.integra.App;
 import com.integra.model.entities.Estudante;
 import com.integra.model.entities.Projeto;
 import com.integra.model.entities.Solucao;
@@ -450,6 +451,10 @@ public class DashboardEstudante implements Initializable{
         atualizar();
         abaMinhasSolucoes.toFront();
         alert.showAndWait();
+    }
+    @FXML 
+    private void desconectar(ActionEvent event){
+        App.pushScreen("LOGIN");
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

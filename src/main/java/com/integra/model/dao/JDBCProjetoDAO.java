@@ -76,7 +76,7 @@ public class JDBCProjetoDAO implements ProjetoDAO{
     public Resultado<ArrayList<Projeto>> listarPorNome(String nome) {
         try (Connection con = conexao.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM projeto WHERE nome LIKE ?");
-            pstm.setString(1, "%" +nome+ "%");
+            pstm.setString(1, nome+ "%");
 
             ResultSet resultSet = pstm.executeQuery();
             ArrayList<Projeto> projetos = new ArrayList<>();
