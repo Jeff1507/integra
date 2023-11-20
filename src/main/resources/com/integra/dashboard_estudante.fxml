@@ -129,22 +129,6 @@
                   </ScrollPane>
                </children>
             </Pane>
-            <Pane fx:id="abaPesquisar" prefHeight="723.0" prefWidth="434.0" style="-fx-background-color: #201b2c; -fx-border-color: rgba(255, 255, 255, 0.2);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <StackPane layoutY="200.0" prefHeight="357.0" prefWidth="434.0">
-                     <children>
-                        <Label fx:id="lbPesquisaErro" styleClass="projeto-lb" text="Label" visible="false" />
-                     </children>
-                  </StackPane>
-                  <VBox prefHeight="723.0" prefWidth="434.0" style="-fx-padding: 20; -fx-spacing: 20;">
-                     <children>
-                        <Label styleClass="projeto-lb" text="Pesquisar" />
-                        <TextField fx:id="tfBarraPesquisa" onKeyTyped="#pesquisarProjeto" promptText="Busque um Projeto pelo nome..." styleClass="barra-pesquisa" />
-                        <ListView fx:id="lstProjetosPesquisa" onMouseClicked="#verProjetoPesquisa" prefHeight="562.0" styleClass="lst" />
-                     </children>
-                  </VBox>
-               </children>
-            </Pane>
             <Pane fx:id="abaVerConta" prefHeight="351.0" prefWidth="1202.0" style="-fx-background-color: rgb(0, 0, 0, 0.7);" AnchorPane.bottomAnchor="372.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label fx:id="lbUserNome" layoutX="341.0" layoutY="77.0" styleClass="projeto-lb" text="Label" />
@@ -280,33 +264,6 @@
                   </ScrollPane>
                </children>
             </Pane>
-            <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1200.0" style="-fx-background-color: transparent;" styleClass="sp">
-                     <content>
-                        <VBox alignment="TOP_CENTER" prefHeight="723.0" prefWidth="1200.0" style="-fx-padding: 20; -fx-spacing: 50;">
-                           <children>
-                              <Label styleClass="titulo" text="Projeto" />
-                              <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" styleClass="projeto-box">
-                                 <children>
-                                    <Label fx:id="projTitulo" styleClass="projeto-lb" text="Label" />
-                                    <HBox prefHeight="26.0" prefWidth="1123.0" style="-fx-spacing: 50;">
-                                       <children>
-                                          <Label fx:id="projArea" styleClass="lb" text="Label" />
-                                          <Label fx:id="projUser" styleClass="lb" text="Label" />
-                                       </children>
-                                    </HBox>
-                                    <Text fx:id="txtDescricao" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lb" text="Text" wrappingWidth="831.6000366210938" />
-                                 </children>
-                              </VBox>
-                              <Label styleClass="titulo" text="Soluções" />
-                              <VBox fx:id="secao" prefHeight="200.0" />
-                           </children>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
-               </children>
-            </Pane>
             <Pane fx:id="abaEditarSolucao" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="479.0" layoutY="14.0" styleClass="titulo" text="Editar Solução" />
@@ -325,15 +282,6 @@
                         <String fx:value="btn-update" />
                      </styleClass>
                   </Button>
-               </children>
-            </Pane>
-            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ScrollPane fx:id="spExplorar" style="-fx-background-color: transparent;" styleClass="sp">
-                     <content>
-                        <VBox fx:id="v2" prefHeight="723.0" prefWidth="1201.0" />
-                     </content>
-                  </ScrollPane>
                </children>
             </Pane>
             <Pane fx:id="abaExcluirSolucao" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -359,6 +307,58 @@
                                     </Button>
                                  </children>
                               </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane fx:id="spExplorar" style="-fx-background-color: transparent;" styleClass="sp">
+                     <content>
+                        <VBox fx:id="v2" prefHeight="723.0" prefWidth="1201.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="abaPesquisar" prefHeight="723.0" prefWidth="434.0" style="-fx-background-color: #201b2c; -fx-border-color: rgba(255, 255, 255, 0.2);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <StackPane layoutY="200.0" prefHeight="357.0" prefWidth="434.0">
+                     <children>
+                        <Label fx:id="lbPesquisaErro" styleClass="projeto-lb" text="Label" visible="false" />
+                     </children>
+                  </StackPane>
+                  <VBox prefHeight="723.0" prefWidth="434.0" style="-fx-padding: 20; -fx-spacing: 20;">
+                     <children>
+                        <Label styleClass="projeto-lb" text="Pesquisar" />
+                        <TextField fx:id="tfBarraPesquisa" onKeyTyped="#pesquisarProjeto" promptText="Busque um Projeto pelo nome..." styleClass="barra-pesquisa" />
+                        <ListView fx:id="lstProjetosPesquisa" onMouseClicked="#verProjetoPesquisa" prefHeight="562.0" styleClass="lst" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1200.0" style="-fx-background-color: transparent;" styleClass="sp">
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="723.0" prefWidth="1200.0" style="-fx-padding: 20; -fx-spacing: 50;">
+                           <children>
+                              <Label styleClass="titulo" text="Projeto" />
+                              <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" styleClass="projeto-box">
+                                 <children>
+                                    <Label fx:id="projTitulo" styleClass="projeto-lb" text="Label" />
+                                    <HBox prefHeight="26.0" prefWidth="1123.0" style="-fx-spacing: 50;">
+                                       <children>
+                                          <Label fx:id="projArea" styleClass="lb" text="Label" />
+                                          <Label fx:id="projUser" styleClass="lb" text="Label" />
+                                       </children>
+                                    </HBox>
+                                    <Text fx:id="txtDescricao" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lb" text="Text" wrappingWidth="831.6000366210938" />
+                                 </children>
+                              </VBox>
+                              <Label styleClass="titulo" text="Soluções" />
+                              <VBox fx:id="secao" prefHeight="200.0" />
                            </children>
                         </VBox>
                      </content>

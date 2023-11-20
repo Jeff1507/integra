@@ -130,10 +130,16 @@ public class DashboardEstudante implements Initializable{
         spExplorar.setFitToWidth(true);
         spExplorar.setContent(v2);
     }
+    @FXML
     private void verProjeto(Projeto projeto){
         projTitulo.setText(projeto.getNome());
         projArea.setText(projeto.getAreaEmpresa());
-        projUser.setText("Criado por: "+projeto.getEmpresaProjeto().getNome());
+        if (projeto.getEmpresaProjeto() != null) {
+            projUser.setText("Criado por: " + projeto.getEmpresaProjeto().getNome());
+            System.out.println(projeto.getEmpresaProjeto().getNome());
+        } else {
+            projUser.setText("Criado por: (Nome não disponível)");
+        }
         txtDescricao.setText(projeto.getDescricao());
 
         Resultado<ArrayList<Solucao>> resultado = repositorioSolucao.listarSolucaoProjeto(projeto);
@@ -330,7 +336,7 @@ public class DashboardEstudante implements Initializable{
     private void verProjetoPesquisa(){
         Projeto projeto = lstProjetosPesquisa.getSelectionModel().getSelectedItem();
         if (projeto != null) {
-            //verProjeto(projeto);
+            verProjeto(projeto);
             abaVerProjeto.toFront();
             abaPesquisar.toBack();
         }
