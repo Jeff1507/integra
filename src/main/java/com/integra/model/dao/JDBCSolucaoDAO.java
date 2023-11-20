@@ -135,14 +135,38 @@ public class JDBCSolucaoDAO implements SolucaoDAO{
 
     @Override
     public Resultado<Solucao> editar(int id, Solucao nova) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editar'");
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("UPDATE solucao SET nome=?, descricao=? WHERE id=?");
+            pstm.setString(1, nova.getTitulo());
+            pstm.setString(2, nova.getDescricao());
+            pstm.setInt(3, id);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Solução atualizada!", nova);
+            }
+            return Resultado.erro("Não foi possível atualizar a solução!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
     public Resultado<Solucao> excluir(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'excluir'");
+        try (Connection con = conexaoBD.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM solucao WHERE id=?");
+            pstm.setInt(1, id);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Solução excluida com sucesso!", null);
+            }
+            return Resultado.erro("Não foi possivel excluir a solução!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
     
 }

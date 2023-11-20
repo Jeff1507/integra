@@ -98,5 +98,19 @@ public class RepositorioSolucao {
         }
         return resultado;
     }
+    public Resultado<Solucao> editarSolucao(int id, String nome, String descricao){
+        if (nome.isEmpty() || nome.isBlank()) {
+            return Resultado.erro("Nome em branco!");
+        }
+        if (descricao.isEmpty() || descricao.isBlank()) {
+            return Resultado.erro("Descrição em branco!");
+        }
+        Solucao solucao = new Solucao(nome, descricao, null, null);
+        return solucaoDAO.editar(id, solucao);
+
+    }
+    public Resultado<Solucao> excluirSolucao(int id){
+        return solucaoDAO.excluir(id);
+    }
 
 }

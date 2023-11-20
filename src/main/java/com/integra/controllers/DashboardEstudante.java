@@ -39,7 +39,7 @@ public class DashboardEstudante implements Initializable{
 
     @FXML
     private Pane abaEditarConta, abaInicio, abaMinhasSolucoes, abaPesquisar, abaVerProjeto, abaVerConta
-    , abaCriarSolucao;
+    , abaCriarSolucao, abaEditarSolucao, abaExcluirSolucao;
 
     @FXML
     private Button btnInicio, btnMinhasSolucoes, btnVerConta, btnFecharVerPerfil, btnEditarConta, btnFecharEditarConta
@@ -56,23 +56,24 @@ public class DashboardEstudante implements Initializable{
 
     @FXML
     private TextField tfBarraPesquisa, tfEditUserNome, tfEditUserEmail, tfEditUserSenha
-    , tfNomeSolucao;
+    , tfNomeSolucao, tfEditNomeSolucao;
 
     @FXML
-    private TextArea taDescricaoSolucao;
+    private TextArea taDescricaoSolucao, taEditDescricaoSolucao;
 
     @FXML
     private ListView<Projeto> lstProjetosPesquisa;
 
     @FXML
     private Label lbPesquisaErro, lbUserNome, lbUserEmail, lbUserSolucoes, projTitulo, projArea, projUser
-    , lbCriarSlcProjNome, lbCriarSlcProjArea, lbCriarSlcProJUser;
+    , lbCriarSlcProjNome, lbCriarSlcProjArea, lbCriarSlcProJUser, lbExcluirNomeSolucao;
 
     @FXML
-    private Text txtDescricao, txtDescricaoProj;
+    private Text txtDescricao, txtDescricaoProj, txtExcluirSolucao;
 
     private Estudante contaLogada;
     private Projeto projetoAtual;
+    private int idSolucaoAtual;
     private RepositorioEstudante repositorioEstudante;
     private RepositorioProjeto repositorioProjeto;
     private RepositorioSolucao repositorioSolucao;
@@ -275,6 +276,15 @@ public class DashboardEstudante implements Initializable{
             btnVer.setOnAction(event -> {
                 
             });
+            btnEditar.setOnAction(event -> {
+                setEditarSolucao(solucao);
+                abaEditarSolucao.toFront();
+            });
+
+            btnExcluir.setOnAction(event -> {
+                setExcluirSolucao(solucao);
+                abaExcluirSolucao.toFront();
+            });
 
             hBox1.getChildren().addAll(btnEditar, btnExcluir, btnVer);
             hBox1.getStyleClass().add("btns");
@@ -389,10 +399,52 @@ public class DashboardEstudante implements Initializable{
             alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
         } 
         atualizar();
-        verMinhasSolucoes();
+        abaMinhasSolucoes.toFront();
         alert.showAndWait();
     }
-    
+    private void setEditarSolucao(Solucao solucao){
+        tfEditNomeSolucao.setText(solucao.getTitulo());
+        taEditDescricaoSolucao.setText(solucao.getDescricao());
+        idSolucaoAtual = solucao.getId();
+    }
+    @FXML
+    private void editarSolucao(ActionEvent event){
+        String nome = tfEditNomeSolucao.getText();
+        String descricao = taEditDescricaoSolucao.getText();
+
+        Resultado<Solucao> resultado = repositorioSolucao.editarSolucao(idSolucaoAtual, nome, descricao);
+
+        Alert alert;
+        
+        if(resultado.foiErro()){
+            alert = new Alert(AlertType.ERROR, resultado.getMsg());
+        }else{
+            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+        }
+        atualizar();
+        abaMinhasSolucoes.toFront();
+        alert.showAndWait();
+    }
+    private void setExcluirSolucao(Solucao solucao){
+        lbExcluirNomeSolucao.setText(solucao.getTitulo());
+        txtExcluirSolucao.setText(solucao.getDescricao());
+        idSolucaoAtual = solucao.getId();
+    }
+    @FXML
+    private void excluirSolucao(ActionEvent event){
+        Resultado<Solucao> resultado = repositorioSolucao.excluirSolucao(idSolucaoAtual);
+
+        Alert alert;
+        
+        if(resultado.foiErro()){
+            alert = new Alert(AlertType.ERROR, resultado.getMsg());
+        }else{
+            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+        }
+        atualizar();
+        abaMinhasSolucoes.toFront();
+        alert.showAndWait();
+    }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         verMinhasSolucoes();

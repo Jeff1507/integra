@@ -237,15 +237,6 @@
                   <Label layoutX="14.0" layoutY="34.0" styleClass="projeto-lb" text="Editar Perfil" />
                </children>
             </Pane>
-            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ScrollPane fx:id="spExplorar" style="-fx-background-color: transparent;" styleClass="sp">
-                     <content>
-                        <VBox fx:id="v2" prefHeight="723.0" prefWidth="1201.0" />
-                     </content>
-                  </ScrollPane>
-               </children>
-            </Pane>
             <Pane fx:id="abaCriarSolucao" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ScrollPane hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1200.0" style="-fx-background-color: transparent;" styleClass="sp">
@@ -310,6 +301,64 @@
                               </VBox>
                               <Label styleClass="titulo" text="Soluções" />
                               <VBox fx:id="secao" prefHeight="200.0" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="abaEditarSolucao" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="479.0" layoutY="14.0" styleClass="titulo" text="Editar Solução" />
+                  <TextArea fx:id="taEditDescricaoSolucao" layoutX="268.0" layoutY="208.0" prefHeight="389.0" prefWidth="665.0" styleClass="ta" wrapText="true" />
+                  <TextField fx:id="tfEditNomeSolucao" layoutX="268.0" layoutY="121.0" prefHeight="38.0" prefWidth="665.0">
+                     <styleClass>
+                        <String fx:value="tf" />
+                        <String fx:value="tf-projeto-solucao" />
+                     </styleClass>
+                  </TextField>
+                  <Label layoutX="268.0" layoutY="94.0" styleClass="lb" text="Nome da Solução" />
+                  <Label layoutX="268.0" layoutY="181.0" styleClass="lb" text="Descrição da Solução" />
+                  <Button layoutX="783.0" layoutY="617.0" mnemonicParsing="false" onAction="#editarSolucao" text="Editar Solução">
+                     <styleClass>
+                        <String fx:value="btn-crud" />
+                        <String fx:value="btn-update" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane fx:id="spExplorar" style="-fx-background-color: transparent;" styleClass="sp">
+                     <content>
+                        <VBox fx:id="v2" prefHeight="723.0" prefWidth="1201.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="abaExcluirSolucao" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1201.0" style="-fx-background-color: transparent;" styleClass="sp">
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="723.0" prefWidth="1201.0" style="-fx-padding: 50; -fx-spacing: 20;">
+                           <children>
+                              <Label styleClass="titulo" text="Excluir Solução" />
+                              <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="850.0" style="-fx-padding: 10;" styleClass="projeto-box">
+                                 <children>
+                                    <Label fx:id="lbExcluirNomeSolucao" styleClass="projeto-lb" text="Label" />
+                                    <Text fx:id="txtExcluirSolucao" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lb" text="Text" wrappingWidth="850.0" />
+                                 </children>
+                              </VBox>
+                              <HBox alignment="TOP_RIGHT" maxWidth="-Infinity" prefHeight="100.0" prefWidth="850.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#excluirSolucao" text="Excluir">
+                                       <styleClass>
+                                          <String fx:value="btn-crud" />
+                                          <String fx:value="btn-delete" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </content>

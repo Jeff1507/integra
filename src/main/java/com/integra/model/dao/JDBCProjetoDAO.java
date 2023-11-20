@@ -162,7 +162,7 @@ public class JDBCProjetoDAO implements ProjetoDAO{
             int ret = pstm.executeUpdate();
 
             if (ret == 1) {
-                return Resultado.sucesso("Projeto atualizado!\nFeche o aplicativo e abra denovo", novo);
+                return Resultado.sucesso("Projeto atualizado!", novo);
             }
             return Resultado.erro("Não foi possível atualizar o projeto!");
         } catch (SQLException e) {
