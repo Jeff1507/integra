@@ -281,7 +281,8 @@ public class DashboardEstudante implements Initializable{
             btnExcluir.getStyleClass().addAll("btn-delete", "btn-crud-secao-projeto");
 
             btnVer.setOnAction(event -> {
-                
+                verProjeto(solucao.getProjetoSolucao());
+                abaVerProjeto.toFront();
             });
             btnEditar.setOnAction(event -> {
                 setEditarSolucao(solucao);
