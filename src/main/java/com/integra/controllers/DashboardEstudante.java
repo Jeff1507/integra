@@ -31,6 +31,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class DashboardEstudante implements Initializable{
@@ -46,7 +47,7 @@ public class DashboardEstudante implements Initializable{
     private ToggleButton btnPesquisar;
 
     @FXML
-    private VBox v1,v2;
+    private VBox v1,v2, secao;
 
     @FXML
     private ScrollPane spExplorar, spMinhasSolucoes;
@@ -125,6 +126,37 @@ public class DashboardEstudante implements Initializable{
         projArea.setText(projeto.getAreaEmpresa());
         projUser.setText("Criado por: "+projeto.getEmpresaProjeto().getNome());
         txtDescricao.setText(projeto.getDescricao());
+
+        Resultado<ArrayList<Solucao>> resultado = repositorioSolucao.listarSolucaoProjeto(projeto);
+        List<Solucao> lista = (List<Solucao>) resultado.comoSucesso().getObj();
+
+        secao.getChildren().clear();
+        secao.getChildren().add(listarSolucoesProjeto(lista));
+
+    }
+    private VBox listarSolucoesProjeto(List<Solucao> solucaos){
+        VBox secao = new VBox();
+        secao.getChildren().clear();
+        for (Solucao solucao : solucaos) {
+            VBox vBox1 = new VBox();
+
+            Label nome = new Label(solucao.getTitulo());
+            nome.getStyleClass().add("projeto-lb");
+
+            Label por = new Label("Criado por: "+solucao.getEstudanteSolucao().getNome());
+            por.getStyleClass().add("lb");
+
+            Text descricao = new Text(solucao.getDescricao());
+            descricao.getStyleClass().add("lb");
+            descricao.setFill(Color.WHITE);
+            
+            vBox1.getChildren().addAll(nome, por, descricao);
+            vBox1.getStyleClass().add("projeto-box");
+
+            secao.getChildren().add(vBox1);
+            secao.getStyleClass().add("secao-projeto");
+        }
+        return secao;
     }
     private VBox secaoProjetos(List<Projeto> projetos){
         VBox secao = new VBox();

@@ -50,6 +50,11 @@ public class Solucao {
     public void setProjetoSolucao(Projeto projetoSolucao) {
         this.projetoSolucao = projetoSolucao;
     }
+    @Override
+    public String toString() {
+        return "Solucao [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", estudanteSolucao="
+                + estudanteSolucao + ", projetoSolucao=" + projetoSolucao + "]";
+    }
     
     
 }
