@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
@@ -37,7 +38,8 @@ import javafx.scene.text.Text;
 public class DashboardEstudante implements Initializable{
 
     @FXML
-    private Pane abaEditarConta, abaInicio, abaMinhasSolucoes, abaPesquisar, abaVerProjeto, abaVerConta;
+    private Pane abaEditarConta, abaInicio, abaMinhasSolucoes, abaPesquisar, abaVerProjeto, abaVerConta
+    , abaCriarSolucao;
 
     @FXML
     private Button btnInicio, btnMinhasSolucoes, btnVerConta, btnFecharVerPerfil, btnEditarConta, btnFecharEditarConta
@@ -53,18 +55,24 @@ public class DashboardEstudante implements Initializable{
     private ScrollPane spExplorar, spMinhasSolucoes;
 
     @FXML
-    private TextField tfBarraPesquisa, tfEditUserNome, tfEditUserEmail, tfEditUserSenha;
+    private TextField tfBarraPesquisa, tfEditUserNome, tfEditUserEmail, tfEditUserSenha
+    , tfNomeSolucao;
+
+    @FXML
+    private TextArea taDescricaoSolucao;
 
     @FXML
     private ListView<Projeto> lstProjetosPesquisa;
 
     @FXML
-    private Label lbPesquisaErro, lbUserNome, lbUserEmail, lbUserSolucoes, projTitulo, projArea, projUser;
+    private Label lbPesquisaErro, lbUserNome, lbUserEmail, lbUserSolucoes, projTitulo, projArea, projUser
+    , lbCriarSlcProjNome, lbCriarSlcProjArea, lbCriarSlcProJUser;
 
     @FXML
-    private Text txtDescricao;
+    private Text txtDescricao, txtDescricaoProj;
 
     private Estudante contaLogada;
+    private Projeto projetoAtual;
     private RepositorioEstudante repositorioEstudante;
     private RepositorioProjeto repositorioProjeto;
     private RepositorioSolucao repositorioSolucao;
@@ -149,6 +157,7 @@ public class DashboardEstudante implements Initializable{
             Text descricao = new Text(solucao.getDescricao());
             descricao.getStyleClass().add("lb");
             descricao.setFill(Color.WHITE);
+            descricao.setWrappingWidth(1050);
             
             vBox1.getChildren().addAll(nome, por, descricao);
             vBox1.getStyleClass().add("projeto-box");
@@ -193,6 +202,11 @@ public class DashboardEstudante implements Initializable{
             hBox2.getChildren().addAll(hBox, hBox1);
             hBox2.getStyleClass().add("user-lb-e-btns");
             vBox1.getChildren().addAll(pjtNome, prjArea);
+
+            btnSolucao.setOnAction(event -> {
+                setCriarSolucao(projeto);
+                abaCriarSolucao.toFront();
+            });
 
             vBox2.getChildren().addAll(vBox1, hBox2);
             vBox2.getStyleClass().add("projeto-box");
@@ -348,6 +362,34 @@ public class DashboardEstudante implements Initializable{
         }else{
             alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
         }
+        alert.showAndWait();
+    }
+    private void setCriarSolucao(Projeto projeto){
+        lbCriarSlcProjNome.setText(projeto.getNome());
+        lbCriarSlcProjArea.setText(projeto.getAreaEmpresa());
+        lbCriarSlcProJUser.setText("Criado por: "+projeto.getEmpresaProjeto().getNome());
+        txtDescricaoProj.setText(projeto.getDescricao());
+        projetoAtual = projeto;
+    }
+    @FXML
+    private void criarSolucao(ActionEvent event){
+        String nome = tfNomeSolucao.getText();
+        String descricao = taDescricaoSolucao.getText();
+
+        contaLogada = repositorioEstudante.contaLogada();
+
+        Resultado<Solucao> resultado = repositorioSolucao.criar(nome, descricao, contaLogada, projetoAtual);
+
+        Alert alert;
+        if (resultado.foiErro()) {
+            alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            
+        }
+        else{
+            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+        } 
+        atualizar();
+        verMinhasSolucoes();
         alert.showAndWait();
     }
     

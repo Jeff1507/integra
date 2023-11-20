@@ -237,14 +237,66 @@
                   <Label layoutX="14.0" layoutY="34.0" styleClass="projeto-lb" text="Editar Perfil" />
                </children>
             </Pane>
+            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane fx:id="spExplorar" style="-fx-background-color: transparent;" styleClass="sp">
+                     <content>
+                        <VBox fx:id="v2" prefHeight="723.0" prefWidth="1201.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="abaCriarSolucao" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1200.0" style="-fx-background-color: transparent;" styleClass="sp">
+                     <content>
+                        <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1201.0" style="-fx-padding: 50; -fx-spacing: 20;">
+                           <children>
+                              <Label styleClass="titulo" text="Projeto" />
+                              <VBox prefHeight="200.0" prefWidth="850.0" styleClass="mostra-projeto">
+                                 <children>
+                                    <Label fx:id="lbCriarSlcProjNome" styleClass="projeto-lb" text="Label" />
+                                    <HBox prefHeight="29.0" prefWidth="1100.0" style="-fx-spacing: 50;">
+                                       <children>
+                                          <Label fx:id="lbCriarSlcProjArea" styleClass="lb" text="Label" />
+                                          <Label fx:id="lbCriarSlcProJUser" styleClass="lb" text="Label" />
+                                       </children>
+                                    </HBox>
+                                    <Text fx:id="txtDescricaoProj" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lb" text="Text" wrappingWidth="1100.0" />
+                                 </children>
+                              </VBox>
+                              <Label styleClass="titulo" text="Nova Solução" />
+                              <TextField fx:id="tfNomeSolucao" prefHeight="38.0" prefWidth="850.0" promptText="Nome da Solução">
+                                 <styleClass>
+                                    <String fx:value="tf-projeto-solucao" />
+                                    <String fx:value="tf" />
+                                 </styleClass>
+                              </TextField>
+                              <TextArea fx:id="taDescricaoSolucao" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="200.0" prefWidth="850.0" promptText="Descrição da Solução" styleClass="ta" />
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#criarSolucao" text="Criar">
+                                       <styleClass>
+                                          <String fx:value="btn-crud" />
+                                          <String fx:value="btn-create" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
             <Pane fx:id="abaVerProjeto" prefHeight="200.0" prefWidth="200.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ScrollPane fitToWidth="true" prefHeight="723.0" prefWidth="1200.0" style="-fx-background-color: transparent;" styleClass="sp">
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="723.0" prefWidth="1200.0" style="-fx-background-color: transparent;" styleClass="sp">
                      <content>
                         <VBox alignment="TOP_CENTER" prefHeight="723.0" prefWidth="1200.0" style="-fx-padding: 20; -fx-spacing: 50;">
                            <children>
                               <Label styleClass="titulo" text="Projeto" />
-                              <VBox minWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0" styleClass="projeto-box">
+                              <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" styleClass="projeto-box">
                                  <children>
                                     <Label fx:id="projTitulo" styleClass="projeto-lb" text="Label" />
                                     <HBox prefHeight="26.0" prefWidth="1123.0" style="-fx-spacing: 50;">
@@ -253,22 +305,13 @@
                                           <Label fx:id="projUser" styleClass="lb" text="Label" />
                                        </children>
                                     </HBox>
-                                    <Text fx:id="txtDescricao" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lb" text="Text" />
+                                    <Text fx:id="txtDescricao" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lb" text="Text" wrappingWidth="831.6000366210938" />
                                  </children>
                               </VBox>
                               <Label styleClass="titulo" text="Soluções" />
-                              <VBox fx:id="secao" prefHeight="200.0" prefWidth="100.0" />
+                              <VBox fx:id="secao" prefHeight="200.0" />
                            </children>
                         </VBox>
-                     </content>
-                  </ScrollPane>
-               </children>
-            </Pane>
-            <Pane fx:id="abaInicio" prefHeight="717.0" prefWidth="1062.0" styleClass="pane-aba2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ScrollPane fx:id="spExplorar" style="-fx-background-color: transparent;" styleClass="sp">
-                     <content>
-                        <VBox fx:id="v2" prefHeight="723.0" prefWidth="1201.0" />
                      </content>
                   </ScrollPane>
                </children>
