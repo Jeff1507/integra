@@ -205,6 +205,7 @@ public class DashboardEstudante implements Initializable{
             });
 
             Button btnSolucao = new Button("Criar Solução");
+            btnSolucao.getStyleClass().addAll("btn-create", "btn-crud-secao-projeto", "btn-ver-completo");
             hBox1.getChildren().addAll(btnSolucao, btnVer);
             hBox1.getStyleClass().add("btns");
             hBox2.getChildren().addAll(hBox, hBox1);
