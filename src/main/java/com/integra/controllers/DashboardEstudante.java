@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
@@ -367,20 +368,26 @@ public class DashboardEstudante implements Initializable{
     }
     @FXML
     private void editarPerfil(ActionEvent event){
-        String nome = tfEditUserNome.getText();
-        String email = tfEditUserEmail.getText();
-        String senha = tfEditUserSenha.getText();
+        if (msgConfirmacao("Confirmação", 
+                           "Esta ação é irreversível", 
+                           "Tem certeza que deseja editar seu perfil?")) 
+        {
+            String nome = tfEditUserNome.getText();
+            String email = tfEditUserEmail.getText();
+            String senha = tfEditUserSenha.getText();
 
-        Resultado<Estudante> resultado = repositorioEstudante.editarConta(contaLogada.getId(), nome, email, senha);
+            Resultado<Estudante> resultado = repositorioEstudante.editarConta(contaLogada.getId(), nome, email, senha);
 
-        Alert alert;
-        
-        if(resultado.foiErro()){
-            alert = new Alert(AlertType.ERROR, resultado.getMsg());
-        }else{
-            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            Alert alert;
+            
+            if(resultado.foiErro()){
+                alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            }else{
+                alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            }
+            alert.showAndWait();
         }
-        alert.showAndWait();
+        
     }
     private void setCriarSolucao(Projeto projeto){
         lbCriarSlcProjNome.setText(projeto.getNome());
@@ -417,21 +424,27 @@ public class DashboardEstudante implements Initializable{
     }
     @FXML
     private void editarSolucao(ActionEvent event){
-        String nome = tfEditNomeSolucao.getText();
-        String descricao = taEditDescricaoSolucao.getText();
+        if (msgConfirmacao("Confirmação", 
+                           "Esta ação é irreversível", 
+                           "Tem certeza que deseja editar essa solução?")) 
+        {
+            String nome = tfEditNomeSolucao.getText();
+            String descricao = taEditDescricaoSolucao.getText();
 
-        Resultado<Solucao> resultado = repositorioSolucao.editarSolucao(idSolucaoAtual, nome, descricao);
+            Resultado<Solucao> resultado = repositorioSolucao.editarSolucao(idSolucaoAtual, nome, descricao);
 
-        Alert alert;
-        
-        if(resultado.foiErro()){
-            alert = new Alert(AlertType.ERROR, resultado.getMsg());
-        }else{
-            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            Alert alert;
+            
+            if(resultado.foiErro()){
+                alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            }else{
+                alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            }
+            atualizar();
+            abaMinhasSolucoes.toFront();
+            alert.showAndWait();
         }
-        atualizar();
-        abaMinhasSolucoes.toFront();
-        alert.showAndWait();
+        
     }
     private void setExcluirSolucao(Solucao solucao){
         lbExcluirNomeSolucao.setText(solucao.getTitulo());
@@ -440,22 +453,47 @@ public class DashboardEstudante implements Initializable{
     }
     @FXML
     private void excluirSolucao(ActionEvent event){
-        Resultado<Solucao> resultado = repositorioSolucao.excluirSolucao(idSolucaoAtual);
-
-        Alert alert;
+        if (msgConfirmacao("Confirmação", 
+                           "Esta ação é irreversível", 
+                           "Tem certeza que deseja excluir essa solução?")) 
+        {
+            Resultado<Solucao> resultado = repositorioSolucao.excluirSolucao(idSolucaoAtual);
+            Alert alert;
         
-        if(resultado.foiErro()){
-            alert = new Alert(AlertType.ERROR, resultado.getMsg());
-        }else{
-            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            if(resultado.foiErro()){
+                alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            }else{
+                alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            }
+            atualizar();
+            abaMinhasSolucoes.toFront();
+            alert.showAndWait();
         }
-        atualizar();
-        abaMinhasSolucoes.toFront();
+        
+    }
+    private static boolean msgConfirmacao(String titulo, String cabecalho, String conteudo){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(cabecalho);
+        alert.setContentText(conteudo);
+
+        ButtonType botaoSim = new ButtonType("Sim");
+        ButtonType botaoNao = new ButtonType("Não");
+        alert.getButtonTypes().setAll(botaoSim, botaoNao);
+
         alert.showAndWait();
+
+        return alert.getResult() == botaoSim;
     }
     @FXML 
     private void desconectar(ActionEvent event){
-        App.pushScreen("LOGIN");
+        if (msgConfirmacao("Confirmação", 
+                           "Desconectar", 
+                           "Quer mesmo sair?")) 
+        {
+            App.pushScreen("LOGIN");
+        }
+        
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

@@ -23,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
@@ -158,7 +159,12 @@ public class DashboardEmpresa implements Initializable{
     @FXML
     private void desconectar(ActionEvent event){
 
-        App.pushScreen("LOGIN");
+        if (msgConfirmacao("Confirmação", 
+                           "Desconectar", 
+                           "Quer mesmo sair?")) 
+        {
+            App.pushScreen("LOGIN");
+        }
     }
     private void verProjeto(Projeto projeto){
         projTitulo.setText(projeto.getNome());
@@ -252,20 +258,26 @@ public class DashboardEmpresa implements Initializable{
     }
     @FXML
     private void editarPerfil(ActionEvent event){
-        String nome = tfEditNomeConta.getText();
-        String email = tfEditEmailConta.getText();
-        String senha = tfEditSenhaConta.getText();
+        if (msgConfirmacao("Confirmação", 
+                           "Esta ação é irreversível", 
+                           "Tem certeza que deseja editar seu perfil?")) 
+        {
+            String nome = tfEditNomeConta.getText();
+            String email = tfEditEmailConta.getText();
+            String senha = tfEditSenhaConta.getText();
 
-        Resultado<Empresa> resultado = repositorioEmpresa.editarConta(contaLogada.getId(), nome, email, senha);
+            Resultado<Empresa> resultado = repositorioEmpresa.editarConta(contaLogada.getId(), nome, email, senha);
 
-        Alert alert;
-        
-        if(resultado.foiErro()){
-            alert = new Alert(AlertType.ERROR, resultado.getMsg());
-        }else{
-            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            Alert alert;
+            
+            if(resultado.foiErro()){
+                alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            }else{
+                alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            }
+            alert.showAndWait();
         }
-        alert.showAndWait();
+        
     }
     @FXML
     private void setEditarProjeto(Projeto projeto){
@@ -276,22 +288,28 @@ public class DashboardEmpresa implements Initializable{
     }
     @FXML
     private void editarProjeto(ActionEvent event){
-        String nome = tfEditNomePjt.getText();
-        String area = tfEditAreaPjt.getText();
-        String descricao = taEditDescricao.getText();
+        if (msgConfirmacao("Confirmação", 
+                           "Esta ação é irreversível", 
+                           "Tem certeza que deseja editar esse projeto?")) 
+        {
+            String nome = tfEditNomePjt.getText();
+            String area = tfEditAreaPjt.getText();
+            String descricao = taEditDescricao.getText();
 
-        Resultado<Projeto> resultado = repositorioProjeto.editarProjeto(idProjetoAtual, nome, area, descricao);
+            Resultado<Projeto> resultado = repositorioProjeto.editarProjeto(idProjetoAtual, nome, area, descricao);
 
-        Alert alert;
-        
-        if(resultado.foiErro()){
-            alert = new Alert(AlertType.ERROR, resultado.getMsg());
-        }else{
-            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            Alert alert;
+            
+            if(resultado.foiErro()){
+                alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            }else{
+                alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            }
+            atualizar();
+            abaMeusProjetos.toFront();
+            alert.showAndWait();
         }
-        atualizar();
-        abaMeusProjetos.toFront();
-        alert.showAndWait();
+        
         
     }
     private void setExcluirProjeto(Projeto projeto){
@@ -302,18 +320,24 @@ public class DashboardEmpresa implements Initializable{
     }
     @FXML
     private void excluirProjeto(ActionEvent event){
-        Resultado<Projeto> resultado = repositorioProjeto.excluirProjeto(idProjetoAtual);
+        if (msgConfirmacao("Confirmação", 
+                           "Esta ação é irreversível", 
+                           "Tem certeza que deseja excluir esse projeto?")) 
+        {
+            Resultado<Projeto> resultado = repositorioProjeto.excluirProjeto(idProjetoAtual);
 
-        Alert alert;
-        
-        if(resultado.foiErro()){
-            alert = new Alert(AlertType.ERROR, resultado.getMsg());
-        }else{
-            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            Alert alert;
+            
+            if(resultado.foiErro()){
+                alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            }else{
+                alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            }
+            atualizar();
+            abaMeusProjetos.toFront();
+            alert.showAndWait();
         }
-        atualizar();
-        abaMeusProjetos.toFront();
-        alert.showAndWait();
+        
         
     }
     private void atualizar(){
@@ -438,6 +462,20 @@ public class DashboardEmpresa implements Initializable{
             secao.getStyleClass().add("secao-projeto");
         }
         return secao;
+    }
+    private static boolean msgConfirmacao(String titulo, String cabecalho, String conteudo){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(cabecalho);
+        alert.setContentText(conteudo);
+
+        ButtonType botaoSim = new ButtonType("Sim");
+        ButtonType botaoNao = new ButtonType("Não");
+        alert.getButtonTypes().setAll(botaoSim, botaoNao);
+
+        alert.showAndWait();
+
+        return alert.getResult() == botaoSim;
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
